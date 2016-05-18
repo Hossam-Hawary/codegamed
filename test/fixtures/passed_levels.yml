@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  level_id: 
+  user_id: 
+  progress: 1
+  last_mission_order: 1
+
+two:
+  level_id: 
+  user_id: 
+  progress: 1
+  last_mission_order: 1
