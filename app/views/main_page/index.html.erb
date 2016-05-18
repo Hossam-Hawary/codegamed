@@ -1,0 +1,8 @@
+<div id="user-widget">
+  <% if current_user %>
+    	<%= render 'angular' %>
+  <% else %>
+		<%= render 'guest' %>
+  <% end %>
+</div>
+<h1>Main Page<h1>

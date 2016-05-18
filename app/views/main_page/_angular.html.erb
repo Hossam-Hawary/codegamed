@@ -1,0 +1,4 @@
+ Welcome <strong><%= current_user.name %></strong>!
+    <%= current_user.email %>
+    <%= image_tag current_user.image_url %>
+     <%= link_to "Sign out", signout_path, id: "sign_out" %>

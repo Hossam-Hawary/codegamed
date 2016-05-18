@@ -30,6 +30,11 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# for authontication and fetching data using facebook graph api 
+gem 'omniauth' # for authontication
+gem 'omniauth-facebook' # Facebook authentication
+gem 'koala' # Facebook API
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
