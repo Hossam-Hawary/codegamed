@@ -34,6 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth' # for authontication
 gem 'omniauth-facebook' # Facebook authentication
 gem 'koala' # Facebook API
+gem 'devise'
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

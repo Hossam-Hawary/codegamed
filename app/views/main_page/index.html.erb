@@ -1,6 +1,9 @@
 <div id="user-widget">
   <% if current_user %>
     	<%= render 'angular' %>
+      <% elsif current_admin %>
+  <h1>Hello Admin</h1>
+      <%= link_to "Sign Out Admin ",destroy_admin_session_path,{method: :delete} %>
   <% else %>
 		<%= render 'guest' %>
   <% end %>
