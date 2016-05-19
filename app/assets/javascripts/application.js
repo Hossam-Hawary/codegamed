@@ -23,4 +23,9 @@
 //= require levels/levelsModel.js
 //= require missions/missionsController.js
 //= require missions/missionsModel.js
+//= require missions/codeMirror/codemirror.js
+//= require missions/codeMirror/clike.js
+
+
+
 //= require_tree .

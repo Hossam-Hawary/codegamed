@@ -4,11 +4,11 @@
     background-position: bottom;
     background-repeat: repeat-x;
   }
-  .cm-matchhighlight {background-color: gray}
+  .cm-matchhighlight {border: 1px solid white;}
   .CodeMirror-selection-highlight-scrollbar {background-color: gray}
   .CodeMirror-selected  { background-color: blue !important; }
   .CodeMirror-selectedtext { color: #ffffff !important;}
-  .styled-background { background-color: #ff7; }
+  .styled-background { background-color: #ff7;}
   .cm-trailingspace {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAACCAYAAAB/qH1jAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAB3RJTUUH3QUXCToH00Y1UgAAACFJREFUCNdjPMDBUc/AwNDAAAFMTAwMDA0OP34wQgX/AQBYgwYEx4f9lQAAAABJRU5ErkJggg==);
     background-position: bottom left;
