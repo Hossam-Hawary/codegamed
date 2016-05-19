@@ -15,6 +15,10 @@
 //= require turbolinks
 //= require angular.js
 //= require angular-route.js
+//= require angular-animate.js
+//= require angular-aria.js
+//= require angular-messages.js
+//= require angular-material.js
 //= require app.js.erb
 //= require levels/levelsController.js
 //= require levels/levelsModel.js
