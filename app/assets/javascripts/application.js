@@ -13,4 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require angular.js
+//= require angular-route.js
+//= require angular-animate.js
+//= require angular-aria.js
+//= require angular-messages.js
+//= require angular-material.js
+//= require app.js.erb
+//= require levels/levelsController.js
+//= require levels/levelsModel.js
+//= require missions/missionsController.js
+//= require missions/missionsModel.js
 //= require_tree .

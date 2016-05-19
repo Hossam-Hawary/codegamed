@@ -1,0 +1,21 @@
+/**
+ * Created by te7a on 18/05/16.
+ */
+angular.module('codeGamed',['ngRoute','ngMaterial']).config(function($routeProvider){
+
+    $routeProvider.when('/',{
+        templateUrl: "<%= asset_path('levels.html.erb')%>",
+        controller: 'levelCtrl'
+
+    });
+
+
+  $routeProvider.when('/missions',{
+    templateUrl: "<%= asset_path('missions.html.erb')%>",
+    controller: 'missionCtrl'
+
+  });
+
+});
+
+

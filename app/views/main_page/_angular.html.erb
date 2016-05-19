@@ -2,3 +2,41 @@
     <%= current_user.email %>
     <%= image_tag current_user.image_url %>
      <%= link_to "Sign out", signout_path, id: "sign_out" %>
+
+<div ng-app="codeGamed">
+
+  <!--- header -->
+  <div>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <md-button aria-label="Go Back">
+          <i class="material-icons">home</i>
+        </md-button>
+
+        <md-button  aria-label="Go Back">
+          Logout
+        </md-button>
+
+        <md-button class="md-raised">Buttonss</md-button>
+      </div>
+    </md-toolbar>
+  </div>
+
+
+
+   <!--- The Body -->
+  <div ng-view>
+
+  </div>
+
+
+  <div>
+    This is Footer
+  </div>
+</div>
+
+
+ <script>
+
+   window.location.hash='';
+ </script>
