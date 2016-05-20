@@ -5,7 +5,6 @@
 
 
       <img class="background-image" src="1.jpg"  />
-      <img class="foreground-image"  src="https://graph.facebook.com/1008048612576251/picture?type=normal"  />
 
 
   </md-grid-tile>
@@ -20,78 +19,23 @@
 
 <md-grid-list md-cols="3"  md-row-height="400px"  >
 
-  <md-grid-tile  >
+  <md-grid-tile  ng-repeat="badge in badges" >
 
     <md-card>
 
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline">Card with  image</span>
-          <span class="md-subhead">Extra Large</span>
+          <span class="md-headline">{{badge.title}}</span>
+
         </md-card-title-text>
 
       </md-card-title>
 
 
       <md-card-content layout="row" layout-align="space-between">
-        <div class="md-media-xl card-media card-image-resize" style="background-image: url('2.png'); ">
+        <a ng-href="/#/missions/{{badge.level_id}}"> <div class="md-media-xl card-media card-image-resize" style="background-image: url('{{badge.image_url}}'); ">
 
-        </div>
-
-      </md-card-content>
-
-
-    </md-card>
-
-
-  </md-grid-tile>
-
-
-  <md-grid-tile  >
-
-    <md-card>
-
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">Card with  image</span>
-          <span class="md-subhead">Extra Large</span>
-        </md-card-title-text>
-
-      </md-card-title>
-
-
-      <md-card-content layout="row" layout-align="space-between">
-        <div class="md-media-xl card-media card-image-resize" style="background-image: url('2.png'); ">
-
-        </div>
-
-      </md-card-content>
-
-
-    </md-card>
-
-
-  </md-grid-tile>
-
-
-
-  <md-grid-tile  >
-
-    <md-card>
-
-      <md-card-title>
-        <md-card-title-text>
-          <span class="md-headline">Card with  image</span>
-          <span class="md-subhead">Extra Large</span>
-        </md-card-title-text>
-
-      </md-card-title>
-
-
-      <md-card-content layout="row" layout-align="space-between">
-        <div class="md-media-xl card-media card-image-resize" style="background-image: url('2.png'); ">
-
-        </div>
+        </div> </a>
 
       </md-card-content>
 
@@ -104,21 +48,23 @@
 
 
 
-  <md-grid-tile  >
+
+
+  <md-grid-tile  ng-repeat="locked in locked_levels" >
 
     <md-card>
 
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline">Card with  image</span>
-          <span class="md-subhead">Extra Large</span>
+          <span class="md-headline" style="color: #3E7087">Locked </span>
+
         </md-card-title-text>
 
       </md-card-title>
 
 
       <md-card-content layout="row" layout-align="space-between">
-        <div class="md-media-xl card-media card-image-resize" style="background-image: url('2.png'); ">
+        <div class="md-media-xl card-media card-image-resize" style="background-image: url('locked.jpg'); ">
 
         </div>
 
@@ -129,6 +75,7 @@
 
 
   </md-grid-tile>
+
 
 
 
