@@ -1,1 +1,94 @@
-<%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
+<style>
+
+</style>
+
+<div id="bg">
+  			<img src="bg.jpg" alt="">
+</div>
+
+<div ng-app="codeGamed">
+<!-- header -->
+<div ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools mainbar">
+        <img src="logo.jpg" class="icon-small" alt=""><span flex>CodeGamed</span>
+        <!-- <md-button class="md-icon-button" aria-label="Favorite"> -->
+        <%= link_to "Login with Facebook", "/auth/facebook", id: "sign_in" %>
+        <!-- </md-button> -->
+      </div>
+    </md-toolbar>
+</div>
+	<!-- end header -->
+<!-- middle part layout -->
+  <md-grid-list
+        md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="5"
+        md-row-height-gt-md="1:1" md-row-height="2:2" >
+    <md-grid-tile 
+        md-rowspan="2" md-colspan="1" md-colspan-sm="1" md-colspan-xs="1">
+    </md-grid-tile>
+</md-grid-list>
+<!--  end of middle part layout -->
+<!-- cards of the page -->
+	<div ng-cloak>
+	 <md-content class="md-padding" layout-xs="column" layout="row">
+	    <div flex-xs flex-gt-xs="50" layout="column">
+	      <md-card>
+	        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+	        <md-card-title>
+	          <md-card-title-text>
+	            <span class="md-headline">Sharpen Your Skills</span>
+	          </md-card-title-text>
+	        </md-card-title>
+	        <md-card-content>
+	          <p>
+	            Whether it’s a refresher on arrays or for loops, a complex search algorithm, or writing clean and responsive CSS, CodeFights will keep your skills sharp. 
+	          </p>
+	        </md-card-content>
+	        <md-card-actions layout="column" layout-align="start">
+	          <md-button>Action 1</md-button>
+	          <md-button>Action 2</md-button>
+	        </md-card-actions>
+	      </md-card>
+		</div>
+		<div flex-xs flex-gt-xs="50" layout="column">
+	      <md-card>
+	        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+	        <md-card-title>
+	          <md-card-title-text>
+	            <span class="md-headline">Have Fun!</span>
+	          </md-card-title-text>
+	        </md-card-title>
+	        <md-card-content>
+	          <p>
+	            Discover how programming can be fun again. Find bugs, fill in missing code, or write functions from scratch. CodeFights is full of variety so you’ll never get bored. 
+	          </p>
+	        </md-card-content>
+	        <md-card-actions layout="column" layout-align="start">
+	          <md-button>Action 1</md-button>
+	          <md-button>Action 2</md-button>
+	        </md-card-actions>
+	      </md-card>
+	  </div>
+	    <div flex-xs flex-gt-xs="50" layout="column">
+	      <md-card>
+	        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
+	        <md-card-title>
+	          <md-card-title-text>
+	            <span class="md-headline">See How You Compare</span>
+	          </md-card-title-text>
+	        </md-card-title>
+	        <md-card-content>
+	          <p>
+	            See how you compare against your friends and other CodeFighters. Or see if you can code better than engineers at top companies like Uber, Dropbox and Two Sigma. 
+	          </p>
+	        </md-card-content>
+	        <md-card-actions layout="column" layout-align="start">
+	          <md-button>Action 1</md-button>
+	          <md-button>Action 2</md-button>
+	        </md-card-actions>
+	      </md-card>
+	  </div>
+	</div>
+	<!-- end of cards -->
+</div>
+<!-- app closing -->

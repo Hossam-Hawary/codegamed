@@ -2,6 +2,27 @@
     background-color: #33485F;
 
 }
+.icon-small{
+    -moz-transform:scale(.3);
+}
+#bg {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+#bg img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+
+}
 
 .codeGamed-toolbar-avatar{
 
@@ -24,4 +45,5 @@
 
 .card-image-resize{
     background-size: 100% 100%;
+>>>>>>> 0ec0979359ef54e9dc077a16592eac096f45bce1
 }
