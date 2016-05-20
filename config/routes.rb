@@ -6,6 +6,8 @@ match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
 resources :levels
 root 'main_page#index'
 post '/levels/show_user_levels' => 'levels#show_user_levels'
+resources :badges
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
