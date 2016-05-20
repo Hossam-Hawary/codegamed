@@ -1,23 +1,25 @@
- Welcome <strong><%= current_user.name %></strong>!
-    <%= current_user.email %>
-    <%= image_tag current_user.image_url %>
-     <%= link_to "Sign out", signout_path, id: "sign_out" %>
-
 <div ng-app="codeGamed">
 
   <!--- header -->
   <div>
     <md-toolbar>
       <div class="md-toolbar-tools">
-        <md-button aria-label="Go Back">
-          <i class="material-icons">home</i>
+        <md-button >
+
+          <a ng-href="/"><i class="material-icons">home</i></a>
+
         </md-button>
 
-        <md-button  aria-label="Go Back">
-          Logout
+
+        <md-button  class="md-raised" aria-label="Sign Out">
+          <%= link_to "Sign out", signout_path, id: "sign_out" %>
         </md-button>
 
-        <md-button class="md-raised">Buttonss</md-button>
+
+        <span flex></span>
+        Welcome &nbsp; <strong><%= current_user.name %></strong> &nbsp;
+        <%= image_tag current_user.image_url , class: 'codeGamed-toolbar-avatar' %>
+
       </div>
     </md-toolbar>
   </div>
@@ -34,9 +36,3 @@
     This is Footer
   </div>
 </div>
-
-
- <script>
-
-   window.location.hash='';
- </script>

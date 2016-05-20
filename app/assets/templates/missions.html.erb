@@ -1,1 +1,31 @@
-missssssssssssions
+<h1>Mission</h1>
+
+
+
+<div id="codeEditing">
+
+
+</div>
+
+<script>
+
+  var myCodeMirror = CodeMirror(document.getElementById("codeEditing"), {
+    value: "public void someFunction(){\n //do some thing\n }",
+    mode:"text/x-java",
+    lineNumbers: true,
+    theme:"vibrant-ink",indentUnit:8,
+    matchBrackets:true,
+    styleActiveLine:true,
+    autoCloseBrackets:true,
+    highlightSelectionMatches: {showToken: /\w/, annotateScrollbar: true},
+    styleSelectedText: true,
+    scrollbarStyle: "overlay", //or "simple"
+
+
+
+  })
+  var mac = CodeMirror.keyMap.default == CodeMirror.keyMap.macDefault;
+  CodeMirror.keyMap.default[(mac ? "Cmd" : "Ctrl") + "-Space"] = "autocomplete";
+
+
+</script>
