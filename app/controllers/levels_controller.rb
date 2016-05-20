@@ -6,7 +6,31 @@ class LevelsController < ApplicationController
 			redirect_to root_path
 		end
 	end
+	def index
+		@levels = Level.all
+	end
 	def new
 		@level=Level.new
+	end
+	def create
+		@level = Level.new(level_params)
+		if @level.order
+			@level.order+=1
+		else
+			@level.order=1
+		end
+		respond_to do |format|
+			if @level.save
+				format.html { redirect_to levels_path, notice: 'Level was successfully created.' }
+				format.json { render :index, status: :created, location: @level }
+			else
+				format.html { render :new }
+				format.json { render json: @category.errors, status: :unprocessable_entity }
+			end
+		end
+	end
+private
+	def level_params
+		params.require(:level).permit(:order,:badge_id)
 	end
 end

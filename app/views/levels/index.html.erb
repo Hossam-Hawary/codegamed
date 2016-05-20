@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Levels</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Order</th>
+    <th>Badge Title</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @levels.each do |level| %>
+      <tr>
+        <td><%= level.order %></td>
+        <td><%= level.badge.title %></td>
+        <td><%#= link_to 'Show', level %></td>
+        <td><%#= link_to 'Edit', edit_level_path(level) %></td>
+        <td><%#= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Level', new_level_path %>

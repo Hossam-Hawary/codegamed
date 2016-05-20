@@ -11,13 +11,22 @@
     </div>
   <% end %>
 
-  <div class="field">
+<div class="form-group">
     <%= f.label :Badge %><br>
+   <%= collection_select(:level, :badge_id,Badge.all, :id, :title ,:prompt => false,:class => 'form-control') %>
+   <br>
+   <br>
 
-  </div>
+</div>
+
+
     <div class="field">
     <%= f.label :Order %><br>
-    
+   After Level: <%= collection_select(:level, :order,Level.all, :order,:order ,:prompt => false,:class => 'form-control') %>
+   <br>
+   <br>
+    <%#=Level.maximum("order")%>
+
     </div>
   <div class="actions">
     <%= f.submit %>
