@@ -22,7 +22,7 @@
 
     <div class="field">
     <%= f.label :Order %><br>
-   After Level: <%= collection_select(:level, :order,Level.all, :order,:order ,:prompt => false,:class => 'form-control') %>
+   After Level: <%= collection_select(:level, :order,Level.order("levels.order").all, :order,:order ,:prompt => false,:class => 'form-control') %>
    <br>
    <br>
     <%#=Level.maximum("order")%>

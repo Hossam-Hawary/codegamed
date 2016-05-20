@@ -7,7 +7,7 @@ class LevelsController < ApplicationController
 		end
 	end
 	def index
-		@levels = Level.all
+		@levels = Level.order("levels.order").all
 	end
 	def new
 		@level=Level.new
@@ -16,6 +16,13 @@ class LevelsController < ApplicationController
 		@level = Level.new(level_params)
 		if @level.order
 			@level.order+=1
+			if @level.order <= Level.maximum("order")
+				# resort the levels
+				Level.where("levels.order >= #{@level.order}").each do |level|
+				Level.update(level,"order"=>level.order+1)
+				end
+
+			end
 		else
 			@level.order=1
 		end
