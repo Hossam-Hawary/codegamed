@@ -11,6 +11,8 @@
 <body>
 
 <%= yield %>
-
+<% content_for :javascript_includes do %>
+    <%= javascript_include_tag "missions/codeMirror/mycodemirror" %>
+<% end %>
 </body>
 </html>
