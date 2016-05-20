@@ -75,11 +75,11 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels]
 		@locked_levels = Level.count() - current_user.levels.count()
 
 		render :json =>  {'badges':@badges , 'locked_levels': @locked_levels}
-		private
-		def level_params
-			params.require(:level).permit(:order,:badge_id)
-			end
+
 
 end
-
+	private
+	def level_params
+		params.require(:level).permit(:order,:badge_id)
+	end
 		end
