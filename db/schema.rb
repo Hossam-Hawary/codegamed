@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519165431) do
+ActiveRecord::Schema.define(version: 20160521152302) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -48,13 +48,14 @@ ActiveRecord::Schema.define(version: 20160519165431) do
   add_index "levels", ["badge_id"], name: "index_levels_on_badge_id", using: :btree
 
   create_table "missions", force: :cascade do |t|
-    t.integer  "order",      limit: 4
-    t.integer  "score",      limit: 4
-    t.integer  "level_id",   limit: 4
-    t.string   "video_url",  limit: 255
-    t.text     "problem",    limit: 65535
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "order",        limit: 4
+    t.integer  "score",        limit: 4
+    t.integer  "level_id",     limit: 4
+    t.string   "video_url",    limit: 255
+    t.text     "problem",      limit: 65535
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "initial_code", limit: 255
   end
 
   add_index "missions", ["level_id"], name: "index_missions_on_level_id", using: :btree

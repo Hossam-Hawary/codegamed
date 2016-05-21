@@ -35,6 +35,6 @@ class MissionsController < ApplicationController
 
   private
   def mission_params
-    params.require(:mission).permit(:order,:level_id,:video_url,:score,:problem)
+    params.require(:mission).permit(:order,:level_id,:video_url,:score,:problem,:initial_code)
   end
 end
