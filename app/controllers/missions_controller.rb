@@ -4,25 +4,25 @@ class MissionsController < ApplicationController
   end
 
   def index
-    @missions=Mission.all
+    @missions=Mission.order("level_id").all
   end
 
   def create
     @mission=Mission.new(mission_params)
-    (Level.find_by id: @mission.level).missions.each do |mission|
-      if mission.order>= @mission.order
-        Mission.update(mission,"order"=>mission.order+1)
-      end
-    end
+
     maxorder=((Level.find_by id: @mission.level).missions.maximum("order"))
     if maxorder
-      if @mission.order>(maxorder+1)
+      if @mission.order.nil?||@mission.order<1||@mission.order>(maxorder+1)
         @mission.order=maxorder+1
       end
     else
       @mission.order=1
     end
-
+    (Level.find_by id: @mission.level).missions.each do |mission|
+      if mission.order>= @mission.order
+        Mission.update(mission,"order"=>mission.order+1)
+      end
+    end
 
     respond_to do |format|
       if @mission.save
