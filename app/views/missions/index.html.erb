@@ -5,6 +5,7 @@
 <table>
   <thead>
   <tr>
+    <th>ID</th>
     <th>Level</th>
     <th>Order</th>
     <th>Problem</th>
@@ -17,6 +18,7 @@
   <tbody>
   <% @missions.each do |mission| %>
       <tr>
+        <td><%= mission.id %></td>
         <td><%= mission.level.order %></td>
         <td><%= mission.order %></td>
         <td><%= mission.problem %></td>
@@ -34,3 +36,5 @@
 <br>
 
 <%= link_to 'New Mission', new_mission_path %>
+<%= link_to 'New Test Case', new_test_case_path %>
+
