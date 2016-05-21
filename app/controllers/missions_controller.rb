@@ -9,7 +9,7 @@ class MissionsController < ApplicationController
 
   def create
     @mission=Mission.new(mission_params)
-    Level.find_by id: @mission.level.missions.each do |mission|
+    (Level.find_by id: @mission.level).missions.each do |mission|
       if mission.order>= @mission.order
         Mission.update(mission,"order"=>mission.order+1)
       end
