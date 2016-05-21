@@ -3,6 +3,7 @@ class Badge < ActiveRecord::Base
   has_many :users , through: :user_badges
   has_many :level
   mount_uploader :image_url, BadgeUploader
+  validates :title, :image_url,:presence => true
   validate  :image_size
 private
   # Validates the size of an uploaded picture.
