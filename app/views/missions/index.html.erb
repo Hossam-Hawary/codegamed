@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Missions</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Level</th>
+    <th>Order</th>
+    <th>Problem</th>
+    <th>Score</th>
+    <th>Video URL</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @missions.each do |mission| %>
+      <tr>
+        <td><%= mission.id %></td>
+        <td><%= mission.level.order %></td>
+        <td><%= mission.order %></td>
+        <td><%= mission.problem %></td>
+        <td><%= mission.score %></td>
+        <td><%= mission.video_url %></td>
+
+        <td><%#= link_to 'Show', mission %></td>
+        <td><%#= link_to 'Edit', edit_mission_path(mission) %></td>
+        <td><%#= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Mission', new_mission_path %>
+<%= link_to 'New Test Case', new_test_case_path %>
+

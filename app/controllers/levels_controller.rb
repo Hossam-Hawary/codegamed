@@ -32,10 +32,8 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels]
 		respond_to do |format|
 			if @level.save
 				format.html { redirect_to levels_path, notice: 'Level was successfully created.' }
-				format.json { render :index, status: :created, location: @level }
 			else
 				format.html { render :new }
-				format.json { render json: @category.errors, status: :unprocessable_entity }
 			end
 		end
 	end
