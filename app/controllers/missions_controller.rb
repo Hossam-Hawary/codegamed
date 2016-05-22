@@ -43,19 +43,19 @@ def update
   @mission = Mission.find(params[:id])
   maxorder=((Level.find_by id: @mission.level).missions.maximum("order"))
   @mission_params = mission_params
-    
-  if @mission_params[:order] >= @mission.order.to_s
+      # when admin changes mission order from small to big no.    
+  if @mission_params[:order].to_i >= @mission.order.to_i
     if @mission_params[:order].to_i>(maxorder) #condition lw7dha||@mission_params[:order].nil?
       @mission_params[:order]=maxorder
     end
-    (Level.find_by id: @mission.level).missions.each do |mission|
-    if mission.order <= @mission_params[:order].to_i
-      if mission.order < @mission.order
-          Mission.update(mission,"order"=>mission.order-1)
+    (Level.find_by id: @mission.level).missions.each do |level_mission|
+    if level_mission.order <= @mission_params[:order].to_i
+      if level_mission.order > @mission.order
+          Mission.update(level_mission,"order"=>level_mission.order-1)
       end
     end
   end
-      # orders -1 missions order>mission    
+      # when admin changes mission order from big to small no.    
   else @mission_params[:order].to_i <= @mission.order.to_i
      (Level.find_by id: @mission.level).missions.each do |level_mission|
        if level_mission.order >= @mission_params[:order].to_i
