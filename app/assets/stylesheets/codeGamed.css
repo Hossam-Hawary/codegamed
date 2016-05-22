@@ -40,6 +40,7 @@
 }
 
 .background-image{
+
     position: relative;
     width:100%;
     height: 100%;
@@ -49,6 +50,7 @@
 
 .levels-grid-background-color{
     background-color: #e3e3e3;
+    padding-top: 60px;
 }
 
 .card-image-resize{
@@ -61,12 +63,9 @@
 }
 .reviews{
     background-color: transparent;
-
-
 }
 md-card{
     background-color: #e6eeff;
-
 }
 footer{
    background-color: #33485F;
@@ -77,4 +76,10 @@ footer{
     font-family: "RobotoDraft", "Roboto", sans-serif;
     text-transform:uppercase;
 
+}
+
+
+
+.codeGamed-toolbar{
+    position: fixed;
 }
