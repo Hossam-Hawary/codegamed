@@ -1,17 +1,13 @@
-<style>
-
-</style>
-
 <div id="bg">
-  			<img src="bg.jpg" alt="">
+  <%= image_tag "hero.png" %>
 </div>
 
-<div ng-app="codeGamed">
+<div ng-app="codeGamed" class="home-container">
 <!-- header -->
 <div ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools mainbar">
-        <img src="logo.jpg" class="icon-small" alt=""><span flex>CodeGamed</span>
+        <%= image_tag "logo.jpg" ,:class => "icon-small"%> <span flex> CodeGamed</span>
         <!-- <md-button class="md-icon-button" aria-label="Favorite"> -->
         <%= link_to "Login with Facebook", "/auth/facebook", id: "sign_in" %>
         <!-- </md-button> -->
@@ -30,7 +26,7 @@
 <!--  end of middle part layout -->
 <!-- cards of the page -->
 	<div ng-cloak>
-	 <md-content class="md-padding" layout-xs="column" layout="row">
+	 <md-content class="md-padding objectives" layout-xs="column" layout="row">
 	    <div flex-xs flex-gt-xs="50" layout="column">
 	      <md-card>
 	        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
@@ -41,13 +37,10 @@
 	        </md-card-title>
 	        <md-card-content>
 	          <p>
-	            Whether it’s a refresher on arrays or for loops, a complex search algorithm, or writing clean and responsive CSS, CodeFights will keep your skills sharp. 
+	            Whether it’s a refresher on arrays or for loops, a complex search algorithm, or writing clean and responsive CSS, CodeFights will keep your skills sharp.
 	          </p>
 	        </md-card-content>
-	        <md-card-actions layout="column" layout-align="start">
-	          <md-button>Action 1</md-button>
-	          <md-button>Action 2</md-button>
-	        </md-card-actions>
+
 	      </md-card>
 		</div>
 		<div flex-xs flex-gt-xs="50" layout="column">
@@ -63,10 +56,6 @@
 	            Discover how programming can be fun again. Find bugs, fill in missing code, or write functions from scratch. CodeFights is full of variety so you’ll never get bored. 
 	          </p>
 	        </md-card-content>
-	        <md-card-actions layout="column" layout-align="start">
-	          <md-button>Action 1</md-button>
-	          <md-button>Action 2</md-button>
-	        </md-card-actions>
 	      </md-card>
 	  </div>
 	    <div flex-xs flex-gt-xs="50" layout="column">
@@ -82,13 +71,77 @@
 	            See how you compare against your friends and other CodeFighters. Or see if you can code better than engineers at top companies like Uber, Dropbox and Two Sigma. 
 	          </p>
 	        </md-card-content>
-	        <md-card-actions layout="column" layout-align="start">
-	          <md-button>Action 1</md-button>
-	          <md-button>Action 2</md-button>
-	        </md-card-actions>
 	      </md-card>
-	  </div>
-	</div>
-	<!-- end of cards -->
+      </div>
+     </md-content>
+  </div>
+	<!-- end of objectives cards -->
+  <md-content class="md-padding reviews" layout-xs="column" layout="row">
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">User Name</span>
+            <span class="md-subhead">Badge Title </span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">User Name</span>
+            <span class="md-subhead">Badge Title </span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title">User Name</span>
+            <span class="md-subhead">Badge Title </span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+        </md-card-content>
+      </md-card>
+    </div>
+  </md-content>
+  <!-- end of reviews cards -->
+
+  <footer>
+    <div class="new-landing--footer-copyrights -text-uppercase -order-1 -flex-2">
+      © 2016 CodeGamed Team.
+    </div>
+  </footer>
 </div>
+
 <!-- app closing -->

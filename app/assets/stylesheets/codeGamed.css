@@ -1,14 +1,22 @@
+.home-container{
+    background-color: #33485F;
+
+
+}
 .md-toolbar-tools{
     background-color: #33485F;
+    position: fixed;
 
 }
 .icon-small{
-    -moz-transform:scale(.3);
+    max-width: 60px;
+    margin-right: 10px;
+
 }
 #bg {
   position: fixed; 
-  top: -50%; 
-  left: -50%; 
+  top: -20%;
+  left: -50%;
   width: 200%; 
   height: 200%;
 }
@@ -45,5 +53,28 @@
 
 .card-image-resize{
     background-size: 100% 100%;
->>>>>>> 0ec0979359ef54e9dc077a16592eac096f45bce1
+}
+.objectives{
+    background-color:inherit;
+    padding-bottom: 60px;
+
+}
+.reviews{
+    background-color: transparent;
+
+
+}
+md-card{
+    background-color: #e6eeff;
+
+}
+footer{
+   background-color: #33485F;
+    color: #FFFFFF;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "RobotoDraft", "Roboto", sans-serif;
+    text-transform:uppercase;
+
 }
