@@ -1,0 +1,46 @@
+<%= form_for(@test_case) do |f| %>
+  <% if @test_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@test_case.errors.count, "error") %> prohibited this test case from being saved:</h2>
+
+      <ul>
+      <% @test_case.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="form-group">
+    <%= f.label :Mission_ID  %><br>
+   <%= collection_select(:test_case, :mission_id,Mission.all, :id, :id ,:prompt => false,:class => 'form-control') %>
+   <br>
+   <br>
+
+</div>
+
+
+
+
+            <div class="field">
+               <%= f.label :Input %><br>
+               <%= f.text_area :input,:class => ' form-control' %>
+                <br>
+                <br>
+            </div>
+
+            <div class="field">
+               <%= f.label :Output %><br>
+               <%= f.text_area :output,:class => ' form-control' %>
+                <br>
+                <br>
+            </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Show Test Cases', test_cases_path %>
+<%= link_to 'Show All Missions', missions_path %>
+<%= link_to 'New Mission ', new_mission_path %>
+

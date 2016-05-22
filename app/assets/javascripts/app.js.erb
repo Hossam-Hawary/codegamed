@@ -1,6 +1,9 @@
 /**
  * Created by te7a on 18/05/16.
  */
+if (window.location.hash && window.location.hash == '#_=_') {
+  window.location.hash = '';
+}
 angular.module('codeGamed',['ngRoute','ngMaterial']).config(function($routeProvider){
 
     $routeProvider.when('/',{
@@ -10,7 +13,7 @@ angular.module('codeGamed',['ngRoute','ngMaterial']).config(function($routeProvi
     });
 
 
-  $routeProvider.when('/missions',{
+  $routeProvider.when('/missions/:level_id',{
     templateUrl: "<%= asset_path('missions.html.erb')%>",
     controller: 'missionCtrl'
 
