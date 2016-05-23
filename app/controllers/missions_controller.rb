@@ -4,7 +4,7 @@ class MissionsController < ApplicationController
   end
 
   def index
-    @missions=Mission.order("level_id").all
+    @missions=Mission.order("level_id","missions.order").all
   end
 
   def create
