@@ -1,3 +1,7 @@
+<div ng-app="codeGamed" class="admin-form">
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+
+
 <%= form_for(@badge , html: { multipart: true }) do |f| %>
   <% if @badge.errors.any? %>
     <div id="error_explanation">
@@ -12,8 +16,10 @@
   <% end %>
 
 <div class="form-group">
+         <md-input-container  >
     <%= f.label :Title %><br>
    <%= f.text_field :title %>
+         </md-input-container>
    <br>
    <br>
 
@@ -22,21 +28,19 @@
 
     <div class="field">
     <%= f.label :Image %><br>
+
     <%= f.file_field :image_url, accept: 'image/jpeg,image/gif,image/png ,image/bmb, image/icon' %>
 
    <br>
    <br>
     </div>
   <div class="actions">
-    <%= f.submit %>
+          <md-button class="md-raised md-warn"> <%= f.submit %></md-button>
   </div>
 <% end %>
-<script type="text/javascript">
-  $('#badge_image_url').bind('change', function() {
-    var size_in_megabytes = this.files[0].size/1024/1024;
-    if (size_in_megabytes > 2) {
-      alert('Maximum file size is 2MB. Please choose a smaller file.');
-      $('#badge_image_url').val("");
-    }
-  });
-</script>
+</div>
+</div>
+
+<script src="/form_theme.js"></script>
+
+<script src="/validate_img_size"></script>

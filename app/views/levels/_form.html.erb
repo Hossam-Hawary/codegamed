@@ -1,3 +1,6 @@
+<div ng-app="codeGamed" class="admin-form">
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+
 <%= form_for(@level) do |f| %>
   <% if @level.errors.any? %>
     <div id="error_explanation">
@@ -29,8 +32,17 @@
 
     </div>
   <div class="actions">
-    <%= f.submit %>
+          <md-button class="md-raised md-warn"> <%= f.submit %></md-button>
+             <md-button class="md-raised"><%= link_to 'All Badges', badges_path %></md-button>
+
   </div>
+
 <% end %>
-<%= link_to 'All Badges', badges_path %>
+
+</div>
+</div>
+
+<script src="/form_theme.js">
+</script>
+
 
