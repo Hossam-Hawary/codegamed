@@ -2,9 +2,11 @@ class BadgesController < ApplicationController
   def index
     @badges = Badge.all
   end
+
   def new
     @badge=Badge.new
   end
+
   def create
     @badge = Badge.new(badge_params)
 
@@ -14,6 +16,27 @@ class BadgesController < ApplicationController
         format.json { render :index, status: :created, location: Badge }
       else
         format.html { render :new }
+        format.json { render json: Badge.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+def edit
+    @badge = Badge.find(params[:id])
+    respond_to do |format|
+      format.html
+  end
+end
+
+
+def update
+    @badge = Badge.find(params[:id])
+    respond_to do |format|
+      if @badge.update(badge_params)
+        format.html { redirect_to badges_path, notice: 'Badge was successfully updated.' }
+        format.json { render :index , status: :ok, location: Badge }
+      else
+        format.html { render :edit }
         format.json { render json: Badge.errors, status: :unprocessable_entity }
       end
     end

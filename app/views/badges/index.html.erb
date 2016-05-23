@@ -19,7 +19,7 @@
         <%= image_tag badge.image_url.url if badge.image_url? %>
         <br><br>
         <td><%#= link_to 'Show', badge %></td>
-        <td><%#= link_to 'Edit', edit_badge_path(badge) %></td>
+        <td><%= link_to 'Edit', edit_badge_path(badge) %></td>
         <td><%#= link_to 'Destroy', badge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>

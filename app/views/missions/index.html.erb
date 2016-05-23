@@ -21,12 +21,12 @@
         <td><%= mission.id %></td>
         <td><%= mission.level.order %></td>
         <td><%= mission.order %></td>
-        <td><%= mission.problem %></td>
+        <td><%= mission.problem.html_safe %></td>
         <td><%= mission.score %></td>
         <td><%= mission.video_url %></td>
 
         <td><%#= link_to 'Show', mission %></td>
-        <td><%#= link_to 'Edit', edit_mission_path(mission) %></td>
+        <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
         <td><%#= link_to 'Destroy', mission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
