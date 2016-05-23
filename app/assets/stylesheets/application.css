@@ -12,6 +12,7 @@
  *
  *= require angular-material.css
  *= require codeGamed.css
+ *= require mission.css
  *= require_tree .
  *= require_self
  */
