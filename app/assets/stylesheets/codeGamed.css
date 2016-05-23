@@ -31,6 +31,11 @@
   min-height: 50%;
 
 }
+.md-raised a {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    /*color: #33485F;*/
+}
 
 .codeGamed-toolbar-avatar{
 
@@ -77,6 +82,11 @@
     padding-bottom: 60px;
 
 }
+.objectives md-card{
+    background-image:url(/logo_large.png) ;
+    background-size: cover;
+
+}
 .reviews{
     background-color: transparent;
 }
@@ -90,5 +100,8 @@ footer{
     font-family: "RobotoDraft", "Roboto", sans-serif;
     text-transform:uppercase;
 
+}
+md-card-header-text {
+    margin-left: 20px;
 }
 
