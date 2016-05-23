@@ -32,6 +32,7 @@ class MissionsController < ApplicationController
       end
     end
   end
+  
 def edit
    @mission = Mission.find(params[:id])
     respond_to do |format|

@@ -17,6 +17,37 @@ class TestCasesController < ApplicationController
       end
     end
   end
+  
+  def edit
+    @test_case = TestCase.find(params[:id])
+    respond_to do |format|
+      format.html
+    end
+  end
+
+
+def update
+    @test_case = TestCase.find(params[:id])
+    respond_to do |format|
+      if @test_case.update(test_cases_params)
+        format.html { redirect_to test_cases_path, notice: 'test case was successfully updated.' }
+        format.json { render :index , status: :ok, location: TestCase }
+      else
+        format.html { render :edit }
+        format.json { render json: TestCase.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+def destroy
+    @test_case = TestCase.find(params[:id])
+    @test_case.destroy
+    respond_to do |format|
+      format.html { redirect_to test_cases_path, notice: 'test case was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
   def test_cases_params
     params.require(:test_case).permit(:input,:output,:mission_id)
