@@ -23,8 +23,8 @@
         <td><%= test_case.output %></td>
 
         <td><%#= link_to 'Show', test_case %></td>
-        <td><%#= link_to 'Edit', edit_test_case_path(test_case) %></td>
-        <td><%#= link_to 'Destroy', test_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Edit', edit_test_case_path(test_case) %></td>
+        <td><%= link_to 'Destroy', test_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
   </tbody>

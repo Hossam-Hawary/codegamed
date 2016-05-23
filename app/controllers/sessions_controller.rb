@@ -4,7 +4,7 @@ def create
     session[:user_id] = user.id
     #@facebook = Koala::Facebook::API.new(user.oauth_token)
     #@facebook.get_object("me?fields=friends,taggable_friends")
-    user_level = PassedLevel.set_level(user.id)
+    PassedLevel.set_level(user.id)
     redirect_to root_url
   end
 
