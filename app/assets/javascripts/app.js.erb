@@ -4,7 +4,7 @@
 if (window.location.hash && window.location.hash == '#_=_') {
   window.location.hash = '';
 }
-angular.module('codeGamed',['ngRoute','ngMaterial']).config(function($routeProvider){
+angular.module('codeGamed',['ngRoute','ngMaterial','ngSanitize']).config(function($routeProvider){
 
     $routeProvider.when('/',{
         templateUrl: "<%= asset_path('levels.html.erb')%>",

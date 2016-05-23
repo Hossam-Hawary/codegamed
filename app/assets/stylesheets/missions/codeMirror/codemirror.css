@@ -1,12 +1,12 @@
 /* BASICS */
 #codeEditing{
-    width:300px;
+    width:640px;
 }
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: "Ubuntu Light";
-  font-size: 1.0em;
-  height: 300px;
+  font-family: Monospace;
+  font-size: 1.1em;
+  height: 350px;
   color: black;
 }
 
