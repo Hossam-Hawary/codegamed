@@ -9,7 +9,9 @@
       <div class="md-toolbar-tools mainbar">
         <%= image_tag "logo.jpg" ,:class => "icon-small"%> <span flex> CodeGamed</span>
         <!-- <md-button class="md-icon-button" aria-label="Favorite"> -->
-        <%= link_to "Login with Facebook", "/auth/facebook", id: "sign_in" %>
+
+        <md-button class="md-raised md-warn"> <%= link_to "Login with Facebook", "/auth/facebook", id: "sign_in" %></md-button>
+
         <!-- </md-button> -->
       </div>
     </md-toolbar>
@@ -35,9 +37,9 @@
 	<div ng-cloak>
 	 <md-content class="md-padding objectives" layout-xs="column" layout="row">
 	    <div flex-xs flex-gt-xs="50" layout="column">
-	      <md-card>
-	        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
-	        <md-card-title>
+	      <md-card >
+          <%#= image_tag "logo_large.png",:class => "md-card-image" %>
+          <md-card-title>
 	          <md-card-title-text>
 	            <span class="md-headline">Sharpen Your Skills</span>
 	          </md-card-title-text>
@@ -52,7 +54,6 @@
 		</div>
 		<div flex-xs flex-gt-xs="50" layout="column">
 	      <md-card>
-	        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
 	        <md-card-title>
 	          <md-card-title-text>
 	            <span class="md-headline">Have Fun!</span>
@@ -67,7 +68,6 @@
 	  </div>
 	    <div flex-xs flex-gt-xs="50" layout="column">
 	      <md-card>
-	        <img ng-src="{{imagePath}}" class="md-card-image" alt="Washed Out">
 	        <md-card-title>
 	          <md-card-title-text>
 	            <span class="md-headline">See How You Compare</span>
@@ -92,11 +92,12 @@
       <md-card>
         <md-card-header>
           <md-card-avatar>
-            <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+            <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
+            <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
           </md-card-avatar>
           <md-card-header-text>
-            <span class="md-title">User Name</span>
-            <span class="md-subhead">Badge Title </span>
+            <span class="md-title"> Hossam Eldeen</span>
+            <span class="md-subhead"> Badge Title </span>
           </md-card-header-text>
         </md-card-header>
         <md-card-content>
@@ -111,11 +112,12 @@
       <md-card>
         <md-card-header>
           <md-card-avatar>
-            <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+            <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
+            <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
           </md-card-avatar>
           <md-card-header-text>
-            <span class="md-title">User Name</span>
-            <span class="md-subhead">Badge Title </span>
+            <span class="md-title"> Hossam Eldeen</span>
+            <span class="md-subhead"> Badge Title </span>
           </md-card-header-text>
         </md-card-header>
         <md-card-content>
@@ -130,11 +132,32 @@
       <md-card>
         <md-card-header>
           <md-card-avatar>
-            <md-icon class="md-avatar-icon" md-svg-icon="img/icons/menu.svg"></md-icon>
+            <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
+            <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
           </md-card-avatar>
           <md-card-header-text>
-            <span class="md-title">User Name</span>
-            <span class="md-subhead">Badge Title </span>
+            <span class="md-title"> Hossam Eldeen</span>
+            <span class="md-subhead"> Badge Title </span>
+          </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+          <p>
+            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+          </p>
+        </md-card-content>
+      </md-card>
+    </div>
+    <div flex-xs flex-gt-xs="50" layout="column">
+      <md-card>
+        <md-card-header>
+          <md-card-avatar>
+            <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
+            <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
+          </md-card-avatar>
+          <md-card-header-text>
+            <span class="md-title"> Hossam Eldeen</span>
+            <span class="md-subhead"> Badge Title </span>
           </md-card-header-text>
         </md-card-header>
         <md-card-content>
