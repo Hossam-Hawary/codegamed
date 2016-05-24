@@ -11,10 +11,10 @@
         </md-button>
 
 
-        <md-button  class="md-raised" aria-label="Sign Out">
-          <%= link_to "Sign out", signout_path, id: "sign_out" %>
+         <md-button  class="md-raised" aria-label="Sign Out">
+           <%= link_to "Sign out", signout_path, id: "sign_out" %>
         </md-button>
-
+ 
 
         <span flex></span>
         Welcome &nbsp; <strong><%= current_user.name %></strong> &nbsp;
@@ -23,16 +23,8 @@
       </div>
     </md-toolbar>
 
-
-
-
    <!--- The Body -->
   <div ng-view>
 
-  </div>
-
-
-  <div>
-    This is Footer
   </div>
 </div>

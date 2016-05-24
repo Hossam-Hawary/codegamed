@@ -1,3 +1,7 @@
+
+<div ng-app="codeGamed" class="admin-form">
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+
 <%= form_for(@mission) do |f| %>
   <% if @mission.errors.any? %>
     <div id="error_explanation">
@@ -14,44 +18,57 @@
 <div class="form-group">
     <%= f.label :Level %><br>
    <%= collection_select(:mission, :level_id,Level.order("levels.order").all, :id, :order ,:prompt => false,:class => 'form-control',:selected =>1) %>
-   <br>
-   <br>
-
 </div>
+<br><br>
+      <div class="field">
+
+                  <md-input-container class="" >
+                       <%= f.label :Score %>
+                       <%= f.number_field :score%>
+                       </md-input-container>
+         </div>
 
 
     <div class="field">
-    <%= f.label :Order %><br>
+
+                  <md-input-container class="" >
+    <%= f.label :Order %>
     <%= f.number_field :order%>
-  <%#= collection_select(:mission, :order,Level.find(5).missions.order("missions.order"), :order,:order ,:prompt => false,:class => 'form-control') %>
-   <br>
-   <br>
-    </div>
+    <br>
+      <div class="hint">you can leave it blank if want to make it the last one!</div>
+    </md-input-container>
+</div>
+
+
        <div class="field">
-        <%= f.label :Video_URL  %><br>
-        <%= f.text_field :video_url%>
-       <br>
-       <br>
+                  <md-input-container class="md-block" flex-gt-sm">
+        <%= f.label :Video_URL  %>
+        <%= f.text_field :video_url,:placeholder=>"http://youtube.com/"%>
+                            </md-input-container>
+
+
       </div>
-      <div class="field">
-              <%= f.label :Score %><br>
-              <%= f.number_field :score%>
-              <br>
-              <br>
-      </div>
+
             <div class="field">
+                  <md-input-container class="md-block" >
                <%= f.label :Initial_Code %><br>
-               <%= f.text_area :initial_code,:class => ' form-control' %>
+               <%= f.text_area :initial_code ,:rows=>10 %>
+                    </md-input-container>
                 <br>
                 <br>
             </div>
       <div class="field">
          <%= f.label :Problem %><br>
          <%= f.text_area :problem ,:class => 'ckeditor form-control' %>
-          <br>
-          <br>
+
       </div>
   <div class="actions">
-    <%= f.submit %>
+          <md-button class="md-raised md-warn"> <%= f.submit %></md-button>
+
+
   </div>
 <% end %>
+ </md-content>
+</div>
+<script src="/form_theme.js">
+</script>

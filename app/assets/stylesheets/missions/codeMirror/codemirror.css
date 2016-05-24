@@ -1,11 +1,11 @@
 /* BASICS */
 #codeEditing{
-    border:5px solid red;
-    width:800px;
+    width:300px;
 }
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
-  font-family: monospace;
+  font-family: "Ubuntu Light";
+  font-size: 1.0em;
   height: 300px;
   color: black;
 }

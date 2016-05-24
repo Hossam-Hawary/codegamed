@@ -1,14 +1,22 @@
+.home-container{
+    background-color: #33485F;
+
+
+}
 .md-toolbar-tools{
     background-color: #33485F;
+    position: fixed;
 
 }
 .icon-small{
-    -moz-transform:scale(.3);
+    max-width: 60px;
+    margin-right: 10px;
+
 }
 #bg {
   position: fixed; 
-  top: -50%; 
-  left: -50%; 
+  top: -20%;
+  left: -50%;
   width: 200%; 
   height: 200%;
 }
@@ -23,12 +31,33 @@
   min-height: 50%;
 
 }
+.md-raised a {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    /*color: #33485F;*/
+}
 
 .codeGamed-toolbar-avatar{
 
     border-radius: 48px;
     width: 60px;
 
+}
+#intro h1{
+    color: #ffffff;
+    font-size:50px;
+    margin-bottom:20px;
+    font-family: "Roboto-Light", "Roboto", sans-serif;
+    text-align:left;
+    margin-left: 50px;
+
+}
+#intro p{
+    font-family: "Roboto-Light", "Roboto", sans-serif;
+    text-align:left;
+    color: #ffffff;
+    font-size:30px;
+    margin: 50px;
 }
 
 .background-image{
@@ -42,15 +71,37 @@
 
 .levels-grid-background-color{
     background-color: #e3e3e3;
-    padding-top: 60px;
+    padding-top: 0px;
 }
 
 .card-image-resize{
     background-size: 100% 100%;
+}
+.objectives{
+    background-color:inherit;
+    padding-bottom: 60px;
 
 }
+.objectives md-card{
+    background-image:url(/logo_large.png) ;
+    background-size: cover;
 
-
-.codeGamed-toolbar{
-    position: fixed;
 }
+.reviews{
+    background-color: transparent;
+}
+
+footer{
+   background-color: #33485F;
+    color: #FFFFFF;
+    padding: 20px;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: "RobotoDraft", "Roboto", sans-serif;
+    text-transform:uppercase;
+
+}
+md-card-header-text {
+    margin-left: 20px;
+}
+
