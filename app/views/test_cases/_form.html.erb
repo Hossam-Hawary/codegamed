@@ -1,3 +1,5 @@
+<div ng-app="codeGamed" class="admin-form">
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
 <%= form_for(@test_case) do |f| %>
   <% if @test_case.errors.any? %>
     <div id="error_explanation">
@@ -23,24 +25,33 @@
 
 
             <div class="field">
+             <md-input-container class="md-block" >
                <%= f.label :Input %><br>
                <%= f.text_area :input,:class => ' form-control' %>
+                                               </md-input-container>
                 <br>
                 <br>
             </div>
 
             <div class="field">
+                      <div class="field">
+                                 <md-input-container class="md-block" >
                <%= f.label :Output %><br>
                <%= f.text_area :output,:class => ' form-control' %>
+                                   </md-input-container>
                 <br>
                 <br>
             </div>
   <div class="actions">
-    <%= f.submit %>
+          <md-button class="md-raised md-warn"> <%= f.submit %></md-button>
   </div>
 <% end %>
+          <md-button class="md-raised"> <%= link_to 'Show Test Cases', test_cases_path %></md-button>
+          <md-button class="md-raised"> <%= link_to 'Show All Missions', missions_path %></md-button>
+          <md-button class="md-raised"> <%= link_to 'New Mission ', new_mission_path %></md-button>
 
-<%= link_to 'Show Test Cases', test_cases_path %>
-<%= link_to 'Show All Missions', missions_path %>
-<%= link_to 'New Mission ', new_mission_path %>
+</div>
+</div>
+<script src="/form_theme.js">
+</script>
 

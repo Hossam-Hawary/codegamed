@@ -26,7 +26,7 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :sho
 			if @level.order <= Level.maximum("order")
 				# resort the levels
 				Level.where("levels.order >= #{@level.order}").each do |level|
-				Level.update(level,"order"=>level.order+1)
+					Level.update(level,"order"=>level.order+1)
 				end
 
 			end
@@ -43,8 +43,44 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :sho
 	end
 
 
-	def show_user_levels
+	def edit
+   		@level = Level.find(params[:id])
+    	respond_to do |format|
+      		format.html
+  		end
+	end
 
+	def update
+		  @level = Level.find(params[:id])
+		  @level_params = level_params
+		  # when admin changes level order from small to big no.    
+		  if @level_params[:order].to_i >= @level.order.to_i
+		  		Level.where("levels.order > #{@level.order} ").each do |level|
+		  			if @level_params['order'].to_i >= level.order
+						Level.update(level,"order"=>level.order-1)
+					end
+				end  
+		      # when admin changes level order from big to small no.    
+		  else @level_params[:order].to_i <= @level.order.to_i
+		     Level.where("levels.order >= #{@level_params['order'].to_i} ").each do |level|
+		  			if level.order < @level.order
+						Level.update(level,"order"=>level.order+1)
+					end
+				end 
+
+		end
+		    respond_to do |format|
+		      if @level.update(@level_params)
+		        format.html { redirect_to levels_path, notice: 'Levels was successfully updated.' }
+		        format.json { render :index , status: :ok, location: Level }
+		      else
+		        format.html { render :edit }
+		        format.json { render json: Level.errors, status: :unprocessable_entity }
+		      end
+		    end
+	end
+
+	def show_user_levels
 		@levels = current_user.levels.order(order: :asc)
 		@temp_badge = {}
 		@badges = []
