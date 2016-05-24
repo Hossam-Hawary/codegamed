@@ -4,17 +4,21 @@ class LevelsController < ApplicationController
 before_filter :login
 #all actions using the methods post/put/delete where recognized as forgery attempts so we stoped the authnticity token
 skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :show_user_missions]
+
 	def login
 		if current_user == nil
 			redirect_to root_path
 		end
 	end
+
 	def index
 		@levels = Level.order("levels.order").all
 	end
+
 	def new
 		@level=Level.new
 	end
+
 	def create
 		@level = Level.new(level_params)
 		if @level.order
@@ -38,6 +42,7 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :sho
 		end
 	end
 
+
 	def show_user_levels
 
 		@levels = current_user.levels.order(order: :asc)
@@ -55,7 +60,7 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :sho
 			#to verify the decription you will do the steps in the top then this line
 			# decrypted_data = crypt.decrypt_and_verify(encrypted_id) #this will result the real id
 
-			@temp_badge[:level_id] = encrypted_id
+			@temp_badge[:level_id] = 1 #encrypted_id
 			@temp_badge[:title]  = level.badge.title
 			@temp_badge[:image_url]  = level.badge.image_url
 
@@ -77,15 +82,9 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :sho
 
 	end
 
-	def show_user_missions
-		level_id = params[:level_id]
-		render :json =>  {'key':'Sucess','level_id': level_id}
-	end
-
-
 
 	private
 	def level_params
-		params.require(:level).permit(:order,:badge_id,:level_id)
+		params.require(:level).permit(:order,:badge_id)
 	end
 		end

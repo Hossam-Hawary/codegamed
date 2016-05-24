@@ -1,4 +1,5 @@
 class MissionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:show_user_missions]
   def new
     @mission=Mission.new
   end
@@ -85,6 +86,15 @@ end
       end
     end
 end
+
+
+
+  def show_user_missions
+    level_id = params[:level_id]
+    @missions = Level.find_by_id(level_id)
+
+    render :json =>  {'key':'Success','missions': @missions}
+  end
 
   private
   def mission_params
