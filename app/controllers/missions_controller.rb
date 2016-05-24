@@ -92,9 +92,10 @@ end
 
   def show_user_missions
     level_id = params[:level_id]
-    @missions = Level.find_by_id(level_id)
+    decrypt_data = AESCrypt.decrypt(level_id, 'codeGamed_Secret_Key')
+       @missions = Level.find_by_id(decrypt_data)
 
-    render :json =>  {'key':'Success','missions': @missions}
+    render :json =>  {'key':'Success','missions': @missions,'level_id':decrypt_data}
   end
 
   private

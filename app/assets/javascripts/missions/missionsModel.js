@@ -19,7 +19,7 @@ angular.module('codeGamed').factory('showUserMissionsFactory',function($http,$q)
                 }
             }).success(function (res){
                 console.log("Server Replied and Success");
-                console.log(res.missions)
+                console.log(res.level_id)
                 def.resolve(res);
             });
 

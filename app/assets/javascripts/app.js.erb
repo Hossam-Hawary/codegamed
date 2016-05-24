@@ -13,7 +13,7 @@ angular.module('codeGamed',['ngRoute','ngMaterial','ngSanitize']).config(functio
     });
 
 
-  $routeProvider.when('/missions/:level_id',{
+  $routeProvider.when('/missions/:level_id*',{
     templateUrl: "<%= asset_path('missions.html.erb')%>",
     controller: 'missionCtrl'
 

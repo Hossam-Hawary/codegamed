@@ -85,18 +85,14 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :sho
 		@temp_badge = {}
 		@badges = []
 		i=0
-		salt  = SecureRandom.random_bytes(1)
-		key = ActiveSupport::KeyGenerator.new('codeGamed_Secret_Key').generate_key(salt)
-		crypt = ActiveSupport::MessageEncryptor.new(key)
 
 
 		@levels.each do|level|
 
-			encrypted_id = crypt.encrypt_and_sign(level.id)
-			#to verify the decription you will do the steps in the top then this line
-			# decrypted_data = crypt.decrypt_and_verify(encrypted_id) #this will result the real id
 
-			@temp_badge[:level_id] = 1 #encrypted_id
+			encrypted_id = AESCrypt.encrypt(level.id,'codeGamed_Secret_Key')
+
+			@temp_badge[:level_id] = encrypted_id#encrypted_id
 			@temp_badge[:title]  = level.badge.title
 			@temp_badge[:image_url]  = level.badge.image_url
 
