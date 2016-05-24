@@ -16,8 +16,8 @@ angular.module('codeGamed').controller('levelCtrl',function($scope,showUserLevel
             locked_levels.push(i);
         }
         $scope.locked_levels = locked_levels
-        
 
     });
+
 
 });

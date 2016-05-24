@@ -3,7 +3,7 @@ class LevelsController < ApplicationController
 # before_action :set_category, only: [:show, :edit, :update, :destroy]
 before_filter :login
 #all actions using the methods post/put/delete where recognized as forgery attempts so we stoped the authnticity token
-skip_before_filter :verify_authenticity_token, :only => [:show_user_levels]
+skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :show_user_missions]
 	def login
 		if current_user == nil
 			redirect_to root_path
@@ -75,9 +75,17 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels]
 		render :json =>  {'badges':@badges , 'locked_levels': @locked_levels}
 
 
-end
+	end
+
+	def show_user_missions
+		level_id = params[:level_id]
+		render :json =>  {'key':'Sucess','level_id': level_id}
+	end
+
+
+
 	private
 	def level_params
-		params.require(:level).permit(:order,:badge_id)
+		params.require(:level).permit(:order,:badge_id,:level_id)
 	end
 		end
