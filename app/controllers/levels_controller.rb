@@ -92,7 +92,8 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :sho
 
 			encrypted_id = AESCrypt.encrypt(level.id,'codeGamed_Secret_Key')
 
-			@temp_badge[:level_id] = encrypted_id#encrypted_id
+			@temp_badge[:level_id] = encrypted_id #encrypted_id
+
 			@temp_badge[:title]  = level.badge.title
 			@temp_badge[:image_url]  = level.badge.image_url
 

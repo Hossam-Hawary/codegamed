@@ -91,15 +91,28 @@ end
 
 
   def show_user_missions
+
     level_id = params[:level_id]
     decrypt_data = AESCrypt.decrypt(level_id, 'codeGamed_Secret_Key')
-       @missions = Level.find_by_id(decrypt_data)
+    level = Level.find_by_id(decrypt_data)
 
-    render :json =>  {'key':'Success','missions': @missions,'level_id':decrypt_data}
+
+    if current_user.levels.include?(level)
+      @missions = Level.find_by_id(decrypt_data)
+      render :json =>  {'key':'Success','missions': @missions,'level_id':decrypt_data}
+    else
+      render :json =>  {'key':'false'}
+    end
+
+    rescue Exception
+    render :json =>  {'key':'false'}
+
   end
 
   private
+
   def mission_params
     params.require(:mission).permit(:order,:level_id,:video_url,:score,:problem,:initial_code)
   end
+
 end
