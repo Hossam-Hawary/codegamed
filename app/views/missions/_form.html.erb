@@ -1,5 +1,4 @@
-
-<div ng-app="codeGamed" class="admin-form">
+<div class="admin-form">
   <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
 
 <%= form_for(@mission) do |f| %>
@@ -17,7 +16,7 @@
 
 <div class="form-group">
     <%= f.label :Level %><br>
-   <%= collection_select(:mission, :level_id,Level.order("levels.order").all, :id, :order ,:prompt => false,:class => 'form-control',:selected =>1) %>
+   <%= collection_select(:mission, :level_id,Level.order("levels.order").all, :id, :order ,:prompt => false,:class => 'form-control') %>
 </div>
 <br><br>
       <div class="field">
