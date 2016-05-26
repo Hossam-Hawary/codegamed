@@ -4,7 +4,7 @@
     background-position: bottom;
     background-repeat: repeat-x;
   }
-  .cm-matchhighlight {border: 1px solid white;}
+  .cm-matchhighlight {border: 0.5px solid white;}
   .CodeMirror-selection-highlight-scrollbar {background-color: gray}
   .CodeMirror-selected  { background-color: blue !important; }
   .CodeMirror-selectedtext { color: #ffffff !important;}

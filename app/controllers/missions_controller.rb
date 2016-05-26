@@ -1,4 +1,5 @@
 class MissionsController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => [:show_user_missions]
   def new
     @mission=Mission.new
   end
@@ -85,8 +86,39 @@ end
     end
 end
 
+
+
+  def show_user_missions
+
+    level_id = params[:level_id]
+    decrypt_data = AESCrypt.decrypt(level_id, 'codeGamed_Secret_Key')
+    level = Level.find_by_id(decrypt_data)
+
+
+    # Check if the Level id got from the POST request is included in the User Levels or not
+    # if true, I render the @missions of the this level to the user
+    # if false, I render a json of value false
+
+    if current_user.levels.include?(level)
+      last_mission = current_user.passed_levels.where(level_id: decrypt_data).first.last_mission_order
+      missions = Mission.arel_table
+      @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission)))
+
+      render :json =>  {'accessing_level_status':'Success','missions': @missions, 'level_id':decrypt_data,'last_mission_order': last_mission}
+    else
+      render :json =>  {'accessing_level_status':'false'}
+    end
+
+    # Handling the exception raised when the AESCrypt,decrypt can't decrypt the level id
+    rescue Exception
+    render :json =>  {'accessing_level_status':'false'}
+
+  end
+
   private
+
   def mission_params
     params.require(:mission).permit(:order,:level_id,:video_url,:score,:problem,:initial_code)
   end
+
 end

@@ -40,7 +40,7 @@ gem 'mini_magick',             '3.8.0'
 gem 'ckeditor_rails'
 
 
-
+gem 'aescrypt'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

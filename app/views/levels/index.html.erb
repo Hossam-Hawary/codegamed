@@ -6,7 +6,7 @@
           <md-button class="md-raised"><%= link_to 'New Mission', new_mission_path %></md-button>
           <md-button class="md-raised"><%= link_to 'New Badge', new_badge_path %></md-button>
           <md-button class="md-raised"><%= link_to 'All Badges', badges_path %></md-button>
-    <div ng-controller="DemoCtrl" layout="column" ng-cloak>
+    <div ng-controller="allLevelsCtrl" layout="column" ng-cloak>
   <md-content class="md-padding" layout="column">
 
       <% @levels.each do |level| %>

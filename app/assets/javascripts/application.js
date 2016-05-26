@@ -19,6 +19,7 @@
 //= require angular-aria.js
 //= require angular-messages.js
 //= require angular-material.js
+//= require angular-sanitize.js
 //= require app.js.erb
 //= require levels/levelsController.js
 //= require levels/levelsModel.js

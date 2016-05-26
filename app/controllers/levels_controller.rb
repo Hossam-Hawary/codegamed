@@ -3,18 +3,22 @@ class LevelsController < ApplicationController
 # before_action :set_category, only: [:show, :edit, :update, :destroy]
 before_filter :login
 #all actions using the methods post/put/delete where recognized as forgery attempts so we stoped the authnticity token
-skip_before_filter :verify_authenticity_token, :only => [:show_user_levels]
+skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :show_user_missions]
+
 	def login
 		if current_user == nil
 			redirect_to root_path
 		end
 	end
+
 	def index
 		@levels = Level.order("levels.order").all
 	end
+
 	def new
 		@level=Level.new
 	end
+
 	def create
 		@level = Level.new(level_params)
 		if @level.order
@@ -37,6 +41,7 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels]
 			end
 		end
 	end
+
 
 	def edit
    		@level = Level.find(params[:id])
@@ -80,18 +85,15 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels]
 		@temp_badge = {}
 		@badges = []
 		i=0
-		salt  = SecureRandom.random_bytes(1)
-		key = ActiveSupport::KeyGenerator.new('codeGamed_Secret_Key').generate_key(salt)
-		crypt = ActiveSupport::MessageEncryptor.new(key)
 
 
 		@levels.each do|level|
 
-			encrypted_id = crypt.encrypt_and_sign(level.id)
-			#to verify the decription you will do the steps in the top then this line
-			# decrypted_data = crypt.decrypt_and_verify(encrypted_id) #this will result the real id
 
-			@temp_badge[:level_id] = encrypted_id
+			encrypted_id = AESCrypt.encrypt(level.id,'codeGamed_Secret_Key')
+
+			@temp_badge[:level_id] = encrypted_id #encrypted_id
+
 			@temp_badge[:title]  = level.badge.title
 			@temp_badge[:image_url]  = level.badge.image_url
 
@@ -111,7 +113,9 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels]
 		render :json =>  {'badges':@badges , 'locked_levels': @locked_levels}
 
 
-end
+	end
+
+
 	private
 	def level_params
 		params.require(:level).permit(:order,:badge_id)

@@ -16,13 +16,12 @@ angular.module('codeGamed').controller('levelCtrl',function($scope,showUserLevel
             locked_levels.push(i);
         }
         $scope.locked_levels = locked_levels
-        
 
     });
 
 });
 
 angular.module('codeGamed')
-    .controller('DemoCtrl', function() {
+    .controller('allLevelsCtrl', function() {
     
     });

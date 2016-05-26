@@ -1,14 +1,29 @@
 Rails.application.routes.draw do
   devise_for :admins
-match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
-match 'auth/failure', to: redirect('/'), via: [:get, :post]
-match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
-resources :levels
-root 'main_page#index'
-post '/levels/show_user_levels' => 'levels#show_user_levels'
-resources :badges
-resources :missions
-resources :test_cases
+  match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
+  match 'auth/failure', to: redirect('/'), via: [:get, :post]
+  match 'signout', to: 'sessions#destroy', as: 'signout', via: [:get, :post]
+
+  resources :levels do
+    collection do
+      post 'show_user_levels', :action => 'show_user_levels'
+    end
+  end
+
+  resources :missions do
+    collection do
+      post 'show_user_missions', :action => 'show_user_missions'
+
+    end
+  end
+
+  # post '/levels/show_user_levels' => 'levels#show_user_levels'
+  # post '/levels/show_user_missions' => 'levels#show_user_missions'
+
+  resources :badges
+  #resources :missions
+  resources :test_cases
+  root 'main_page#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

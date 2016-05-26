@@ -4,7 +4,7 @@
 if (window.location.hash && window.location.hash == '#_=_') {
   window.location.hash = '';
 }
-angular.module('codeGamed',['ngRoute','ngMaterial']).config(function($routeProvider){
+angular.module('codeGamed',['ngRoute','ngMaterial','ngSanitize']).config(function($routeProvider){
 
     $routeProvider.when('/',{
         templateUrl: "<%= asset_path('levels.html.erb')%>",
@@ -13,11 +13,16 @@ angular.module('codeGamed',['ngRoute','ngMaterial']).config(function($routeProvi
     });
 
 
-  $routeProvider.when('/missions/:level_id',{
+  $routeProvider.when('/missions/:level_id*',{
     templateUrl: "<%= asset_path('missions.html.erb')%>",
     controller: 'missionCtrl'
 
   });
+
+  $routeProvider.otherwise({
+    redirectTo: '/'
+  });
+
 
 });
 
