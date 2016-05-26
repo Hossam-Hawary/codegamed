@@ -1,14 +1,10 @@
 angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,showUserMissionsFactory){
 
-    $scope.myHTML = '<strong> Hellloooo World !!! </strong>';
+
     var levelId = $routeParams.level_id;
     //console.log(levelId);
 
     showUserMissionsFactory.validateLevel(levelId).then(function(res){
-
-        //console.log("From Controller");
-        //console.log(res);
-
 
         if(res.accessing_level_status == 'Success'){
             $scope.missions = res.missions;
@@ -20,4 +16,10 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     });
 
 
+    $scope.play_mission = function(mission){
+        //alert(mission_id);
+        console.log(mission);
+        $scope.myHTML = mission.problem;
+        myCodeMirror.doc.setValue(mission.initial_code);
+    }
 });

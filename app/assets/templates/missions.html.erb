@@ -1,6 +1,27 @@
 <h1> Mission Page</h1>
 
+<div ng-cloak>
+  <md-grid-list
+  md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"
+  md-row-height-gt-md="1:1" md-row-height="2:2"
+  md-gutter="12px" md-gutter-gt-sm="8px" >
+    <md-grid-tile ng-repeat="mission in missions" ng-click="play_mission(mission)" class="green">
+      <md-grid-tile-footer>
+        <h3>{{mission.order}}</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+
+    <md-grid-tile ng-repeat="mission in missions" class="grey">
+      <md-grid-tile-footer>
+        <h3>{{mission.order}}</h3>
+      </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+</div>
+
 <hr>
+
+
 <div layout="row"  >
   <div flex style=" height: 600px; ">
 
@@ -70,8 +91,7 @@
 
 <script>
 
-  var myCodeMirror = CodeMirror(document.getElementById("codeEditing"), {
-    value: "public void someFunction(){\n //do some thing\n }",
+    myCodeMirror = CodeMirror(document.getElementById("codeEditing"), {
     mode:"text/x-java",
     lineNumbers: true,
     theme:"dracula",indentUnit:4,
