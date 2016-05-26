@@ -106,14 +106,14 @@ end
       missions = Mission.arel_table
       @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission)))
 
-      render :json =>  {'key':'Success','missions': @missions,'level_id':decrypt_data,'last_mission_order': last_mission}
+      render :json =>  {'accessing_level_status':'Success','missions': @missions, 'level_id':decrypt_data,'last_mission_order': last_mission}
     else
-      render :json =>  {'key':'false'}
+      render :json =>  {'accessing_level_status':'false'}
     end
 
     # Handling the exception raised when the AESCrypt,decrypt can't decrypt the level id
-    # rescue Exception
-    # render :json =>  {'key':'false'}
+    rescue Exception
+    render :json =>  {'accessing_level_status':'false'}
 
   end
 

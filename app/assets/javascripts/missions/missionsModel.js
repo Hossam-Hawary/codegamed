@@ -18,14 +18,12 @@ angular.module('codeGamed').factory('showUserMissionsFactory',function($http,$q)
 
                 }
             }).success(function (res){
-                console.log("Server Replied and Success");
-                console.log(res);
-                console.log(res.missions);
+                //console.log("Server Replied and Success");
+                //console.log(res);
+                //console.log(res.missions);
                 def.resolve(res);
             }).error(function(data){
-
-                console.log(data)
-
+                //console.log(data)
             });
 
             return def.promise;
