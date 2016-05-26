@@ -8,6 +8,10 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
 
         if(res.accessing_level_status == 'Success'){
             $scope.missions = res.missions;
+            console.log(res);
+            $scope.myHTML = res.missions[res.last_mission_order - 1].problem;
+            myCodeMirror.doc.setValue(res.missions[res.last_mission_order - 1].initial_code);
+
         }else {
             $location.path("/");
         }
