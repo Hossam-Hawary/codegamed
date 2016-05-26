@@ -1,13 +1,16 @@
+ <div ng-app="codeGamed" md-theme="docs-dark">
+   <md-content class="md-padding" layout="column">
 
-        <div ng-app="codeGamed">
-          <p id="notice"><%= notice %></p>
+   <p id="notice"><%= notice %></p>
+     <div>
+       <md-button class="md-raised"><%= link_to 'New Level', new_level_path %></md-button>
+       <md-button class="md-raised"><%= link_to 'New Mission', new_mission_path %></md-button>
+       <md-button class="md-raised"><%= link_to 'New Badge', new_badge_path %></md-button>
+       <md-button class="md-raised"><%= link_to 'All Badges', badges_path %></md-button>
+     </div>
           <h1>Listing Levels</h1>
-          <md-button class="md-raised"><%= link_to 'New Level', new_level_path %></md-button>
-          <md-button class="md-raised"><%= link_to 'New Mission', new_mission_path %></md-button>
-          <md-button class="md-raised"><%= link_to 'New Badge', new_badge_path %></md-button>
-          <md-button class="md-raised"><%= link_to 'All Badges', badges_path %></md-button>
+
     <div ng-controller="allLevelsCtrl" layout="column" ng-cloak>
-  <md-content class="md-padding" layout="column">
 
       <% @levels.each do |level| %>
         <div class="lock-size" layout="row" layout-align="left">
@@ -26,7 +29,7 @@
            <md-button class="md-raised">  <%= link_to 'New Test Case', new_test_case_path %></md-button>
          </div>
 
-          <table border="1">
+          <table  class="missions-table">
             <thead>
             <tr>
               <th>ID</th>
@@ -35,6 +38,8 @@
               <th>Problem</th>
               <th>Score</th>
               <th>Video URL</th>
+              <th>Initial Code</th>
+
               <th colspan="1">Actions</th>
             </tr>
             </thead>
@@ -48,7 +53,8 @@
                 <td><%= mission.problem.html_safe %></td>
                 <td><%= mission.score %></td>
                 <td><%= mission.video_url %></td>
-                <td> <md-button class="md-raised"><%= link_to 'Edit', edit_mission_path(mission) %> </md-button></td>
+                  <td><%= mission.initial_code %></td>
+                  <td> <md-button class="md-raised"><%= link_to 'Edit', edit_mission_path(mission) %> </md-button></td>
                 </tr>
           <% end %>
             </table>
@@ -57,8 +63,8 @@
         </div>
       <% end %>
 
-  </md-content>
 </div>
 
-
+   </md-content>
 </div>
+ <script src="/form_theme.js"></script>
