@@ -26,7 +26,7 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.save
-        format.html { redirect_to missions_path, notice: 'Mission was successfully created.' }
+        format.html { redirect_to levels_path, notice: 'Mission was successfully created.' }
       else
         format.html { render :new }
       end
@@ -78,11 +78,9 @@ end
 
     respond_to do |format|
       if @mission.update(@mission_params)
-        format.html { redirect_to missions_path, notice: 'Mission was successfully updated.' }
-        format.json { render :index , status: :ok, location: Mission }
+        format.html { redirect_to levels_path, notice: 'Mission was successfully updated.' }
       else
         format.html { render :edit }
-        format.json { render json: Mission.errors, status: :unprocessable_entity }
       end
     end
 end

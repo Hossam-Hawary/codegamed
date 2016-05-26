@@ -21,3 +21,8 @@ angular.module('codeGamed').controller('levelCtrl',function($scope,showUserLevel
     });
 
 });
+
+angular.module('codeGamed')
+    .controller('DemoCtrl', function() {
+    
+    });

@@ -105,3 +105,14 @@ md-card-header-text {
     margin-left: 20px;
 }
 
+ .text-capitalize {
+    text-transform: capitalize; }
+ .md-fab:hover,  .md-fab.md-focused {
+    background-color: #000 !important; }
+ p.note {
+    font-size: 1.0rem; }
+.lock-size {
+    width: 300px;
+    height: auto;
+
+}
