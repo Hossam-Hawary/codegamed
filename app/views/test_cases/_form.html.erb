@@ -46,9 +46,9 @@
           <md-button class="md-raised md-warn"> <%= f.submit %></md-button>
   </div>
 <% end %>
-          <md-button class="md-raised"> <%= link_to 'Show Test Cases', test_cases_path %></md-button>
-          <md-button class="md-raised"> <%= link_to 'Show All Missions', levels_path %></md-button>
-          <md-button class="md-raised"> <%= link_to 'New Mission ', new_mission_path %></md-button>
+           <%= link_to '<md-button class="md-raised">Show Test Cases</md-button>'.html_safe, test_cases_path %>
+         <%= link_to '  <md-button class="md-raised">Show All Missions</md-button>'.html_safe, levels_path %>
+           <%= link_to '<md-button class="md-raised">New Mission </md-button>'.html_safe, new_mission_path %>
 
 </div>
 </div>
