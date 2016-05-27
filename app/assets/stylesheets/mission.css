@@ -37,3 +37,9 @@ md-grid-tile {
 .rotate:hover {
     transition: all 1s ease-in-out;
 }
+
+md-content {
+    margin-right: 7px; }
+.md-button {
+    margin-top: 16px;
+    margin-bottom: 16px; }

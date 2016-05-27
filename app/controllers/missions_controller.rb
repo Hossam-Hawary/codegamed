@@ -115,6 +115,11 @@ end
 
   end
 
+
+  def compile_user_code
+
+  end
+
   private
 
   def mission_params
