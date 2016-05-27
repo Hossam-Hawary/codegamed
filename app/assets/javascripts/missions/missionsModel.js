@@ -1,4 +1,4 @@
-angular.module('codeGamed').factory('showUserMissionsFactory',function($http,$q){
+angular.module('codeGamed').factory('MissionsFactory',function($http,$q){
 
 
     return {
@@ -24,6 +24,34 @@ angular.module('codeGamed').factory('showUserMissionsFactory',function($http,$q)
                 def.resolve(res);
             }).error(function(data){
                 //console.log(data)
+            });
+
+            return def.promise;
+        }
+    }
+
+    return {
+
+        compileCode:function(submitted_code){
+
+            console.log("Sending POST request to the Server")
+
+            var def = $q.defer();
+
+            $http({
+
+                'url':'/missions/compile_user_code',
+                'method':'post',
+                'data': {
+                    'submitted)code': submitted_code
+
+                }
+            }).success(function (res){
+                console.log("Server Replied and Success");
+                console.log(res);
+                def.resolve(res);
+            }).error(function(data){
+                console.log(data)
             });
 
             return def.promise;

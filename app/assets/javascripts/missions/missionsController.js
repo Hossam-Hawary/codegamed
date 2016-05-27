@@ -1,10 +1,10 @@
-angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,showUserMissionsFactory){
+angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,MissionsFactory){
 
 
     var levelId = $routeParams.level_id;
     //console.log(levelId);
 
-    showUserMissionsFactory.validateLevel(levelId).then(function(res){
+    MissionsFactory.validateLevel(levelId).then(function(res){
 
         if(res.accessing_level_status == 'Success'){
             $scope.missions = res.missions;
@@ -25,5 +25,11 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         console.log(mission);
         $scope.myHTML = mission.problem;
         myCodeMirror.doc.setValue(mission.initial_code);
-    }
+    };
+
+    $scope.submitAnswer = function(){
+        alert('compiling code');
+        var submitted_code = myCodeMirror.doc.getValue();
+        MissionsFactory.submitAnswer(submitted_code);
+    };
 });
