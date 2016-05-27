@@ -33,7 +33,7 @@
     </div>
   <div class="actions">
           <md-button class="md-raised md-warn"> <%= f.submit %></md-button>
-             <md-button class="md-raised"><%= link_to 'All Badges', badges_path %></md-button>
+             <%= link_to '<md-button class="md-raised">All Badges</md-button>'.html_safe, badges_path %>
 
   </div>
 

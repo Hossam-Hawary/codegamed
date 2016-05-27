@@ -16,4 +16,26 @@
     transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
     /* Set our own color */
     color: white;
+}.missions-table{
+     border: 3px solid #33485F;
+ }
+.missions-table th{
+    background-color:  #33485F;
+}
+.missions-table td{
+    border-left: 3px solid #33485F;
+    border-top: 3px solid #33485F;
+
+}
+.text-capitalize {
+    text-transform: capitalize; }
+.md-fab:hover,  .md-fab.md-focused {
+    background-color: #142940 !important;
+
+}
+p.note {
+    font-size: 1.0rem; }
+.lock-size {
+    width: auto;
+    height: auto;
 }

@@ -3,10 +3,10 @@
 
    <p id="notice"><%= notice %></p>
      <div>
-       <md-button class="md-raised"><%= link_to 'New Level', new_level_path %></md-button>
-       <md-button class="md-raised"><%= link_to 'New Mission', new_mission_path %></md-button>
-       <md-button class="md-raised"><%= link_to 'New Badge', new_badge_path %></md-button>
-       <md-button class="md-raised"><%= link_to 'All Badges', badges_path %></md-button>
+       <%= link_to '<md-button class="md-raised">New Level</md-button>'.html_safe, new_level_path %>
+       <%= link_to '<md-button class="md-raised">New Mission</md-button>'.html_safe, new_mission_path %>
+       <%= link_to '<md-button class="md-raised">New Badge </md-button>'.html_safe, new_badge_path %>
+       <%= link_to "<md-button class='md-raised'>All Badges </md-button>".html_safe, badges_path %>
      </div>
           <h1>Listing Levels</h1>
 
@@ -24,9 +24,9 @@
         <md-fab-actions>
           <md-title><%= level.badge.title %></md-title>
           <div>
-           <md-button class="md-raised">  <%= link_to 'Edit Level', edit_level_path(level) %></md-button>
-           <md-button class="md-raised">  <%= link_to 'New Mission', new_mission_path %></md-button>
-           <md-button class="md-raised">  <%= link_to 'New Test Case', new_test_case_path %></md-button>
+             <%= link_to '<md-button class="md-raised">Edit Level</md-button>'.html_safe, edit_level_path(level) %>
+            <%= link_to '<md-button class="md-raised"> New Mission</md-button>'.html_safe, new_mission_path %>
+            <%= link_to '<md-button class="md-raised"> New Test Case</md-button>'.html_safe, new_test_case_path %>
          </div>
 
           <table  class="missions-table">
@@ -54,7 +54,7 @@
                 <td><%= mission.score %></td>
                 <td><%= mission.video_url %></td>
                   <td><%= mission.initial_code %></td>
-                  <td> <md-button class="md-raised"><%= link_to 'Edit', edit_mission_path(mission) %> </md-button></td>
+                  <td> <%= link_to '<md-button class="md-raised md-warn">Edit</md-button>'.html_safe, edit_mission_path(mission) %> </td>
                 </tr>
           <% end %>
             </table>

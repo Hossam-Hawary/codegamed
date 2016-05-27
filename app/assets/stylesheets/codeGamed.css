@@ -104,29 +104,7 @@ footer{
 md-card-header-text {
     margin-left: 20px;
 }
-.missions-table{
-    border: 3px solid #33485F;
-}
-.missions-table th{
-    background-color:  #33485F;
-}
-.missions-table td{
-    border-left: 3px solid #33485F;
-    border-top: 3px solid #33485F;
 
-}
- .text-capitalize {
-    text-transform: capitalize; }
- .md-fab:hover,  .md-fab.md-focused {
-    background-color: #33485F !important;
-
- }
- p.note {
-    font-size: 1.0rem; }
-.lock-size {
-    width: 300px;
-    height: auto;
-}
 
 
 md-grid-tile.ng-enter,
