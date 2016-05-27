@@ -1,7 +1,7 @@
 class LevelsController < ApplicationController
 # before_filter :login
 # before_action :set_category, only: [:show, :edit, :update, :destroy]
-before_filter :login
+before_filter :login , :only => [:show_user_levels]
 #all actions using the methods post/put/delete where recognized as forgery attempts so we stoped the authnticity token
 skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :show_user_missions]
 
