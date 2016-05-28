@@ -1,5 +1,5 @@
 class MissionsController < ApplicationController
-  skip_before_filter :verify_authenticity_token, :only => [:show_user_missions]
+  skip_before_filter :verify_authenticity_token, :only => [:show_user_missions, :compile_user_code]
   def new
     @mission=Mission.new
   end
@@ -118,12 +118,31 @@ end
 
   def compile_user_code
 
+    submitted_code = params[:submitted_code]
+
+    my_file = File.new("Code.java", "w+")
+    my_file.puts(submitted_code)
+    my_file.close
+    File.chmod(0777,"Code.java")
+
+    `javac Code.java`
+    sleep(4)
+    result = `java Code`
+
+    # result = %x(java Code)
+    puts result
+
+
+    render :json =>  {'code':result.chomp}
+
+    File.delete("Code.java")
+    File.delete("Code.class")
   end
 
   private
 
   def mission_params
-    params.require(:mission).permit(:order,:level_id,:video_url,:score,:problem,:initial_code)
+    params.require(:mission).permit(:order,:level_id,:video_url,:score,:problem,:initial_code, :submitted_code)
   end
 
 end

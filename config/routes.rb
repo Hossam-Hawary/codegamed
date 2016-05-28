@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :missions do
     collection do
       post 'show_user_missions', :action => 'show_user_missions'
+      post 'compile_user_code', :action => 'compile_user_code'
 
     end
   end

@@ -23,6 +23,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     $scope.play_mission = function(mission){
         //alert(mission_id);
         console.log(mission);
+        //Video URL
         $scope.myHTML = mission.problem;
         myCodeMirror.doc.setValue(mission.initial_code);
     };
@@ -30,6 +31,8 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     $scope.submitAnswer = function(){
         alert('compiling code');
         var submitted_code = myCodeMirror.doc.getValue();
-        MissionsFactory.submitAnswer(submitted_code);
+        MissionsFactory.compileCode(submitted_code).then(function(res){
+            console.log(res);
+        });
     };
 });

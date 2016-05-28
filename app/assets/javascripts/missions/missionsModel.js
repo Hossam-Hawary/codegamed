@@ -27,10 +27,7 @@ angular.module('codeGamed').factory('MissionsFactory',function($http,$q){
             });
 
             return def.promise;
-        }
-    }
-
-    return {
+        },
 
         compileCode:function(submitted_code){
 
@@ -43,7 +40,7 @@ angular.module('codeGamed').factory('MissionsFactory',function($http,$q){
                 'url':'/missions/compile_user_code',
                 'method':'post',
                 'data': {
-                    'submitted)code': submitted_code
+                    'submitted_code': submitted_code
 
                 }
             }).success(function (res){
@@ -51,11 +48,13 @@ angular.module('codeGamed').factory('MissionsFactory',function($http,$q){
                 console.log(res);
                 def.resolve(res);
             }).error(function(data){
-                console.log(data)
+                console.log(data);
             });
 
             return def.promise;
         }
+
+
     }
 
 });
