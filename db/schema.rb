@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521152302) do
+ActiveRecord::Schema.define(version: 20160529100441) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 20160521152302) do
     t.datetime "updated_at",             null: false
   end
 
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "friend_id",  limit: 4
+    t.boolean  "accepted"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "levels", force: :cascade do |t|
     t.integer  "badge_id",   limit: 4
     t.integer  "order",      limit: 4
@@ -55,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160521152302) do
     t.text     "problem",      limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.text     "initial_code", limit: 65535
+    t.string   "initial_code", limit: 255
   end
 
   add_index "missions", ["level_id"], name: "index_missions_on_level_id", using: :btree
