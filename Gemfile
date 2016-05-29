@@ -29,7 +29,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem "squeel"  # Last officially released gem
 # for authontication and fetching data using facebook graph api 
 gem 'omniauth' # for authontication
 gem 'omniauth-facebook' # Facebook authentication

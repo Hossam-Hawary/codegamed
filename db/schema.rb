@@ -12,6 +12,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20160531130526) do
+# =======
+# ActiveRecord::Schema.define(version: 20160529100441) do
+# >>>>>>> Friend Ship
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -36,6 +39,14 @@ ActiveRecord::Schema.define(version: 20160531130526) do
     t.string   "image_url",  limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "friend_id",  limit: 4
+    t.boolean  "accepted"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "levels", force: :cascade do |t|
