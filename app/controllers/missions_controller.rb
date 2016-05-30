@@ -125,13 +125,11 @@ end
     my_file = File.new("Code.java", "w+")
     my_file.puts(submitted_code)
     my_file.close
-    File.chmod(0777,"Code.java")
+    File.chmod(0555,"Code.java")
 
-    `javac Code.java`
-    sleep(4)
-    result = `java Code`
+   `javac Code.java`
+    result = `timeout 2s java Code`
 
-    # result = %x(java Code)
     puts result
 
 
