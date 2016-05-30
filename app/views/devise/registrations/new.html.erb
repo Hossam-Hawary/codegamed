@@ -1,29 +1,47 @@
-<h2>Sign up</h2>
+<div class="admin-form">
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
+
+
+  <h2>Add Admin</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
   <div class="field">
+    <md-input-container  >
+
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+    </md-input-container>
+
   </div>
 
   <div class="field">
+    <md-input-container>
     <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
+    </md-input-container>
+    <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+
   </div>
 
   <div class="field">
+    <md-input-container  >
+
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    </md-input-container>
+
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign Up" ,:class=>'md-button md-raised  md-warn'%>
   </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+  </md-content>
+</div>
+<script src="/form_theme.js">
+</script>

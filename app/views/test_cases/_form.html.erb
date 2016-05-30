@@ -43,7 +43,7 @@
                 <br>
             </div>
   <div class="actions">
-          <md-button class="md-raised md-warn"> <%= f.submit %></md-button>
+           <%= f.submit :class=>'md-button md-raised  md-warn'%>
   </div>
 <% end %>
            <%= link_to '<md-button class="md-raised">Show Test Cases</md-button>'.html_safe, test_cases_path %>
