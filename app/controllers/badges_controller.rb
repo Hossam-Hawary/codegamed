@@ -1,4 +1,5 @@
 class BadgesController < ApplicationController
+  before_action :authenticate_admin!, :only => [:index,:new,:create,:update,:edit]
   def index
     @badges = Badge.all
   end

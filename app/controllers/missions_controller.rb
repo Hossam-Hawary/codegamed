@@ -1,5 +1,7 @@
 class MissionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:show_user_missions, :compile_user_code]
+  before_action :authenticate_admin!, :only => [:new,:create,:update,:edit]
+
   def new
     @mission=Mission.new
   end
