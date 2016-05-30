@@ -1,4 +1,5 @@
 class TestCasesController < ApplicationController
+  before_action :authenticate_admin!, :only => [:index,:new,:create,:update,:edit,:destroy]
   def new
     @test_case=TestCase.new
   end

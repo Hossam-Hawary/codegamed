@@ -18,16 +18,15 @@
   <!--</md-grid-list>-->
 <!--</div>-->
 
-<div style="background-color: #33485F;position:relative;z-index: 1">
+<div style="position:relative;z-index: 1">
   <md-toolbar class="codeGamed-toolbar">
     <div class="md-toolbar-tools">
       <div>
-        <div ng-controller="allLevelsCtrl" layout="column" ng-cloak>
-
+        <div layout="column" ng-cloak>
         <md-fab-speed-dial md-open="false" md-direction="right" ng-class="'md-fling'">
           <md-fab-trigger>
-            <md-button aria-label="M" class="md-fab md-warn">
-              <md-title>M</md-title>
+            <md-button aria-label="M" class="md-fab md-primary">
+              <md-title> >> </md-title>
             </md-button>
           </md-fab-trigger>
           <md-fab-actions>
@@ -40,11 +39,7 @@
       <img src="http://www.clipartbest.com/cliparts/9iz/oG5/9izoG5BzT.png" class="codeGamed-toolbar-avatar">
     </div>
   </md-toolbar>
-
 </div>
-
-
-
 
 <div layout="row"  >
   <div flex style=" height: 600px; ">
@@ -89,29 +84,22 @@
                 <md-button class="md-raised md-primary" ng-click="submitAnswer()">Submit</md-button>
             </md-content>
           </md-tab>
+          <md-tab label="Settings">
+            <md-input-container>
+            Theme
+              <div>
+            <md-select ng-model="current_theme" ng-change="update_theme()">
+              <md-option ng-repeat="theme in themes" value="{{theme}}">
+                {{theme}}
+              </md-option>
+            </md-select>
+              </div>
+          </md-input-container>
+          </md-tab>
         </md-tabs>
       </div>
     </div>
 
   </div>
 </div>
-<script>
-
-    myCodeMirror = CodeMirror(document.getElementById("codeEditing"), {
-    mode:"text/x-java",
-    lineNumbers: true,
-    theme:"dracula",indentUnit:4,
-    matchBrackets:true,
-    styleActiveLine:false,
-    autoCloseBrackets:true,
-    highlightSelectionMatches: {showToken: /\w/, annotateScrollbar: true},
-    styleSelectedText: false,
-    scrollbarStyle: "overlay", //or "simple"
-
-
-
-  })
-  var mac = CodeMirror.keyMap.default == CodeMirror.keyMap.macDefault;
-  CodeMirror.keyMap.default[(mac ? "Cmd" : "Ctrl") + "-Space"] = "autocomplete";
-
-</script>
+<script src="/codemirror.js"></script>

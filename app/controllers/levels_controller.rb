@@ -4,6 +4,7 @@ class LevelsController < ApplicationController
 before_filter :login , :only => [:show_user_levels]
 #all actions using the methods post/put/delete where recognized as forgery attempts so we stoped the authnticity token
 skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :show_user_missions]
+before_action :authenticate_admin!, :only => [:index,:new,:create,:update,:edit]
 
 	def login
 		if current_user == nil
