@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_many :levels, through: :passed_levels
   has_many :passed_missions
   has_many :missions, through: :passed_missions
+  after_save :open_first_level_and_mission
 
 # Check user existance in db and save new users 
   def self.from_omniauth(auth)
@@ -17,8 +18,13 @@ class User < ActiveRecord::Base
       user.oauth_token = auth.credentials.token
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
-      PassedLevel.set_level(user.id)
-      PassedMission.open_first_mission(user.id)
+
     end
+  end
+  private
+  def open_first_level_and_mission
+    user_id=User.maximum("id")
+    PassedLevel.set_level(user_id)
+    PassedMission.open_first_mission(user_id)
   end
 end
