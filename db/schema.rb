@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521152302) do
+ActiveRecord::Schema.define(version: 20160531130526) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -72,6 +72,16 @@ ActiveRecord::Schema.define(version: 20160521152302) do
   add_index "passed_levels", ["level_id"], name: "index_passed_levels_on_level_id", using: :btree
   add_index "passed_levels", ["user_id"], name: "index_passed_levels_on_user_id", using: :btree
 
+  create_table "passed_missions", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "mission_id", limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "passed_missions", ["mission_id"], name: "index_passed_missions_on_mission_id", using: :btree
+  add_index "passed_missions", ["user_id"], name: "index_passed_missions_on_user_id", using: :btree
+
   create_table "test_cases", force: :cascade do |t|
     t.integer  "mission_id", limit: 4
     t.string   "input",      limit: 255
@@ -109,6 +119,8 @@ ActiveRecord::Schema.define(version: 20160521152302) do
   add_foreign_key "missions", "levels"
   add_foreign_key "passed_levels", "levels"
   add_foreign_key "passed_levels", "users"
+  add_foreign_key "passed_missions", "missions"
+  add_foreign_key "passed_missions", "users"
   add_foreign_key "test_cases", "missions"
   add_foreign_key "user_badges", "badges"
   add_foreign_key "user_badges", "users"

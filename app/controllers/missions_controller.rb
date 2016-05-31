@@ -1,13 +1,13 @@
 class MissionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:show_user_missions, :compile_user_code]
-  before_action :authenticate_admin!, :only => [:new,:create,:update,:edit]
+  before_action :authenticate_admin!, :only => [:new, :create, :update, :edit]
 
   def new
     @mission=Mission.new
   end
 
   def index
-    @missions=Mission.order("level_id","missions.order").all
+    @missions=Mission.order("level_id", "missions.order").all
   end
 
   def create
@@ -23,7 +23,7 @@ class MissionsController < ApplicationController
     end
     (Level.find_by id: @mission.level).missions.each do |mission|
       if mission.order>= @mission.order
-        Mission.update(mission,"order"=>mission.order+1)
+        Mission.update(mission, "order" => mission.order+1)
       end
     end
 
@@ -35,43 +35,44 @@ class MissionsController < ApplicationController
       end
     end
   end
-  
-def edit
-   @mission = Mission.find(params[:id])
+
+  def edit
+    @mission = Mission.find(params[:id])
     respond_to do |format|
       format.html
+    end
   end
-end
 
-def update
-  @mission = Mission.find(params[:id])
-  maxorder=((Level.find_by id: @mission.level).missions.maximum("order"))
-  @mission_params = mission_params
-      # when admin changes mission order from small to big no.    
-  if @mission_params[:order].to_i >= @mission.order.to_i
-    if @mission_params[:order].to_i>(maxorder) #condition lw7dha||@mission_params[:order].nil?
-      @mission_params[:order]=maxorder
-    end
-    (Level.find_by id: @mission.level).missions.each do |level_mission|
-    if level_mission.order <= @mission_params[:order].to_i
-      if level_mission.order > @mission.order
-          Mission.update(level_mission,"order"=>level_mission.order-1)
+  def update
+    @mission = Mission.find(params[:id])
+    maxorder=((Level.find_by id: @mission.level).missions.maximum("order"))
+    @mission_params = mission_params
+    # when admin changes mission order from small to big no.
+    if @mission_params[:order].to_i >= @mission.order.to_i
+      if @mission_params[:order].to_i>(maxorder) #condition lw7dha||@mission_params[:order].nil?
+        @mission_params[:order]=maxorder
       end
-    end
-  end
-      # when admin changes mission order from big to small no.    
-  else @mission_params[:order].to_i <= @mission.order.to_i
-     (Level.find_by id: @mission.level).missions.each do |level_mission|
-       if level_mission.order >= @mission_params[:order].to_i
-          if level_mission.order < @mission.order
-            Mission.update(level_mission,"order"=>level_mission.order+1)
+      (Level.find_by id: @mission.level).missions.each do |level_mission|
+        if level_mission.order <= @mission_params[:order].to_i
+          if level_mission.order > @mission.order
+            Mission.update(level_mission, "order" => level_mission.order-1)
           end
+        end
       end
-  end
-end
-      # if @mission_params[:order].nil?||@mission_params[:order].to_i<1||mission_params[:order].to_i>(maxorder+1)
-      #   @mission_params[:order]=maxorder+1
-      # end
+      # when admin changes mission order from big to small no.    
+    else
+      @mission_params[:order].to_i <= @mission.order.to_i
+      (Level.find_by id: @mission.level).missions.each do |level_mission|
+        if level_mission.order >= @mission_params[:order].to_i
+          if level_mission.order < @mission.order
+            Mission.update(level_mission, "order" => level_mission.order+1)
+          end
+        end
+      end
+    end
+    # if @mission_params[:order].nil?||@mission_params[:order].to_i<1||mission_params[:order].to_i>(maxorder+1)
+    #   @mission_params[:order]=maxorder+1
+    # end
 
     # (Level.find_by id: @mission.level).missions.each do |mission|
     #   if mission.order>= @mission.order
@@ -86,8 +87,7 @@ end
         format.html { render :edit }
       end
     end
-end
-
+  end
 
 
   def show_user_missions
@@ -106,14 +106,14 @@ end
       missions = Mission.arel_table
       @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission)))
 
-      render :json =>  {'accessing_level_status':'Success','missions': @missions, 'level_id':decrypt_data,'last_mission_order': last_mission}
+      render :json => {'accessing_level_status': 'Success', 'missions': @missions, 'level_id': decrypt_data, 'last_mission_order': last_mission}
     else
-      render :json =>  {'accessing_level_status':'false'}
+      render :json => {'accessing_level_status': 'false'}
     end
 
-    # Handling the exception raised when the AESCrypt,decrypt can't decrypt the level id
-    rescue Exception
-    render :json =>  {'accessing_level_status':'false'}
+      # Handling the exception raised when the AESCrypt,decrypt can't decrypt the level id
+  rescue Exception
+    render :json => {'accessing_level_status': 'false'}
 
   end
 
@@ -125,15 +125,15 @@ end
     my_file = File.new("Code.java", "w+")
     my_file.puts(submitted_code)
     my_file.close
-    File.chmod(0555,"Code.java")
+    File.chmod(0555, "Code.java")
 
-   `javac Code.java`
+    `javac Code.java`
     result = `timeout 2s java Code`
 
     puts result
 
 
-    render :json =>  {'code':result.chomp}
+    render :json => {'code': result.chomp}
 
     File.delete("Code.java")
     File.delete("Code.class")
@@ -142,7 +142,7 @@ end
   private
 
   def mission_params
-    params.require(:mission).permit(:order,:level_id,:video_url,:score,:problem,:initial_code, :submitted_code)
+    params.require(:mission).permit(:order, :level_id, :video_url, :score, :problem, :initial_code, :submitted_code)
   end
 
 end

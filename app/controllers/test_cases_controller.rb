@@ -1,5 +1,6 @@
 class TestCasesController < ApplicationController
-  before_action :authenticate_admin!, :only => [:index,:new,:create,:update,:edit,:destroy]
+  before_action :authenticate_admin!, :only => [:index, :new, :create, :update, :edit, :destroy]
+
   def new
     @test_case=TestCase.new
   end
@@ -18,7 +19,7 @@ class TestCasesController < ApplicationController
       end
     end
   end
-  
+
   def edit
     @test_case = TestCase.find(params[:id])
     respond_to do |format|
@@ -27,12 +28,12 @@ class TestCasesController < ApplicationController
   end
 
 
-def update
+  def update
     @test_case = TestCase.find(params[:id])
     respond_to do |format|
       if @test_case.update(test_cases_params)
         format.html { redirect_to test_cases_path, notice: 'test case was successfully updated.' }
-        format.json { render :index , status: :ok, location: TestCase }
+        format.json { render :index, status: :ok, location: TestCase }
       else
         format.html { render :edit }
         format.json { render json: TestCase.errors, status: :unprocessable_entity }
@@ -40,7 +41,7 @@ def update
     end
   end
 
-def destroy
+  def destroy
     @test_case = TestCase.find(params[:id])
     @test_case.destroy
     respond_to do |format|
@@ -51,6 +52,6 @@ def destroy
 
   private
   def test_cases_params
-    params.require(:test_case).permit(:input,:output,:mission_id)
+    params.require(:test_case).permit(:input, :output, :mission_id)
   end
 end

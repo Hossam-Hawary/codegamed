@@ -35,8 +35,8 @@ gem 'omniauth' # for authontication
 gem 'omniauth-facebook' # Facebook authentication
 gem 'koala' # Facebook API
 gem 'devise'
-gem 'carrierwave',             '0.10.0'
-gem 'mini_magick',             '3.8.0'
+gem 'carrierwave', '0.10.0'
+gem 'mini_magick', '3.8.0'
 gem 'ckeditor_rails'
 
 

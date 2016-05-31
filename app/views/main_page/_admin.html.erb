@@ -1,9 +1,8 @@
 <h1>Hello Admin</h1>
 <%= link_to "<md-button class='md-raised md-primary'>Sign Out Admin</md-button> ".html_safe,destroy_admin_session_path,{method: :delete} %>
-
+<%= link_to '<md-button class="md-raised">All Levels</md-button>'.html_safe, levels_path %>
 <%= link_to "<md-button class='md-raised'>All Badges </md-button>".html_safe, badges_path %>
 <%= link_to '<md-button class="md-raised">All Test Cases</md-button>'.html_safe, test_cases_path %>
-<%= link_to '<md-button class="md-raised">All Missions</md-button>'.html_safe, levels_path %>
 <%= link_to '<md-button class="md-raised md-warn">New Level</md-button>'.html_safe, new_level_path %>
 <%= link_to '<md-button class="md-raised md-warn">New Mission</md-button>'.html_safe, new_mission_path %>
 <%= link_to '<md-button class="md-raised md-warn">New Badge </md-button>'.html_safe, new_badge_path %>
