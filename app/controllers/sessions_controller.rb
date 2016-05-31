@@ -4,8 +4,6 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     #@facebook = Koala::Facebook::API.new(user.oauth_token)
     #@facebook.get_object("me?fields=friends,taggable_friends")
-    PassedLevel.set_level(user.id)
-    PassedMission.open_first_mission(user.id)
     redirect_to root_url
   end
 
