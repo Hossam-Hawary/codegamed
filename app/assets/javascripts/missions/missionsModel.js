@@ -45,7 +45,6 @@ angular.module('codeGamed').factory('MissionsFactory',function($http,$q){
                 }
             }).success(function (res){
                 console.log("Server Replied and Success");
-                console.log(res);
                 def.resolve(res);
             }).error(function(data){
                 console.log(data);

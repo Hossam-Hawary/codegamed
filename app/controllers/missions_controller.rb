@@ -1,3 +1,5 @@
+require "open3"
+
 class MissionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:show_user_missions, :compile_user_code]
   before_action :authenticate_admin!, :only => [:new,:create,:update,:edit]
@@ -121,22 +123,38 @@ end
   def compile_user_code
 
     submitted_code = params[:submitted_code]
+    test_case = TestCase.find_by_id(2)
+
+    java_code = 'public class Code{
+
+      ' + submitted_code + '
+
+      public static void main(String args[]){
+
+        Code c = new Code();
+        int x = c.' + test_case.input + ';
+        System.out.println(x);
+
+      }
+
+    }'
 
     my_file = File.new("Code.java", "w+")
-    my_file.puts(submitted_code)
+    my_file.puts(java_code)
     my_file.close
-    File.chmod(0555,"Code.java")
+    File.chmod(0777,"Code.java")
 
-   `javac Code.java`
-    result = `timeout 2s java Code`
+    stdin, stdout, stderr = Open3.popen3('javac Code.java')
+    puts stderr.gets
 
-    puts result
+    result = `timeout 4s java Code`
 
-
-    render :json =>  {'code':result.chomp}
 
     File.delete("Code.java")
     File.delete("Code.class")
+
+    render :json =>  {'output':result.chomp}
+
   end
 
   private

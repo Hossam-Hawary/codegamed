@@ -32,7 +32,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         alert('compiling code');
         var submitted_code = myCodeMirror.doc.getValue();
         MissionsFactory.compileCode(submitted_code).then(function(res){
-            console.log(res);
+            alert(res.output);
         });
     };
     $scope.current_theme = 'dracula';
