@@ -29,11 +29,6 @@
               </md-fab-trigger>
               <md-fab-actions>
                 <md-title><%= level.badge.title %></md-title>
-                <div>
-                  <%= link_to '<md-button class="md-raised">Edit Level</md-button>'.html_safe, edit_level_path(level) %>
-                  <%= link_to '<md-button class="md-raised"> New Mission</md-button>'.html_safe, new_mission_path %>
-                  <%= link_to '<md-button class="md-raised"> New Test Case</md-button>'.html_safe, new_test_case_path %>
-                </div>
 
                 <table class="missions-table">
                   <thead>
@@ -48,7 +43,7 @@
                   </thead>
                   <tbody>
                   </tbody>
-                  <% level.missions.each do |mission| %>
+                  <% level.missions.order("missions.order").each do |mission| %>
                       <tr>
                         <td><%= mission.id %></td>
                         <td><%= mission.level.order %></td>

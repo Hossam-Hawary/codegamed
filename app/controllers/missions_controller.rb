@@ -1,3 +1,5 @@
+require "open3"
+
 class MissionsController < ApplicationController
   skip_before_filter :verify_authenticity_token, :only => [:show_user_missions, :compile_user_code]
   before_action :authenticate_admin!, :only => [:new, :create, :update, :edit]
@@ -104,7 +106,7 @@ class MissionsController < ApplicationController
     if current_user.levels.include?(level)
       last_mission = current_user.passed_levels.where(level_id: decrypt_data).first.last_mission_order
       missions = Mission.arel_table
-      @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission)))
+      @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission))).order("missions.order")
 
       render :json => {'accessing_level_status': 'Success', 'missions': @missions, 'level_id': decrypt_data, 'last_mission_order': last_mission}
     else
@@ -121,22 +123,46 @@ class MissionsController < ApplicationController
   def compile_user_code
 
     submitted_code = params[:submitted_code]
-
-    my_file = File.new("Code.java", "w+")
-    my_file.puts(submitted_code)
-    my_file.close
-    File.chmod(0555, "Code.java")
-
-    `javac Code.java`
-    result = `timeout 2s java Code`
-
-    puts result
+    puts params[:current_mission_id]
+    test_cases = TestCase.where(mission_id: params[:current_mission_id])
 
 
-    render :json => {'code': result.chomp}
+    test_cases.each do |tc|
 
-    File.delete("Code.java")
-    File.delete("Code.class")
+      java_code = 'public class Code{
+
+      ' + submitted_code + '
+
+      public static void main(String args[]){
+
+        Code c = new Code();
+        int x = c.' + tc.input + ';
+        System.out.println(""+x);
+
+      }
+
+    }'
+
+      my_file = File.new("Code.java", "w+")
+      my_file.puts(java_code)
+      my_file.close
+      File.chmod(0777,"Code.java")
+      stdin, stdout, stderr = Open3.popen3('javac Code.java')
+
+      puts stderr.gets
+      $result = `timeout 4s java Code`
+
+      if $result.chomp != tc.output
+        render :json =>  {'output':'Failure'}
+        return
+      end
+
+      File.delete("Code.java")
+      File.delete("Code.class")
+
+    end
+
+    render :json =>  {'output':'Success'}
   end
 
   private

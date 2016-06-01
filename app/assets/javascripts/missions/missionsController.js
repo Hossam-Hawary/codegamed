@@ -11,6 +11,8 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
             console.log(res);
             $scope.myHTML = res.missions[res.last_mission_order - 1].problem;
             myCodeMirror.doc.setValue(res.missions[res.last_mission_order - 1].initial_code);
+            $scope.current_mission = res.missions[res.last_mission_order - 1];
+            $scope.mission_video = res.missions[res.last_mission_order - 1].video_url;
 
         }else {
             $location.path("/");
@@ -28,13 +30,14 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         $scope.mission_video = mission.video_url;
 
         myCodeMirror.doc.setValue(mission.initial_code);
+        $scope.current_mission = mission;
     };
 
     $scope.submitAnswer = function(){
         alert('compiling code');
         var submitted_code = myCodeMirror.doc.getValue();
-        MissionsFactory.compileCode(submitted_code).then(function(res){
-            console.log(res);
+        MissionsFactory.compileCode(submitted_code,$scope.current_mission).then(function(res){
+            alert(res.output);
         });
     };
     $scope.current_theme = 'dracula';
@@ -56,3 +59,8 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     }
 
 });
+angular.module('codeGamed').filter('trusted', ['$sce', function ($sce) {
+    return function(url) {
+        return $sce.trustAsResourceUrl(url);
+    };
+}]);

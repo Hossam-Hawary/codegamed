@@ -1,24 +1,4 @@
-<!--<div ng-cloak>-->
-  <!--<md-grid-list-->
-  <!--md-cols-xs="1" md-cols-sm="2" md-cols-md="4" md-cols-gt-md="6"-->
-  <!--md-row-height-gt-md="1:1" md-row-height="2:2"-->
-  <!--md-gutter="12px" md-gutter-gt-sm="8px" >-->
-    <!--<md-grid-tile ng-repeat="mission in missions" ng-click="play_mission(mission)" class="box rotate">-->
-      <!--<img src="http://www.clipartbest.com/cliparts/9iz/oG5/9izoG5BzT.png" height="50px" width="50px" class="box rotate">-->
-      <!--<md-grid-tile-footer>-->
-        <!--<h3>{{mission.order}}</h3>-->
-      <!--</md-grid-tile-footer>-->
-    <!--</md-grid-tile>-->
-
-    <!--<md-grid-tile ng-repeat="mission in missions" class="grey">-->
-      <!--<md-grid-tile-footer>-->
-        <!--<h3>{{mission.order}}</h3>-->
-      <!--</md-grid-tile-footer>-->
-    <!--</md-grid-tile>-->
-  <!--</md-grid-list>-->
-<!--</div>-->
-
-  <md-toolbar id="level_missions_toolbar" class="md-toolbar-tools">
+ <md-toolbar id="level_missions_toolbar" class="md-toolbar-tools">
       <div>
         <div layout="column" ng-cloak>
         <md-fab-speed-dial md-open="true" md-direction="right" ng-class="'md-fling'">
@@ -46,6 +26,8 @@
 
           <!--<embed width="600" height="315"-->
                  <!--src={{mission_video}}>-->
+
+          <iframe ng-src="{{ mission_video | trusted }}" width="600" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
         </md-content>
       </md-tab>
