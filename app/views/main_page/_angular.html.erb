@@ -1,27 +1,27 @@
 <div ng-app="codeGamed">
   <!--- header -->
 
-    <md-toolbar class="codeGamed-toolbar">
-      <div class="md-toolbar-tools">
-        <md-button ng-href="/#/">
+  <md-toolbar class="codeGamed-toolbar">
+    <div class="md-toolbar-tools">
+      <md-button ng-href="/#/">
 
-          <i class="material-icons">home</i>
+        <i class="material-icons">home</i>
 
-        </md-button>
+      </md-button>
 
 
 
-           <%= link_to "<md-button  class='md-raised'>Sign out</md-button>".html_safe, signout_path, id: "sign_out" %>
+      <%= link_to "<md-button  class='md-raised'>Sign out</md-button>".html_safe, signout_path, id: "sign_out" %>
 
- 
 
-        <span flex></span>
-        &nbsp; <strong><%= current_user.name %></strong> &nbsp;
-        <%= image_tag current_user.image_url , class: 'codeGamed-toolbar-avatar' %>
-      </div>
-    </md-toolbar>
 
-   <!--- The Body -->
+      <span flex></span>
+      &nbsp; <strong><%= current_user.name %></strong> &nbsp;
+      <%= image_tag current_user.image_url, class: 'codeGamed-toolbar-avatar' %>
+    </div>
+  </md-toolbar>
+
+  <!--- The Body -->
   <div ng-view>
 
   </div>

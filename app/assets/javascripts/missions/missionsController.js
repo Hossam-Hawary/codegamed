@@ -25,6 +25,8 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         console.log(mission);
         //Video URL
         $scope.myHTML = mission.problem;
+        $scope.mission_video = mission.video_url;
+
         myCodeMirror.doc.setValue(mission.initial_code);
     };
 

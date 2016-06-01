@@ -18,9 +18,7 @@
   <!--</md-grid-list>-->
 <!--</div>-->
 
-<div style="position:relative;z-index: 1">
-  <md-toolbar class="codeGamed-toolbar">
-    <div class="md-toolbar-tools">
+  <md-toolbar id="level_missions_toolbar" class="md-toolbar-tools">
       <div>
         <div layout="column" ng-cloak>
         <md-fab-speed-dial md-open="true" md-direction="right" ng-class="'md-fling'">
@@ -37,9 +35,7 @@
       </div>
       <span flex></span>
       <img src="http://www.clipartbest.com/cliparts/9iz/oG5/9izoG5BzT.png" class="codeGamed-toolbar-avatar">
-    </div>
   </md-toolbar>
-</div>
 
 <div layout="row"  >
   <div flex style=" height: 600px; ">
@@ -49,7 +45,7 @@
         <md-content class="md-padding" style="background-color: transparent">
 
           <!--<embed width="600" height="315"-->
-                 <!--src="http://www.youtube.com/embed/3TAUnYZpMbA">-->
+                 <!--src={{mission_video}}>-->
 
         </md-content>
       </md-tab>

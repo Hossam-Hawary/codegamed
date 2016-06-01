@@ -3,6 +3,11 @@
 
 
 }
+#level_missions_toolbar{
+    background-color: #33485F;
+    position:relative;z-index: 1;
+
+}
 .md-toolbar-tools{
     background-color: #33485F;
     position: fixed;
@@ -40,7 +45,7 @@
 .codeGamed-toolbar-avatar{
 
     border-radius: 48px;
-    width: 60px;
+    width: 40px;
 
 }
 #intro h1{

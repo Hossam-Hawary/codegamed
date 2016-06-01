@@ -5,7 +5,7 @@
   <title>CodeGamed</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
         rel="stylesheet">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
@@ -15,5 +15,11 @@
 <% content_for :javascript_includes do %>
     <%= javascript_include_tag "missions/codeMirror/mycodemirror" %>
 <% end %>
+
+<footer>
+  <div class="new-landing--footer-copyrights -text-uppercase -order-1 -flex-2">
+    © 2016 CodeGamed Team.
+  </div>
+</footer>
 </body>
 </html>
