@@ -35,11 +35,8 @@
               <th>ID</th>
               <th>Level</th>
               <th>Order</th>
-              <th>Problem</th>
               <th>Score</th>
               <th>Video URL</th>
-              <th>Initial Code</th>
-
               <th colspan="1">Actions</th>
             </tr>
             </thead>
@@ -50,11 +47,9 @@
                 <td><%= mission.id %></td>
                 <td><%= mission.level.order %></td>
                 <td><%= mission.order %></td>
-                <td><%= mission.problem.html_safe %></td>
                 <td><%= mission.score %></td>
                 <td><%= mission.video_url %></td>
-                  <td><%= mission.initial_code %></td>
-                  <td> <%= link_to '<md-button class="md-raised md-warn">Edit</md-button>'.html_safe, edit_mission_path(mission) %> </td>
+                <td> <%= link_to '<md-button class="md-raised md-warn">Edit</md-button>'.html_safe, edit_mission_path(mission) %> </td>
                 </tr>
           <% end %>
             </table>

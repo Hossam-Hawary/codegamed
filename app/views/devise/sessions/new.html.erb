@@ -1,14 +1,24 @@
-<h2>Log in</h2>
+<div class="admin-form">
+  <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
+    <md-input-container  >
+
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true %>
+    </md-input-container>
+
   </div>
 
   <div class="field">
+    <md-input-container  >
+
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off" %>
+    </md-input-container>
+
   </div>
 
   <%# if devise_mapping.rememberable? -%>
@@ -19,8 +29,13 @@
   <%# end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "Log in" ,:class=>'md-button md-raised  md-warn'%>
   </div>
 <% end %>
+</md-content>
+</div>
+
+<script src="/form_theme.js">
+</script>
 
 <%#= render "devise/shared/links" %>

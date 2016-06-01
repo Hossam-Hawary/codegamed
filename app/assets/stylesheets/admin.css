@@ -17,14 +17,14 @@
     /* Set our own color */
     color: white;
 }.missions-table{
-     border: 3px solid #33485F;
+     border: 3px solid #cc8800;
  }
 .missions-table th{
-    background-color:  #33485F;
+    background-color:  #cc8800;
 }
 .missions-table td{
-    border-left: 3px solid #33485F;
-    border-top: 3px solid #33485F;
+    border-left: 3px solid #cc8800;
+    border-top: 3px solid #cc8800;
 
 }
 .text-capitalize {

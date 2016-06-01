@@ -32,14 +32,14 @@
 
     </div>
   <div class="actions">
-          <md-button class="md-raised md-warn"> <%= f.submit %></md-button>
+        <%= f.submit :class=>'md-button md-raised  md-warn' %>
              <%= link_to '<md-button class="md-raised">All Badges</md-button>'.html_safe, badges_path %>
 
   </div>
 
 <% end %>
 
-</div>
+</md-content>
 </div>
 
 <script src="/form_theme.js">

@@ -1,5 +1,6 @@
 class BadgesController < ApplicationController
-  before_action :authenticate_admin!, :only => [:index,:new,:create,:update,:edit]
+  before_action :authenticate_admin!, :only => [:index, :new, :create, :update, :edit]
+
   def index
     @badges = Badge.all
   end
@@ -22,20 +23,20 @@ class BadgesController < ApplicationController
     end
   end
 
-def edit
+  def edit
     @badge = Badge.find(params[:id])
     respond_to do |format|
       format.html
+    end
   end
-end
 
 
-def update
+  def update
     @badge = Badge.find(params[:id])
     respond_to do |format|
       if @badge.update(badge_params)
         format.html { redirect_to badges_path, notice: 'Badge was successfully updated.' }
-        format.json { render :index , status: :ok, location: Badge }
+        format.json { render :index, status: :ok, location: Badge }
       else
         format.html { render :edit }
         format.json { render json: Badge.errors, status: :unprocessable_entity }
@@ -45,6 +46,6 @@ def update
 
   private
   def badge_params
-    params.require(:badge).permit(:title,:image_url)
+    params.require(:badge).permit(:title, :image_url)
   end
 end
