@@ -11,6 +11,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
             console.log(res);
             $scope.myHTML = res.missions[res.last_mission_order - 1].problem;
             myCodeMirror.doc.setValue(res.missions[res.last_mission_order - 1].initial_code);
+            $scope.current_mission = res.missions[res.last_mission_order - 1];
 
         }else {
             $location.path("/");
@@ -26,12 +27,13 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         //Video URL
         $scope.myHTML = mission.problem;
         myCodeMirror.doc.setValue(mission.initial_code);
+        $scope.current_mission = mission;
     };
 
     $scope.submitAnswer = function(){
         alert('compiling code');
         var submitted_code = myCodeMirror.doc.getValue();
-        MissionsFactory.compileCode(submitted_code).then(function(res){
+        MissionsFactory.compileCode(submitted_code,$scope.current_mission).then(function(res){
             alert(res.output);
         });
     };

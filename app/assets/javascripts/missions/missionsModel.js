@@ -29,9 +29,10 @@ angular.module('codeGamed').factory('MissionsFactory',function($http,$q){
             return def.promise;
         },
 
-        compileCode:function(submitted_code){
+        compileCode:function(submitted_code,current_mission){
 
             console.log("Sending POST request to the Server")
+            console.log(current_mission);
 
             var def = $q.defer();
 
@@ -40,8 +41,8 @@ angular.module('codeGamed').factory('MissionsFactory',function($http,$q){
                 'url':'/missions/compile_user_code',
                 'method':'post',
                 'data': {
-                    'submitted_code': submitted_code
-
+                    'submitted_code': submitted_code,
+                    'current_mission_id': current_mission.id
                 }
             }).success(function (res){
                 console.log("Server Replied and Success");
