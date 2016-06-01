@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular.js
+//= require jquery-ui
 //= require ckeditor-jquery
 //= require angular-route.js
 //= require angular-animate.js
