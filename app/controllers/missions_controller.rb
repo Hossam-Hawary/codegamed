@@ -166,15 +166,7 @@ class MissionsController < ApplicationController
 
       end
 #update Database
-      last_mission=mission.level.missions.order("missions.order").last
-      next_mission_order= mission.order+1
-      output={output:'Success',next_level:mission.level.order}
-      if last_mission.order==mission.order
-        PassedLevel.open_new_level(current_user.id,mission.level.id + 1)
-        next_mission_order=1
-        output[:next_level]=mission.level.order+1
-      end
-      PassedMission.open_new_mission(current_user.id,next_mission_order,mission.level.id)
+      output= PassedMission.pass_mission(current_user,mission)
       render :json => output
     else
       render :json => {'output': 'Failure'}
