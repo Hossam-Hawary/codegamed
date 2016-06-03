@@ -169,8 +169,10 @@ class MissionsController < ApplicationController
 
       end
 
-      PassedMission.open_new_mission(user_id,mission.order + 1)
-      render :json =>  {'output':'Success'}
+#update Database
+
+      output= PassedMission.pass_mission(current_user,mission)
+      render :json => output
 
     else
 
