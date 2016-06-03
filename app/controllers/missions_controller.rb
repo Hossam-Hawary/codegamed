@@ -123,8 +123,8 @@ class MissionsController < ApplicationController
   def compile_user_code
 
     submitted_code = params[:submitted_code]
-    puts params[:current_mission_id]
-    test_cases = TestCase.where(mission_id: params[:current_mission_id])
+    mission =Mission.find_by id:params[:current_mission_id]
+    test_cases = TestCase.where(mission_id: mission.id)
 if submitted_code && params
   test_cases.each do |tc|
 
@@ -160,7 +160,8 @@ if submitted_code && params
     File.delete("Code.class")
 
   end
-
+#update Database
+  PassedMission.open_new_mission(user_id,mission.order+1)
   render :json =>  {'output':'Success'}
 else
   render :json =>  {'output':'Failure'}
