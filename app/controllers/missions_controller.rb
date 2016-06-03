@@ -123,7 +123,9 @@ class MissionsController < ApplicationController
   def compile_user_code
 
     submitted_code = params[:submitted_code]
-    test_cases = TestCase.where(mission_id: params[:current_mission_id])
+
+    mission = Mission.find_by id:params[:current_mission_id]
+    test_cases = TestCase.where(mission_id: mission.id)
 
     if submitted_code && params
       test_cases.each do |tc|
@@ -161,6 +163,7 @@ class MissionsController < ApplicationController
 
       end
 
+      PassedMission.open_new_mission(user_id,mission.order + 1)
       render :json =>  {'output':'Success'}
 
     else
@@ -168,7 +171,6 @@ class MissionsController < ApplicationController
       render :json =>  {'output':'Failure'}
 
     end
-
 
   end
 
