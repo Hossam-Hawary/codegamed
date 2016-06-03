@@ -43,14 +43,14 @@
         <div id="codeEditing"></div>
       </div>
 
-        <div ng-repeat="test_case in test_cases" style="overflow: scroll; height: 190px;">
-          <div my-cool-directive>
-            <h3>{{ test_case.input }}</h3>
-            <div>
-              <p>{{ test_case.output }}</p>
-            </div>
+      <div style="overflow: scroll; height: 190px;">
+        <div ng-repeat="test_case in test_cases" my-cool-directive>
+          <h3 ng-bind="test_case.input"></h3>
+          <div>
+            <p>{{test_case.output}}</p>
           </div>
         </div>
+      </div>
 
       <md-button class="md-raised md-primary" ng-click="submitAnswer()">Submit</md-button>
     </div>
@@ -58,12 +58,3 @@
   </div>
 </div>
 <script src="/codemirror.js"></script>
-<script>
-  $(function() {
-    $( "#accordion" ).accordion({
-      collapsible: true,
-      active: false
-
-    });
-  });
-</script>

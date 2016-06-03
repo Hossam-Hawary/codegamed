@@ -30,7 +30,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         $scope.mission_video = mission.mission_data.video_url;
 
         myCodeMirror.doc.setValue(mission.mission_data.initial_code);
-        $scope.current_mission = mission;
+        $scope.current_mission = mission.mission_data;
         $scope.test_cases = mission.mission_test_cases;
 
     };
@@ -85,7 +85,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         link: function(scope, elem, attrs) {
             $(elem).accordion({
                 collapsible: true,
-                active: false
+                active: false,
             });
         }
     }
