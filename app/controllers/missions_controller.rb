@@ -104,16 +104,18 @@ class MissionsController < ApplicationController
     # if false, I render a json of value false
 
     if current_user.levels.include?(level)
-      last_mission = current_user.passed_levels.where(level_id: decrypt_data).first.last_mission_order
 
-      full_missions=missions_with_test_cases(current_user, level)
+      full_missions=PassedMission.missions_with_test_cases(current_user, level)
 
-      render :json => {'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data, 'last_mission_order': last_mission}
+      render :json => { 'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data }
+
     else
+
       render :json => {'accessing_level_status': 'false'}
     end
 
       # Handling the exception raised when the AESCrypt,decrypt can't decrypt the level id
+
   rescue Exception
     render :json => {'accessing_level_status': 'false'}
 
@@ -123,36 +125,37 @@ class MissionsController < ApplicationController
   def compile_user_code
 
     submitted_code = params[:submitted_code]
-    mission =Mission.find_by id: params[:current_mission_id]
+
+    mission = Mission.find_by id:params[:current_mission_id]
     test_cases = TestCase.where(mission_id: mission.id)
+
     if submitted_code && params
       test_cases.each do |tc|
 
         java_code = 'public class Code{
 
-      ' + submitted_code + '
+          ' + submitted_code + '
 
-      public static void main(String args[]){
+          public static void main(String args[]){
 
-        Code c = new Code();
-        int x = c.' + tc.input + ';
-        System.out.println(""+x);
+            Code c = new Code();
+            int x = c.' + tc.input + ';
+            System.out.println(""+x);
 
-      }
-
-    }'
+          }
+        }'
 
         my_file = File.new("Code.java", "w+")
         my_file.puts(java_code)
         my_file.close
-        File.chmod(0777, "Code.java")
+        File.chmod(0777,"Code.java")
         stdin, stdout, stderr = Open3.popen3('javac Code.java')
 
         puts stderr.gets
         $result = `timeout 4s java Code`
 
         if $result.chomp != tc.output
-          render :json => {'output': 'Failure'}
+          render :json =>  {'output':'Failure'}
           return
         end
 
@@ -160,13 +163,17 @@ class MissionsController < ApplicationController
         File.delete("Code.class")
 
       end
+
 #update Database
+
       output= PassedMission.pass_mission(current_user,mission)
       render :json => output
-    else
-      render :json => {'output': 'Failure'}
-    end
 
+    else
+
+      render :json =>  {'output':'Failure'}
+
+    end
 
   end
 
