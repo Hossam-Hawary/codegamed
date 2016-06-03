@@ -12,4 +12,12 @@ class PassedLevel < ActiveRecord::Base
 
   end
 
+
+  def self.next_mission(user_id)
+
+
+
+  end
+
+
 end
