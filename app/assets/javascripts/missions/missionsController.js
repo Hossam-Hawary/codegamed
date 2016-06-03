@@ -1,4 +1,3 @@
-
 angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,$mdDialog,MissionsFactory){
 
 
@@ -8,12 +7,14 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     MissionsFactory.validateLevel(levelId).then(function (res) {
 
         if (res.accessing_level_status == 'Success') {
-            console.log(res.missions);
+            //console.log(res.missions);
+
+
             $scope.missions = res.missions;
-            $scope.myHTML = res.missions[res.last_mission_order - 1].problem;
-            myCodeMirror.doc.setValue(res.missions[res.last_mission_order - 1].initial_code);
-            $scope.current_mission = res.missions[res.last_mission_order - 1];
-            $scope.mission_video = res.missions[res.last_mission_order - 1].video_url;
+            $scope.myHTML = res.missions[res.missions.length - 1].mission_data.problem;
+            myCodeMirror.doc.setValue(res.missions[res.missions.length - 1].mission_data.initial_code);
+            $scope.current_mission = res.missions[res.missions.length - 1].mission_data;
+            $scope.mission_video = res.missions[res.missions.length - 1].mission_data.video_url;
 
         } else {
             $location.path("/");

@@ -104,16 +104,23 @@ class MissionsController < ApplicationController
     # if false, I render a json of value false
 
     if current_user.levels.include?(level)
-      last_mission = current_user.passed_levels.where(level_id: decrypt_data).first.last_mission_order
-      missions = Mission.arel_table
-      @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission))).order("missions.order")
 
-      render :json => {'accessing_level_status': 'Success', 'missions': @missions, 'level_id': decrypt_data, 'last_mission_order': last_mission}
+      full_missions = []
+
+      current_user.missions.order("missions.order").where("level_id = #{level.id}").each do |mission|
+        mission_test_cases = TestCase.where mission_id: mission.id
+        full_missions << { mission_data: mission, mission_test_cases: mission_test_cases }
+      end
+
+      render :json => { 'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data }
+
     else
+
       render :json => {'accessing_level_status': 'false'}
     end
 
       # Handling the exception raised when the AESCrypt,decrypt can't decrypt the level id
+
   rescue Exception
     render :json => {'accessing_level_status': 'false'}
 
@@ -141,7 +148,6 @@ class MissionsController < ApplicationController
             System.out.println(""+x);
 
           }
-
         }'
 
         my_file = File.new("Code.java", "w+")
