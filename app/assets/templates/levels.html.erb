@@ -34,7 +34,7 @@
 
 
       <md-card-content layout="row" layout-align="space-between">
-        <a ng-href="/#/missions/{{badge.level_id}}"> <div class="md-media-xl card-media card-image-resize" style="background-image: url('{{badge.image_url.image_url.url}}'); ">
+        <a ng-href="/#/missions/{{badge.level_id}}"> <div class="md-media-xl card-media card-image-resize" style="background-image: url('{{badge.image_url.image_url.url}}');   ">
 
         </div> </a>
 
@@ -57,7 +57,7 @@
 
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline" style="color: #3E7087">Locked </span>
+          <span class="md-headline" style="color: #3E7087">{{locked.title}} </span>
 
         </md-card-title-text>
 
@@ -65,7 +65,7 @@
 
 
       <md-card-content layout="row" layout-align="space-between">
-        <div class="md-media-xl card-media card-image-resize" style="background-image: url('locked.jpg'); ">
+        <div class="md-media-xl card-media card-image-resize" style="background-image: url('{{locked.image_url}}'); opacity: 0.3;  ">
 
         </div>
 
