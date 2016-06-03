@@ -105,10 +105,15 @@ class MissionsController < ApplicationController
 
     if current_user.levels.include?(level)
       last_mission = current_user.passed_levels.where(level_id: decrypt_data).first.last_mission_order
-      missions = Mission.arel_table
-      @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission))).order("missions.order")
 
-      render :json => {'accessing_level_status': 'Success', 'missions': @missions, 'level_id': decrypt_data, 'last_mission_order': last_mission}
+      full_missions=[]
+      current_user.missions.where("level_id = #{level.id}").each do |mission|
+        mission_test_cases=TestCase.find_by mission_id: mission.id
+        full_missions<<{mission: mission, test_cases: mission_test_cases}
+
+      end
+
+      render :json => {'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data, 'last_mission_order': last_mission}
     else
       render :json => {'accessing_level_status': 'false'}
     end
@@ -123,12 +128,12 @@ class MissionsController < ApplicationController
   def compile_user_code
 
     submitted_code = params[:submitted_code]
-    mission =Mission.find_by id:params[:current_mission_id]
+    mission =Mission.find_by id: params[:current_mission_id]
     test_cases = TestCase.where(mission_id: mission.id)
-if submitted_code && params
-  test_cases.each do |tc|
+    if submitted_code && params
+      test_cases.each do |tc|
 
-    java_code = 'public class Code{
+        java_code = 'public class Code{
 
       ' + submitted_code + '
 
@@ -142,30 +147,30 @@ if submitted_code && params
 
     }'
 
-    my_file = File.new("Code.java", "w+")
-    my_file.puts(java_code)
-    my_file.close
-    File.chmod(0777,"Code.java")
-    stdin, stdout, stderr = Open3.popen3('javac Code.java')
+        my_file = File.new("Code.java", "w+")
+        my_file.puts(java_code)
+        my_file.close
+        File.chmod(0777, "Code.java")
+        stdin, stdout, stderr = Open3.popen3('javac Code.java')
 
-    puts stderr.gets
-    $result = `timeout 4s java Code`
+        puts stderr.gets
+        $result = `timeout 4s java Code`
 
-    if $result.chomp != tc.output
-      render :json =>  {'output':'Failure'}
-      return
-    end
+        if $result.chomp != tc.output
+          render :json => {'output': 'Failure'}
+          return
+        end
 
-    File.delete("Code.java")
-    File.delete("Code.class")
+        File.delete("Code.java")
+        File.delete("Code.class")
 
-  end
+      end
 #update Database
-  PassedMission.open_new_mission(user_id,mission.order+1)
-  render :json =>  {'output':'Success'}
-else
-  render :json =>  {'output':'Failure'}
-end
+      PassedMission.open_new_mission(current_user.id, mission.order+1)
+      render :json => {'output': 'Success'}
+    else
+      render :json => {'output': 'Failure'}
+    end
 
 
   end
