@@ -25,7 +25,7 @@ class PassedMission < ActiveRecord::Base
       level= PassedLevel.open_new_level(user.id, mission.level.id + 1)
       next_mission_order=1
       output[:next_level]=mission.level.order+1
-      output[:next_mission]=self.last_mission_with_test_cases(user, mission.level)
+      output[:next_mission]=self.missions_with_test_cases(user, mission.level)
     end
 
     self.open_new_mission(user.id, next_mission_order, mission.level.id)
