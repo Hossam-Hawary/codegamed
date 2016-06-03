@@ -1,54 +1,44 @@
-angular.module('codeGamed').factory('MissionsFactory',function($http,$q){
+angular.module('codeGamed').factory('MissionsFactory', function ($http, $q) {
 
 
     return {
 
-        validateLevel:function(level_id){
-
-            console.log("Sending POST request to the Server")
+        validateLevel: function (level_id) {
 
             var def = $q.defer();
 
             $http({
 
-                'url':'/missions/show_user_missions',
-                'method':'post',
+                'url': '/missions/show_user_missions',
+                'method': 'post',
                 'data': {
-                    'level_id':level_id
+                    'level_id': level_id
 
                 }
-            }).success(function (res){
-                //console.log("Server Replied and Success");
-                //console.log(res);
-                //console.log(res.missions);
+            }).success(function (res) {
                 def.resolve(res);
-            }).error(function(data){
-                //console.log(data)
+            }).error(function (data) {
             });
 
             return def.promise;
         },
 
-        compileCode:function(submitted_code,current_mission){
-
-            console.log("Sending POST request to the Server")
-            console.log(current_mission);
+        compileCode: function (submitted_code, current_mission) {
 
             var def = $q.defer();
 
             $http({
 
-                'url':'/missions/compile_user_code',
-                'method':'post',
+                'url': '/missions/compile_user_code',
+                'method': 'post',
                 'data': {
                     'submitted_code': submitted_code,
                     'current_mission_id': current_mission.id
                 }
-            }).success(function (res){
-                console.log("Server Replied and Success");
+            }).success(function (res) {
                 def.resolve(res);
-            }).error(function(data){
-                console.log(data);
+            }).error(function (data) {
+                alert("Something wrong with connection!");
             });
 
             return def.promise;

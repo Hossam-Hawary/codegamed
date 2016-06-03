@@ -2,17 +2,16 @@
  * Created by te7a on 18/05/16.
  */
 
-angular.module('codeGamed').controller('levelCtrl',function($scope,showUserLevelsFactory){
+angular.module('codeGamed').controller('levelCtrl', function ($scope, showUserLevelsFactory) {
 
 
-    showUserLevelsFactory.showLevels().then(function(res){
+    showUserLevelsFactory.showLevels().then(function (res) {
 
         $scope.badges = res.badges
 
         var locked_levels = []
-        
-        for (var i=0; i< res.locked_levels;i++)
-        {
+
+        for (var i = 0; i < res.locked_levels; i++) {
             locked_levels.push(i);
         }
         $scope.locked_levels = locked_levels
@@ -22,6 +21,6 @@ angular.module('codeGamed').controller('levelCtrl',function($scope,showUserLevel
 });
 
 angular.module('codeGamed')
-    .controller('allLevelsCtrl', function() {
-    
+    .controller('allLevelsCtrl', function () {
+
     });
