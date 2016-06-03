@@ -1,19 +1,19 @@
  <md-toolbar id="level_missions_toolbar" class="md-toolbar-tools">
       <div>
-        <div layout="column" ng-cloak>
-        <md-fab-speed-dial md-open="true" md-direction="right" ng-class="'md-fling'">
-          <md-fab-trigger>
-            <md-button aria-label="M" class="md-fab md-primary">
-              <i class="material-icons">home</i>
-            </md-button>
-          </md-fab-trigger>
+
           <md-fab-actions>
             <img ng-repeat="mission in missions" ng-click="play_mission(mission)" src="http://www.clipartbest.com/cliparts/9iz/oG5/9izoG5BzT.png" height="50px" width="50px" class="box rotate">
           </md-fab-actions>
-        </md-fab-speed-dial>
-          </div>
+
       </div>
       <span flex></span>
+     <div>
+       <md-select ng-model="current_theme" ng-change="update_theme()">
+         <md-option ng-repeat="theme in themes" value="{{theme}}">
+           {{theme}}
+         </md-option>
+       </md-select>
+     </div>
       <img src="http://www.clipartbest.com/cliparts/9iz/oG5/9izoG5BzT.png" class="codeGamed-toolbar-avatar">
   </md-toolbar>
 
@@ -56,23 +56,13 @@
               <div id="accordion">
                 <h3>Section 1</h3>
                 <div>
-                  <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
                 </div>
               </div>
                 <md-button class="md-raised md-primary" ng-click="submitAnswer()">Submit</md-button>
             </md-content>
           </md-tab>
           <md-tab label="Settings">
-            <md-input-container>
-            Theme
-              <div>
-            <md-select ng-model="current_theme" ng-change="update_theme()">
-              <md-option ng-repeat="theme in themes" value="{{theme}}">
-                {{theme}}
-              </md-option>
-            </md-select>
-              </div>
-          </md-input-container>
+
           </md-tab>
         </md-tabs>
       </div>
