@@ -123,48 +123,51 @@ class MissionsController < ApplicationController
   def compile_user_code
 
     submitted_code = params[:submitted_code]
-    puts params[:current_mission_id]
     test_cases = TestCase.where(mission_id: params[:current_mission_id])
-if submitted_code && params
-  test_cases.each do |tc|
 
-    java_code = 'public class Code{
+    if submitted_code && params
+      test_cases.each do |tc|
 
-      ' + submitted_code + '
+        java_code = 'public class Code{
 
-      public static void main(String args[]){
+          ' + submitted_code + '
 
-        Code c = new Code();
-        int x = c.' + tc.input + ';
-        System.out.println(""+x);
+          public static void main(String args[]){
 
-      }
+            Code c = new Code();
+            int x = c.' + tc.input + ';
+            System.out.println(""+x);
 
-    }'
+          }
 
-    my_file = File.new("Code.java", "w+")
-    my_file.puts(java_code)
-    my_file.close
-    File.chmod(0777,"Code.java")
-    stdin, stdout, stderr = Open3.popen3('javac Code.java')
+        }'
 
-    puts stderr.gets
-    $result = `timeout 4s java Code`
+        my_file = File.new("Code.java", "w+")
+        my_file.puts(java_code)
+        my_file.close
+        File.chmod(0777,"Code.java")
+        stdin, stdout, stderr = Open3.popen3('javac Code.java')
 
-    if $result.chomp != tc.output
+        puts stderr.gets
+        $result = `timeout 4s java Code`
+
+        if $result.chomp != tc.output
+          render :json =>  {'output':'Failure'}
+          return
+        end
+
+        File.delete("Code.java")
+        File.delete("Code.class")
+
+      end
+
+      render :json =>  {'output':'Success'}
+
+    else
+
       render :json =>  {'output':'Failure'}
-      return
+
     end
-
-    File.delete("Code.java")
-    File.delete("Code.class")
-
-  end
-
-  render :json =>  {'output':'Success'}
-else
-  render :json =>  {'output':'Failure'}
-end
 
 
   end

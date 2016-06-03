@@ -8,6 +8,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     MissionsFactory.validateLevel(levelId).then(function (res) {
 
         if (res.accessing_level_status == 'Success') {
+            console.log(res.missions);
             $scope.missions = res.missions;
             $scope.myHTML = res.missions[res.last_mission_order - 1].problem;
             myCodeMirror.doc.setValue(res.missions[res.last_mission_order - 1].initial_code);
