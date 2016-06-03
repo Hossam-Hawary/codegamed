@@ -105,12 +105,7 @@ class MissionsController < ApplicationController
 
     if current_user.levels.include?(level)
 
-      full_missions = []
-
-      current_user.missions.order("missions.order").where("level_id = #{level.id}").each do |mission|
-        mission_test_cases = TestCase.where mission_id: mission.id
-        full_missions << { mission_data: mission, mission_test_cases: mission_test_cases }
-      end
+      full_missions=PassedMission.missions_with_test_cases(current_user, level)
 
       render :json => { 'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data }
 

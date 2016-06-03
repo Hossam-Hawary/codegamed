@@ -8,8 +8,6 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
 
         if (res.accessing_level_status == 'Success') {
             //console.log(res.missions);
-
-
             $scope.missions = res.missions;
             $scope.myHTML = res.missions[res.missions.length - 1].mission_data.problem;
             myCodeMirror.doc.setValue(res.missions[res.missions.length - 1].mission_data.initial_code);
@@ -56,6 +54,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
                         left: 1500
                     })
             );
+            console.log(res)
 
         });
     };
