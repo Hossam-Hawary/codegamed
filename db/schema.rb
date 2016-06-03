@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20160531130526) do
     t.text     "problem",      limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.text     "initial_code", limit: 65535
+    t.string   "initial_code", limit: 255
   end
 
   add_index "missions", ["level_id"], name: "index_missions_on_level_id", using: :btree

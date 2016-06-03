@@ -11,11 +11,11 @@ angular.module('codeGamed').controller('levelCtrl', function ($scope, showUserLe
 
         var locked_levels = []
 
-        for (var i = 0; i < res.locked_levels; i++) {
-            locked_levels.push(i);
+        for (var i = 0; i < res.locked_levels.length; i++) {
+            locked_levels.push(res.locked_levels[i]);
         }
         $scope.locked_levels = locked_levels
-
+       
     });
 
 });

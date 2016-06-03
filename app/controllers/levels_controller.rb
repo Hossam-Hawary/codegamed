@@ -83,34 +83,10 @@ class LevelsController < ApplicationController
   end
 
   def show_user_levels
-    @levels = current_user.levels.order(order: :asc)
-    @temp_badge = {}
-    @badges = []
-    i=0
 
+  @badges = Level.user_opened_levels(current_user)
 
-    @levels.each do |level|
-
-
-      encrypted_id = AESCrypt.encrypt(level.id, 'codeGamed_Secret_Key')
-
-      @temp_badge[:level_id] = encrypted_id #encrypted_id
-
-      @temp_badge[:title] = level.badge.title
-      @temp_badge[:image_url] = level.badge.image_url
-
-
-      @badges[i] = @temp_badge
-
-      #must be emptied to store the next value don't try to remove
-      @temp_badge= {}
-      i=i+1
-
-
-    end
-
-
-    @locked_levels = Level.count() - current_user.levels.count()
+   @locked_levels = Level.locked_badges(current_user)
 
     render :json => {'badges': @badges, 'locked_levels': @locked_levels}
 
