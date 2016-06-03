@@ -12,10 +12,11 @@ class PassedLevel < ActiveRecord::Base
         passed_level.level_id=level.id
         passed_level.last_mission_order=1
         passed_level.save!
+        level=passed_level.level
       end
 
     end
-
+    level
   end
 
   def self.last_level(user)

@@ -14,20 +14,33 @@ class PassedMission < ActiveRecord::Base
 
   end
 
-  def self.pass_mission(user,mission)
-    last_mission=mission.level.missions.order("missions.order").last
+  def self.pass_mission(user, mission)
     next_mission_order= mission.order+1
-    output={output:'Success',next_level:mission.level.order}
+    level=mission.level
+    last_mission=level.missions.order("missions.order").last
+
+    output={output: 'Success', next_level: "same"}
 
     if last_mission.order==mission.order
-      PassedLevel.open_new_level(user.id,mission.level.id + 1)
+      level= PassedLevel.open_new_level(user.id, mission.level.id + 1)
       next_mission_order=1
       output[:next_level]=mission.level.order+1
+      output[:next_mission]=self.last_mission_with_test_cases(user, mission.level)
     end
 
-    self.open_new_mission(user.id,next_mission_order,mission.level.id)
+    self.open_new_mission(user.id, next_mission_order, mission.level.id)
+    output[:missions]= self.missions_with_test_cases(user,level)
 
     output
   end
 
+
+  def self.missions_with_test_cases(user, level)
+    full_missions=[]
+    user.missions.where("level_id = #{level.id}").each do |mission|
+      mission_test_cases=TestCase.find_by mission_id: mission.id
+      full_missions<<{mission: mission, test_cases: mission_test_cases}
+    end
+    full_missions
+  end
 end
