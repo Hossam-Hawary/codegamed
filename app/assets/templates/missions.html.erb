@@ -22,16 +22,13 @@
 </div>
 
 <div layout="row"  >
-  <div flex style=" height: 600px; ">
+  <div flex style=" height: 465px; ">
 
     <md-tabs  md-border-bottom style="min-height: 100%;">
       <md-tab label="Video" style="background-color: #2b2b2b;">
         <md-content class="md-padding" style="background-color: transparent">
 
-          <!--<embed width="600" height="315"-->
-                 <!--src="http://www.youtube.com/embed/3TAUnYZpMbA">-->
-
-          <iframe src="https://player.vimeo.com/video/162638502" width="600" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <iframe src="https://player.vimeo.com/video/162638502" width="600" height="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
         </md-content>
       </md-tab>
@@ -46,37 +43,42 @@
 
   <div flex>
     <div layout="column">
-      <div flex style="background-color: #2b2b2b; height: 360px; border-bottom-style: solid; border-bottom-color: transparent;;position:relative;z-index: 0">
+      <div flex style="background-color: #2b2b2b; height: 250px; border-bottom-style: solid; border-bottom-color: transparent;;position:relative;z-index: 0">
         <div id="codeEditing" style="min-height: 100%;"></div>
         <!--<md-tabs  md-border-bottom >-->
           <!--<md-tab label="Code">-->
           <!--</md-tab>-->
         <!--</md-tabs>-->
       </div>
-      <div flex style="background-color: #2b2b2b; height: 280px; border-bottom-style: solid; border-bottom-color: transparent;">
-        <md-tabs  md-border-bottom style="min-height: 100%;">
-          <md-tab label="Test Cases" style="background-color: #2b2b2b;">
-            <md-content class="md-padding" style="background-color: transparent;">
-
-                <md-button class="md-raised md-primary" ng-click="submitAnswer()">Submit</md-button>
-            </md-content>
-          </md-tab>
-          <md-tab label="Settings">
-            <md-input-container>
-            Theme
-              <div>
-            <md-select ng-model="current_theme" ng-change="update_theme()">
-              <md-option ng-repeat="theme in themes" value="{{theme}}">
-                {{theme}}
-              </md-option>
-            </md-select>
-              </div>
-          </md-input-container>
-          </md-tab>
-        </md-tabs>
-      </div>
+        <div id="accordion" style="overflow: scroll; height: 150px;">
+          <h3>Section 1</h3>
+          <div>
+            <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+          </div>
+          <h3>Section 2</h3>
+          <div>
+            <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+          </div>
+          <h3>Section 3</h3>
+          <div>
+            <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+          </div>
+          <h3>Section 4</h3>
+          <div>
+            <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi. Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+          </div>
+        </div>
     </div>
 
   </div>
 </div>
 <script src="/codemirror.js"></script>
+<script>
+  $(function() {
+    $( "#accordion" ).accordion({
+      collapsible: true,
+      active: false
+
+    });
+  });
+</script>

@@ -1,4 +1,4 @@
-angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,MissionsFactory){
+angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,$mdDialog,MissionsFactory){
 
 
     var levelId = $routeParams.level_id;
@@ -34,7 +34,24 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         alert('compiling code');
         var submitted_code = myCodeMirror.doc.getValue();
         MissionsFactory.compileCode(submitted_code,$scope.current_mission).then(function(res){
-            alert(res.output);
+            $mdDialog.show(
+                $mdDialog.alert()
+                    .clickOutsideToClose(true)
+                    .title('Code Status')
+                    .textContent(res.output)
+                    .ok('Next')
+                    // Or you can specify the rect to do the transition from
+                    .openFrom({
+                        top: -50,
+                        width: 30,
+                        height: 80
+                    })
+                    .closeTo({
+                        left: 1500
+                    })
+            );
+
+
         });
     };
     $scope.current_theme = 'dracula';
