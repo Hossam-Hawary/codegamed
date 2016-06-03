@@ -1,6 +1,4 @@
-<div style="position:relative;z-index: 1">
-  <md-toolbar class="codeGamed-toolbar">
-    <div class="md-toolbar-tools">
+ <md-toolbar id="level_missions_toolbar" class="md-toolbar-tools">
       <div>
         <div layout="column" ng-cloak>
         <md-fab-speed-dial md-open="true" md-direction="right" ng-class="'md-fling'">
@@ -17,9 +15,7 @@
       </div>
       <span flex></span>
       <img src="http://www.clipartbest.com/cliparts/9iz/oG5/9izoG5BzT.png" class="codeGamed-toolbar-avatar">
-    </div>
   </md-toolbar>
-</div>
 
 <div layout="row"  >
   <div flex style=" height: 465px; ">
@@ -28,7 +24,7 @@
       <md-tab label="Video" style="background-color: #2b2b2b;">
         <md-content class="md-padding" style="background-color: transparent">
 
-          <iframe src="https://player.vimeo.com/video/162638502" width="600" height="250" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <iframe ng-src="{{ mission_video | trusted }}" width="600" height="300" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
         </md-content>
       </md-tab>

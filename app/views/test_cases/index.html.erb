@@ -1,39 +1,48 @@
-
 <div ng-app="codeGamed" md-theme="docs-dark">
   <md-content class="md-padding" layout="column">
+    <p id="notice"><%= notice %></p>
+    <div>
+      <%= link_to "<md-button class='md-raised md-primary'>Sign Out Admin</md-button> ".html_safe, destroy_admin_session_path, {method: :delete} %>
+      <%= link_to '<md-button class="md-raised">All Levels</md-button>'.html_safe, levels_path %>
+      <%= link_to "<md-button class='md-raised'>All Badges </md-button>".html_safe, badges_path %>
+      <%= link_to '<md-button class="md-raised">All Test Cases</md-button>'.html_safe, test_cases_path %>
+      <%= link_to '<md-button class="md-raised md-warn">New Level</md-button>'.html_safe, new_level_path %>
+      <%= link_to '<md-button class="md-raised md-warn">New Mission</md-button>'.html_safe, new_mission_path %>
+      <%= link_to '<md-button class="md-raised md-warn">New Badge </md-button>'.html_safe, new_badge_path %>
+      <%= link_to '<md-button class="md-raised md-warn">New Test Case</md-button>'.html_safe, new_test_case_path %>
+      <%= link_to '<md-button class="md-raised md-warn">New Admin</md-button>'.html_safe, new_admin_registration_path %>
+      <%= link_to '<md-button class="md-raised md-warn">Edit Admin</md-button>'.html_safe, edit_admin_registration_path %>
+    </div>
+    <h1>Listing Test Case</h1>
 
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Test Case</h1>
-
-<table border="1">
-  <thead>
-  <tr>
-    <th>Level</th>
-    <th>Mission</th>
-    <th>Input</th>
-    <th>Output</th>
-    <th colspan="2">Actions</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @test_cases.each do |test_case| %>
+    <table border="1">
+      <thead>
       <tr>
-        <td><%= test_case.mission.level.order %></td>
-        <td><%= test_case.mission.order %></td>
-        <td><%= test_case.input %></td>
-        <td><%= test_case.output %></td>
-        <td> <%= link_to '<md-button class="md-raised md-warn">Edit</md-button>'.html_safe, edit_test_case_path(test_case) %> </td>
-        <td><%= link_to '<md-button class="md-raised md-warn">Destroy</md-button>'.html_safe, test_case, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Level</th>
+        <th>Mission</th>
+        <th>Input</th>
+        <th>Output</th>
+        <th colspan="2">Actions</th>
       </tr>
-  <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @test_cases.each do |test_case| %>
+          <tr>
+            <td><%= test_case.mission.level.order %></td>
+            <td><%= test_case.mission.order %></td>
+            <td><%= test_case.input %></td>
+            <td><%= test_case.output %></td>
+            <td> <%= link_to '<md-button class="md-raised md-warn">Edit</md-button>'.html_safe, edit_test_case_path(test_case) %> </td>
+            <td><%= link_to '<md-button class="md-raised md-warn">Destroy</md-button>'.html_safe, test_case, method: :delete, data: {confirm: 'Are you sure?'} %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to '<md-button class="md-raised md-warn">New Test Case</md-button>'.html_safe, new_test_case_path %>
+    <br>
+
+    <%= link_to '<md-button class="md-raised md-warn">New Test Case</md-button>'.html_safe, new_test_case_path %>
   </md-content>
 </div>
 <script src="/form_theme.js"></script>

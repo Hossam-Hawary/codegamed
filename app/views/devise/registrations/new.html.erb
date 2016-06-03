@@ -2,44 +2,44 @@
   <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
 
 
-  <h2>Add Admin</h2>
+    <h2>Add Admin</h2>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= devise_error_messages! %>
 
-  <div class="field">
-    <md-input-container  >
+        <div class="field">
+          <md-input-container>
 
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-    </md-input-container>
+            <%= f.label :email %><br/>
+            <%= f.email_field :email, autofocus: true %>
+          </md-input-container>
 
-  </div>
+        </div>
 
-  <div class="field">
-    <md-input-container>
-    <%= f.label :password %>
-    <%= f.password_field :password, autocomplete: "off" %>
-    </md-input-container>
-    <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+        <div class="field">
+          <md-input-container>
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </md-input-container>
+          <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %><br/>
 
-  </div>
+        </div>
 
-  <div class="field">
-    <md-input-container  >
+        <div class="field">
+          <md-input-container>
 
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-    </md-input-container>
+            <%= f.label :password_confirmation %><br/>
+            <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          </md-input-container>
 
-  </div>
+        </div>
 
-  <div class="actions">
-    <%= f.submit "Sign Up" ,:class=>'md-button md-raised  md-warn'%>
-  </div>
-<% end %>
+        <div class="actions">
+          <%= f.submit "Sign Up", :class => 'md-button md-raised  md-warn' %>
+        </div>
+    <% end %>
 
   </md-content>
 </div>

@@ -25,17 +25,17 @@
                        <%= f.label :Score %>
                        <%= f.number_field :score%>
                        </md-input-container>
+
          </div>
 
 
     <div class="field">
 
-                  <md-input-container class="" >
+   <md-input-container class="" >
     <%= f.label :Order %>
     <%= f.number_field :order%>
-    <br>
-      <div class="hint">you can leave it blank if want to make it the last one!</div>
-    </md-input-container>
+        <div class="hint">you can leave it blank if want to make it the last one!</div>
+   </md-input-container>
 </div>
 
 
@@ -43,7 +43,7 @@
                   <md-input-container class="md-block" flex-gt-sm">
         <%= f.label :Video_URL  %>
         <%= f.text_field :video_url,:placeholder=>"http://youtube.com/"%>
-                            </md-input-container>
+            </md-input-container>
 
 
       </div>
@@ -59,13 +59,11 @@
       <div class="field">
          <%= f.label :Problem %><br>
          <%= f.text_area :problem ,:class => 'ckeditor form-control' %>
-
       </div>
   <div class="actions">
-         <%= f.submit :class=>'md-button md-raised  md-warn'%>
-
-
+     <%= f.submit :class=>'md-button md-raised  md-warn'%>
   </div>
+
 <% end %>
  </md-content>
 </div>

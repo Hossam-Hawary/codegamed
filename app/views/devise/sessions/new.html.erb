@@ -2,37 +2,37 @@
   <md-content md-theme="docs-dark" layout-gt-sm="row" layout-padding>
 
 
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <md-input-container  >
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field">
+          <md-input-container>
 
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-    </md-input-container>
+            <%= f.label :email %><br/>
+            <%= f.email_field :email, autofocus: true %>
+          </md-input-container>
 
-  </div>
+        </div>
 
-  <div class="field">
-    <md-input-container  >
+        <div class="field">
+          <md-input-container>
 
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-    </md-input-container>
+            <%= f.label :password %><br/>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </md-input-container>
 
-  </div>
+        </div>
 
-  <%# if devise_mapping.rememberable? -%>
-    <!--<div class="field">-->
-      <!--<%= f.check_box :remember_me %>-->
-      <!--<%= f.label :remember_me %>-->
-    <!--</div>-->
-  <%# end -%>
+        <%# if devise_mapping.rememberable? -%>
+        <!--<div class="field">-->
+        <!--<%= f.check_box :remember_me %>-->
+        <!--<%= f.label :remember_me %>-->
+        <!--</div>-->
+        <%# end -%>
 
-  <div class="actions">
-    <%= f.submit "Log in" ,:class=>'md-button md-raised  md-warn'%>
-  </div>
-<% end %>
-</md-content>
+        <div class="actions">
+          <%= f.submit "Log in", :class => 'md-button md-raised  md-warn' %>
+        </div>
+    <% end %>
+  </md-content>
 </div>
 
 <script src="/form_theme.js">

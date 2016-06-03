@@ -106,7 +106,7 @@ class MissionsController < ApplicationController
     if current_user.levels.include?(level)
       last_mission = current_user.passed_levels.where(level_id: decrypt_data).first.last_mission_order
       missions = Mission.arel_table
-      @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission)))
+      @missions = Mission.where(missions[:level_id].eq(decrypt_data.to_i).and(missions[:order].lteq(last_mission))).order("missions.order")
 
       render :json => {'accessing_level_status': 'Success', 'missions': @missions, 'level_id': decrypt_data, 'last_mission_order': last_mission}
     else

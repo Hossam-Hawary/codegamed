@@ -1,17 +1,17 @@
-angular.module('codeGamed').factory('showUserLevelsFactory',function($http,$q){
+angular.module('codeGamed').factory('showUserLevelsFactory', function ($http, $q) {
 
 
     return {
 
-        showLevels:function(){
+        showLevels: function () {
             var def = $q.defer();
 
             $http({
 
-                'url':'/levels/show_user_levels',
-                'method':'post'
-                
-            }).success(function (res){
+                'url': '/levels/show_user_levels',
+                'method': 'post'
+
+            }).success(function (res) {
                 def.resolve(res);
             });
 

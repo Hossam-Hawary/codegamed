@@ -3,24 +3,24 @@
 </div>
 
 <div ng-app="codeGamed" class="home-container">
-<!-- header -->
-<div ng-cloak>
+  <!-- header -->
+  <div ng-cloak>
     <md-toolbar>
       <div class="md-toolbar-tools mainbar">
-        <%= image_tag "logo.jpg" ,:class => "icon-small"%> <span flex> CodeGamed</span>
+        <%= image_tag "logo.jpg", :class => "icon-small" %> <span flex> CodeGamed</span>
         <!-- <md-button class="md-icon-button" aria-label="Favorite"> -->
 
-         <%= link_to "<md-button class='md-raised md-warn'>Login with Facebook</md-button>".html_safe, "/auth/facebook", id: "sign_in" %>
+        <%= link_to "<md-button class='md-raised md-warn'>Login with Facebook</md-button>".html_safe, "/auth/facebook", id: "sign_in" %>
 
         <!-- </md-button> -->
       </div>
     </md-toolbar>
-</div>
-	<!-- end header -->
-<!-- middle part layout -->
+  </div>
+  <!-- end header -->
+  <!-- middle part layout -->
   <md-grid-list
-        md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="5"
-        md-row-height-gt-md="1:1" md-row-height="1:1" >
+  md-cols-xs="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="5"
+  md-row-height-gt-md="1:1" md-row-height="1:1">
 
     <div id="intro">
       <h1>How well can you code?</h1>
@@ -32,144 +32,147 @@
     </div>
 
   </md-grid-list>
-<!--  end of middle part layout -->
-<!-- cards of the page -->
-	<div ng-cloak>
-	 <md-content class="md-padding objectives" layout-xs="column" layout="row">
-	    <div flex-xs flex-gt-xs="50" layout="column">
-	      <md-card >
+  <!--  end of middle part layout -->
+  <!-- cards of the page -->
+  <div ng-cloak>
+    <md-content class="md-padding objectives" layout-xs="column" layout="row">
+      <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card>
           <%#= image_tag "logo_large.png",:class => "md-card-image" %>
           <md-card-title>
-	          <md-card-title-text>
-	            <span class="md-headline">Sharpen Your Skills</span>
-	          </md-card-title-text>
-	        </md-card-title>
-	        <md-card-content>
-	          <p>
-	            Whether it’s a refresher on arrays or for loops, a complex search algorithm, or writing clean and responsive CSS, CodeFights will keep your skills sharp.
-	          </p>
-	        </md-card-content>
+            <md-card-title-text>
+              <span class="md-headline">Sharpen Your Skills</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <p>
+              Whether it’s a refresher on arrays or for loops, a complex search algorithm, or writing clean and
+              responsive CSS, CodeFights will keep your skills sharp.
+            </p>
+          </md-card-content>
 
-	      </md-card>
-		</div>
-		<div flex-xs flex-gt-xs="50" layout="column">
-	      <md-card>
-	        <md-card-title>
-	          <md-card-title-text>
-	            <span class="md-headline">Have Fun!</span>
-	          </md-card-title-text>
-	        </md-card-title>
-	        <md-card-content>
-	          <p>
-	            Discover how programming can be fun again. Find bugs, fill in missing code, or write functions from scratch. CodeFights is full of variety so you’ll never get bored. 
-	          </p>
-	        </md-card-content>
-	      </md-card>
-	  </div>
-	    <div flex-xs flex-gt-xs="50" layout="column">
-	      <md-card>
-	        <md-card-title>
-	          <md-card-title-text>
-	            <span class="md-headline">See How You Compare</span>
-	          </md-card-title-text>
-	        </md-card-title>
-	        <md-card-content>
-	          <p>
-	            See how you compare against your friends and other CodeFighters. Or see if you can code better than engineers at top companies like Uber, Dropbox and Two Sigma. 
-	          </p>
-	        </md-card-content>
-	      </md-card>
-	  </div>
-   </md-content>
-	</div>
-	<!-- end of cards -->
+        </md-card>
       </div>
-     </md-content>
+      <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">Have Fun!</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <p>
+              Discover how programming can be fun again. Find bugs, fill in missing code, or write functions from
+              scratch. CodeFights is full of variety so you’ll never get bored.
+            </p>
+          </md-card-content>
+        </md-card>
+      </div>
+      <div flex-xs flex-gt-xs="50" layout="column">
+        <md-card>
+          <md-card-title>
+            <md-card-title-text>
+              <span class="md-headline">See How You Compare</span>
+            </md-card-title-text>
+          </md-card-title>
+          <md-card-content>
+            <p>
+              See how you compare against your friends and other CodeFighters. Or see if you can code better than
+              engineers at top companies like Uber, Dropbox and Two Sigma.
+            </p>
+          </md-card-content>
+        </md-card>
+      </div>
+    </md-content>
   </div>
-	<!-- end of objectives cards -->
-  <md-content class="md-padding reviews" layout-xs="column" layout="row">
-    <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card>
-        <md-card-header>
-          <md-card-avatar>
-            <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
-            <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title"> Hossam Eldeen</span>
-            <span class="md-subhead"> Badge Title </span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-content>
-          <p>
-            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-          </p>
-        </md-card-content>
-      </md-card>
-    </div>
-    <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card>
-        <md-card-header>
-          <md-card-avatar>
-            <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
-            <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title"> Hossam Eldeen</span>
-            <span class="md-subhead"> Badge Title </span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-content>
-          <p>
-            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-          </p>
-        </md-card-content>
-      </md-card>
-    </div>
-    <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card>
-        <md-card-header>
-          <md-card-avatar>
-            <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
-            <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title"> Hossam Eldeen</span>
-            <span class="md-subhead"> Badge Title </span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-content>
-          <p>
-            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-          </p>
-        </md-card-content>
-      </md-card>
-    </div>
-    <div flex-xs flex-gt-xs="50" layout="column">
-      <md-card>
-        <md-card-header>
-          <md-card-avatar>
-            <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
-            <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
-          </md-card-avatar>
-          <md-card-header-text>
-            <span class="md-title"> Hossam Eldeen</span>
-            <span class="md-subhead"> Badge Title </span>
-          </md-card-header-text>
-        </md-card-header>
-        <md-card-content>
-          <p>
-            The titles of Washed Out's breakthrough song and the first single from Paracosm share the
-            two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
-          </p>
-        </md-card-content>
-      </md-card>
-    </div>
-  </md-content>
-  <!-- end of reviews cards -->
+  <!-- end of cards -->
+</div>
+</md-content>
+</div>
+<!-- end of objectives cards -->
+<md-content class="md-padding reviews" layout-xs="column" layout="row">
+  <div flex-xs flex-gt-xs="50" layout="column">
+    <md-card>
+      <md-card-header>
+        <md-card-avatar>
+          <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
+          <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
+        </md-card-avatar>
+        <md-card-header-text>
+          <span class="md-title"> Hossam Eldeen</span>
+          <span class="md-subhead"> Badge Title </span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-content>
+        <p>
+          The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+          two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex-xs flex-gt-xs="50" layout="column">
+    <md-card>
+      <md-card-header>
+        <md-card-avatar>
+          <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
+          <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
+        </md-card-avatar>
+        <md-card-header-text>
+          <span class="md-title"> Hossam Eldeen</span>
+          <span class="md-subhead"> Badge Title </span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-content>
+        <p>
+          The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+          two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex-xs flex-gt-xs="50" layout="column">
+    <md-card>
+      <md-card-header>
+        <md-card-avatar>
+          <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
+          <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
+        </md-card-avatar>
+        <md-card-header-text>
+          <span class="md-title"> Hossam Eldeen</span>
+          <span class="md-subhead"> Badge Title </span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-content>
+        <p>
+          The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+          two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+  <div flex-xs flex-gt-xs="50" layout="column">
+    <md-card>
+      <md-card-header>
+        <md-card-avatar>
+          <img src="https://graph.facebook.com/1160080217370602/picture?type=normal" class="codeGamed-toolbar-avatar">
+          <!--<md-icon class="md-avatar-icon" md-svg-icon="https://graph.facebook.com/1160080217370602/picture?type=normal"></md-icon>-->
+        </md-card-avatar>
+        <md-card-header-text>
+          <span class="md-title"> Hossam Eldeen</span>
+          <span class="md-subhead"> Badge Title </span>
+        </md-card-header-text>
+      </md-card-header>
+      <md-card-content>
+        <p>
+          The titles of Washed Out's breakthrough song and the first single from Paracosm share the
+          two most important words in Ernest Greene's musical language: feel it. It's a simple request, as well...
+        </p>
+      </md-card-content>
+    </md-card>
+  </div>
+</md-content>
+<!-- end of reviews cards -->
 
 </div>
 
