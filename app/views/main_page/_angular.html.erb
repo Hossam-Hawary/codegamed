@@ -1,8 +1,8 @@
 <div ng-app="codeGamed">
   <!--- header -->
-
+<div ng-controller="listFriendsCtrl">
   <md-toolbar class="codeGamed-toolbar">
-    <div class="md-toolbar-tools">
+    <div class="md-toolbar-tools" >
       <md-button ng-href="/#/">
 
         <i class="material-icons">home</i>
@@ -10,17 +10,109 @@
       </md-button>
 
 
-
       <%= link_to "<md-button  class='md-raised'>Sign out</md-button>".html_safe, signout_path, id: "sign_out" %>
 
 
 
       <span flex></span>
-      &nbsp; <strong><%= current_user.name %></strong> &nbsp;
-      <%= image_tag current_user.image_url, class: 'codeGamed-toolbar-avatar' %>
+
+      <md-button ng-click="openRightMenu()">
+        Profile
+      </md-button>
+
     </div>
   </md-toolbar>
+  <md-sidenav  md-component-id="right" md-is-open="isSidenavOpen" class="md-sidenav-right " style="position: fixed">
+  <ng-md-icon ng-click="closeRightMenu()" icon="close" size="48"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" widht="48" height="48"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></ng-md-icon>
+    <md-list layout-padding>
+      <md-list-item class="md-3-line" >
+        <%= image_tag current_user.image_url, class: 'md-avatar' ,style: ' width: 90px; height: 100px;' %>
+        <div class="md-list-item-text">
+          <h3><strong><%= current_user.name %></strong></h3>
+        </div>
+      </md-list-item>
 
+    </md-list>
+
+  <hr>
+    <md-subheader ><h2>LeaderBoard</h2></md-subheader>
+    <md-list layout="column" layout-padding>
+      <md-list-item  class="md-3-line" >
+        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+        <div class="md-list-item-text">
+
+          <h3>Yuppppp</h3> <span style="float: right;">1</span>
+          <h4>the score</h4>
+          <p>
+            {{message.notes}}
+          </p>
+        </div>
+      </md-list-item>
+
+
+
+      <md-list-item  class="md-3-line" >
+        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+
+        <div class="md-list-item-text">
+          <h3>Yuppppp</h3> <span style="float: right;">2</span>
+          <h4>the score</h4>
+
+        </div>
+
+      </md-list-item>
+
+
+
+      <md-list-item  class="md-3-line" >
+        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+
+        <div class="md-list-item-text">
+          <h3>Yuppppp</h3> <span style="float: right;">2</span>
+          <h4>the score</h4>
+
+        </div>
+
+      </md-list-item>
+
+      <md-list-item  class="md-3-line" >
+        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+
+        <div class="md-list-item-text">
+          <h3>Yuppppp</h3> <span style="float: right;">2</span>
+          <h4>the score</h4>
+
+        </div>
+
+      </md-list-item>
+
+      <md-list-item  class="md-3-line" >
+        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+
+        <div class="md-list-item-text">
+          <h3>Yuppppp</h3> <span style="float: right;">2</span>
+          <h4>the score</h4>
+
+        </div>
+
+      </md-list-item>
+
+      <md-list-item  class="md-3-line" >
+        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+
+        <div class="md-list-item-text">
+          <h3>Yuppppp</h3> <span style="float: right;">2</span>
+          <h4>the score</h4>
+
+        </div>
+
+      </md-list-item>
+
+
+    </md-list>
+
+  </md-sidenav>
+</div>
   <!--- The Body -->
   <div ng-view>
 

@@ -69,7 +69,6 @@ class LevelsController < ApplicationController
           Level.update(level, "order" => level.order+1)
         end
       end
-
     end
     respond_to do |format|
       if @level.update(@level_params)
@@ -84,12 +83,21 @@ class LevelsController < ApplicationController
 
   def show_user_levels
 
-  @badges = Level.user_opened_levels(current_user)
+  	@badges = Level.user_opened_levels(current_user)
 
-   @locked_levels = Level.locked_badges(current_user)
+   	@locked_levels = Level.locked_badges(current_user)
 
-    render :json => {'badges': @badges, 'locked_levels': @locked_levels}
+	 @friends=[]
+	 @friend={}
 
+	 current_user.friends.each do |friend|
+	 	@friend[:name] = friend.name
+	 	@friend[:image] = friend.image_url
+	 	@friend[:score] = friend.total_score
+	 	@friends.push(@friend)
+	 end 
+
+    render :json => {'badges': @badges, 'locked_levels': @locked_levels,'friends':@friends}
 
   end
 
