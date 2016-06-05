@@ -106,8 +106,9 @@ class MissionsController < ApplicationController
     if current_user.levels.include?(level)
 
       full_missions = PassedMission.missions_with_test_cases(current_user, level)
+      level_badge = Badge.find_by_id(level.badge_id).image_url
 
-      render :json => { 'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data }
+      render :json => { 'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data, 'level_badge_url': level_badge  }
 
     else
 

@@ -9,6 +9,8 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         if (res.accessing_level_status == 'Success') {
             //console.log(res.missions);
             $scope.missions = res.missions;
+            //console.log(res.level_badge_url);
+            $scope.badge = res.level_badge_url;
             $scope.myHTML = res.missions[res.missions.length - 1].mission_data.problem;
             myCodeMirror.doc.setValue(res.missions[res.missions.length - 1].mission_data.initial_code);
             $scope.current_mission = res.missions[res.missions.length - 1].mission_data;
