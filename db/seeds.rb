@@ -6,6 +6,13 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Admin.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+User.create!(provider:'facebook', uid:'1160080217370602', name:'Hossam Eldeen Hawary',
+             oauth_token:'EAADezcEXYPkBAOLADkOXwLRfFq63XBuQJyhOd7kcW0RUBH52MsP6KuD6zsKhnghE1ABZB6UscOO9nznBeTzq8n6nNOHPejElRZAlCfi9sGnCCv8WSgJacrznFgj2FtBWCDV6HFO0lFdyQOvqi7nJSO125ctPsZD',
+             image_url:'https://graph.facebook.com/1160080217370602/picture?type=normal',email:'hossam.hawary@yahoo.com')
+
+User.create!(provider:'facebook', uid:'10209859636793847', name:'Ramez',
+             oauth_token:'EAADezcEXYPkBALI4ZCWUbKamcKsASVFYbeiNHjd1hE8SRbfyUtZBu13ojZAdTjqZCxhGuDaBD5upDEw9UMFT0MeSytebesIFM90r4ioToOZBHehEOdkZAAm4ePylEiLL3KsmF4yI3gD3PEBwybpLCQE3rIpmMKq1YZD',
+             image_url:'https://graph.facebook.com/10209859636793847/picture?type=normal&__mref=message_bubble',email:'ramez.aziz@yahoo.com')
 Level.create!(badge_id:1, order:1)
 Level.create!(badge_id:1, order:2)
 Level.create!(badge_id:1, order:3)
