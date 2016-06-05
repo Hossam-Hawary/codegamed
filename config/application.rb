@@ -1,4 +1,6 @@
 require File.expand_path('../boot', __FILE__)
+require 'graphviz'
+require 'graphviz/theory'
 
 require 'rails/all'
 

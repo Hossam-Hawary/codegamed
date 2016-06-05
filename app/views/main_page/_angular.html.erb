@@ -10,6 +10,7 @@
       </md-button>
 
 
+<<<<<<< HEAD
 
       <%= link_to "<md-button  class='md-raised'>Sign out</md-button>".html_safe, signout_path, id: "sign_out" %>
 
@@ -22,6 +23,19 @@
   </md-toolbar>
 
   <!--- The Body -->
+=======
+         <!-- <md-button  class="md-raised" aria-label="Sign Out"> -->
+           <%= link_to "Sign out", signout_path, id: "sign_out" %>
+        <!-- </md-button> -->
+ 
+
+        <span flex></span>
+        &nbsp; <strong><%= current_user.name %></strong> &nbsp;
+        <%= image_tag current_user.image_url , class: 'codeGamed-toolbar-avatar' %>
+      </div>
+    </md-toolbar>
+   <!--- The Body -->
+>>>>>>> friendship
   <div ng-view>
 
   </div>

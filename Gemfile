@@ -38,8 +38,12 @@ gem 'devise'
 gem 'carrierwave', '0.10.0'
 gem 'mini_magick', '3.8.0'
 gem 'ckeditor_rails'
+<<<<<<< HEAD
 gem 'jquery-ui-rails'
 
+=======
+gem "rails-erd"
+>>>>>>> friendship
 
 gem 'aescrypt'
 # Use Capistrano for deployment
