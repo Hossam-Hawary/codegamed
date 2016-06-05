@@ -23,8 +23,8 @@ class User < ActiveRecord::Base
     end
   end
   def rais_score(mission)
-    last_passed_mission=self.missions.last
-    if last_passed_mission==mission
+    last_passed_mission=self.passed_missions.last
+    if last_passed_mission.mission==mission
     User.update(self, "total_score" => self.total_score + mission.score)
     end
   end
