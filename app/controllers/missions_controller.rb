@@ -105,7 +105,7 @@ class MissionsController < ApplicationController
 
     if current_user.levels.include?(level)
 
-      full_missions=PassedMission.missions_with_test_cases(current_user, level)
+      full_missions = PassedMission.missions_with_test_cases(current_user, level)
 
       render :json => { 'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data }
 

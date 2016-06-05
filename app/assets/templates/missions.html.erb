@@ -45,9 +45,9 @@
 
       <div style="overflow: scroll; height: 190px;">
         <div ng-repeat="test_case in test_cases" my-cool-directive>
-          <h3 ng-bind="test_case.input"></h3>
+          <h3><strong>Input: </strong>{{test_case.input}}</h3>
           <div>
-            <p>{{test_case.output}}</p>
+            <p><strong>Output: </strong>{{test_case.output}}</p>
           </div>
         </div>
       </div>
