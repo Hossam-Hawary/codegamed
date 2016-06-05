@@ -15,6 +15,7 @@ class PassedMission < ActiveRecord::Base
   end
 
   def self.pass_mission(user, mission)
+    user.rais_score(mission)
     next_mission_order= mission.order+1
     level=mission.level
     last_mission=level.missions.order("missions.order").last
@@ -39,7 +40,7 @@ class PassedMission < ActiveRecord::Base
     full_missions=[]
     user.missions.where("level_id = #{level.id}").order(:order).each do |mission|
       mission_test_cases=TestCase.where( mission_id: mission.id)
-      full_missions<<{mission_data: mission, test_cases: mission_test_cases}
+      full_missions<<{mission_data: mission, mission_test_cases: mission_test_cases}
     end
     return full_missions
   end

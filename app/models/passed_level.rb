@@ -20,7 +20,7 @@ class PassedLevel < ActiveRecord::Base
   end
 
   def self.last_level(user)
-    user.levels.maximum("order")
+    level=Level.find_by order:user.levels.maximum("order")
   end
 
 
