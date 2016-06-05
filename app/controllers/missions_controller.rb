@@ -125,49 +125,24 @@ class MissionsController < ApplicationController
   def compile_user_code
 
     submitted_code = params[:submitted_code]
-
     mission = Mission.find_by id:params[:current_mission_id]
-    test_cases = TestCase.where(mission_id: mission.id)
 
     if submitted_code && params
-      test_cases.each do |tc|
 
-        java_code = 'public class Code{
+      compObj = CodeFactory.new.get_code_type('JAVA')
+      result = compObj.compile_user_code(submitted_code,mission)
 
-          ' + submitted_code + '
+      if result == true
 
-          public static void main(String args[]){
+        output= PassedMission.pass_mission(current_user,mission)
+        render :json => output
 
-            Code c = new Code();
-            int x = c.' + tc.input + ';
-            System.out.println(""+x);
+      else
 
-          }
-        }'
-
-        my_file = File.new("Code.java", "w+")
-        my_file.puts(java_code)
-        my_file.close
-        File.chmod(0777,"Code.java")
-        stdin, stdout, stderr = Open3.popen3('javac Code.java')
-
-        puts stderr.gets
-        $result = `timeout 4s java Code`
-
-        if $result.chomp != tc.output
-          render :json =>  {'output':'Failure'}
-          return
-        end
-
-        File.delete("Code.java")
-        File.delete("Code.class")
+        render :json =>  {'output':'Failure'}
+        return
 
       end
-
-#update Database
-
-      output= PassedMission.pass_mission(current_user,mission)
-      render :json => output
 
     else
 
