@@ -40,6 +40,7 @@ gem 'mini_magick', '3.8.0'
 gem 'ckeditor_rails'
 gem 'jquery-ui-rails'
 
+gem "rails-erd"
 
 gem "rails-erd"
 gem 'aescrypt'

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admins, path: 'admin_gamed', path_names: { sign_in: 'in', sign_out: 'logout', password: 'secret', registration: 'register', sign_up: 'let_me_be_admin' }
 
+
   get 'friendships/create'
 
   get 'friendships/update'

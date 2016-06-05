@@ -12,6 +12,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20160531130526) do
+# =======
+# ActiveRecord::Schema.define(version: 20160529100441) do
+# >>>>>>> 13da5f05267f09ce93d4e92e4047daf16af66c83
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
