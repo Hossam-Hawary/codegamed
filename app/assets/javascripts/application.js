@@ -29,6 +29,7 @@
 //= require missions/codeMirror/codemirror.js
 //= require missions/codeMirror/clike.js
 //= require friends/listFriendsCtrl.js
+//= require friends/friendsModel.js
 
 
 //= require_tree .

@@ -37,76 +37,19 @@
   <hr>
     <md-subheader ><h2>LeaderBoard</h2></md-subheader>
     <md-list layout="column" layout-padding>
-      <md-list-item  class="md-3-line" >
-        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
+
+      <md-list-item  class="md-3-line" ng-repeat="friend in friends" >
+
+        <img ng-src="{{friend.image}}" class="md-avatar" alt="{{message.who}}">
         <div class="md-list-item-text">
 
-          <h3>Yuppppp</h3> <span style="float: right;">1</span>
-          <h4>the score</h4>
-          <p>
-            {{message.notes}}
-          </p>
+          <h3>{{friend.name}}</h3>
+          <!--<span style="float: right;">1</span>-->
+          <h4>{{friend.score}}</h4>
+
         </div>
       </md-list-item>
 
-
-
-      <md-list-item  class="md-3-line" >
-        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-
-        <div class="md-list-item-text">
-          <h3>Yuppppp</h3> <span style="float: right;">2</span>
-          <h4>the score</h4>
-
-        </div>
-
-      </md-list-item>
-
-
-
-      <md-list-item  class="md-3-line" >
-        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-
-        <div class="md-list-item-text">
-          <h3>Yuppppp</h3> <span style="float: right;">2</span>
-          <h4>the score</h4>
-
-        </div>
-
-      </md-list-item>
-
-      <md-list-item  class="md-3-line" >
-        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-
-        <div class="md-list-item-text">
-          <h3>Yuppppp</h3> <span style="float: right;">2</span>
-          <h4>the score</h4>
-
-        </div>
-
-      </md-list-item>
-
-      <md-list-item  class="md-3-line" >
-        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-
-        <div class="md-list-item-text">
-          <h3>Yuppppp</h3> <span style="float: right;">2</span>
-          <h4>the score</h4>
-
-        </div>
-
-      </md-list-item>
-
-      <md-list-item  class="md-3-line" >
-        <img ng-src="{{message.face}}" class="md-avatar" alt="{{message.who}}">
-
-        <div class="md-list-item-text">
-          <h3>Yuppppp</h3> <span style="float: right;">2</span>
-          <h4>the score</h4>
-
-        </div>
-
-      </md-list-item>
 
 
     </md-list>
