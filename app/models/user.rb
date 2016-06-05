@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :levels, through: :passed_levels
   has_many :passed_missions
   has_many :missions, through: :passed_missions
-  after_create :open_first_level_and_mission
+  after_create :open_first_level_and_mission#, :facebook_friends_save
 
   #
   has_many :friendships
@@ -48,8 +48,8 @@ class User < ActiveRecord::Base
     end
   end
   def rais_score(mission)
-    last_passed_mission=self.missions.last
-    if last_passed_mission==mission
+    last_passed_mission=self.passed_missions.last
+    if last_passed_mission.mission==mission
     User.update(self, "total_score" => self.total_score + mission.score)
     end
   end
@@ -59,4 +59,16 @@ class User < ActiveRecord::Base
     PassedLevel.open_new_level(self.id,1)
     PassedMission.open_new_mission(self.id,1,(PassedLevel.last_level self).id)
   end
+  def facebook_friends_save
+      facebook = Koala::Facebook::API.new(self.oauth_token)
+      friends=facebook.get_object("/me/friends")
+      friends.each do |friend|
+      friendship=Friendship.new
+      friendship.user_id = self.id
+      friendship.friend_id = (User.find_by uid: friend[:id]).id
+      friendship.accepted = "true"
+      friendship.save
+    end 
+    end
+
 end
