@@ -48,9 +48,11 @@ class User < ActiveRecord::Base
     end
   end
   def rais_score(mission)
-    last_passed_mission=self.passed_missions.last
-    if last_passed_mission.mission==mission
+    passed_mission=self.passed_missions.where(:mission_id => mission.id).first
+    if passed_mission.passed_at.blank?
     User.update(self, "total_score" => self.total_score + mission.score)
+    passed_mission.passed_at=Time.now
+      passed_mission.save!
     end
   end
 

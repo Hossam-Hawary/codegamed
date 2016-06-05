@@ -4,20 +4,19 @@ class PassedMission < ActiveRecord::Base
 
   def self.open_new_mission(user_id, mission_order, level_id)
     mission = Mission.find_by order: mission_order, level_id: level_id
-    record_exist=self.find_by mission_id: mission.id, user_id: user_id
-    if !record_exist
       @mission_one = self.new
       @mission_one.user_id = user_id
       @mission_one.mission_id = mission.id
       @mission_one.save
-    end
-
   end
 
   def self.pass_mission(user, mission)
+    level=mission.level
+    output={output: 'Success', next_level: "same"}
+    passed_mission=user.passed_missions.where(:mission_id => mission.id).first
+    if passed_mission.passed_at.blank?
     user.rais_score(mission)
     next_mission_order= mission.order+1
-    level=mission.level
     last_mission=level.missions.order("missions.order").last
 
     output={output: 'Success', next_level: "same"}
@@ -29,10 +28,11 @@ class PassedMission < ActiveRecord::Base
     end
 
     self.open_new_mission(user.id, next_mission_order, level.id)
+    end
     output[:missions]= self.missions_with_test_cases(user,level)
-
     output
   end
+
 
 
   def self.missions_with_test_cases(user, level)
