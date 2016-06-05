@@ -508,7 +508,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
 
       /* package java.lang */
       "Boolean Byte Character CharSequence Class ClassLoader Cloneable Comparable " +
-      "Compiler Double Exception Float Integer Long Math Number Object Package Pair Process " +
+      "Code Double Exception Float Integer Long Math Number Object Package Pair Process " +
       "Runtime Runnable SecurityManager Short StackTraceElement StrictMath String " +
       "StringBuffer System Thread ThreadGroup ThreadLocal Throwable Triple Void"
     ),
@@ -579,7 +579,7 @@ CodeMirror.defineMode("clike", function(config, parserConfig) {
     types: words(
       /* package java.lang */
       "Boolean Byte Character CharSequence Class ClassLoader Cloneable Comparable " +
-      "Compiler Double Exception Float Integer Long Math Number Object Package Pair Process " +
+      "Code Double Exception Float Integer Long Math Number Object Package Pair Process " +
       "Runtime Runnable SecurityManager Short StackTraceElement StrictMath String " +
       "StringBuffer System Thread ThreadGroup ThreadLocal Throwable Triple Void"
     ),
