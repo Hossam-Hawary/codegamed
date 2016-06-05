@@ -104,16 +104,25 @@ skip_before_filter :verify_authenticity_token, :only => [:show_user_levels, :sho
 			@temp_badge= {}
 			i=i+1
 
-
 		end
 
+		@friends=[]
+		@friend={}
 
+		current_user.friends.each do |friend|
+			 @friend[:name] = friend.name
+			 @friend[:image] = friend.image_url
+			 @friend[:score] = friend.total_score
+			 @friends.push(@friend)
+		end 
+
+		
 		@locked_levels = Level.count() - current_user.levels.count()
 
-		render :json =>  {'badges':@badges , 'locked_levels': @locked_levels}
-
+		render :json =>  {'badges':@badges , 'locked_levels': @locked_levels ,'friends': @friends}
 
 	end
+
 
 
 	private
