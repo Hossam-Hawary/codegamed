@@ -131,11 +131,11 @@ class MissionsController < ApplicationController
     if submitted_code && params
 
       compObj = CodeFactory.new.get_code_type('JAVA')
-      result = compObj.compile_user_code(submitted_code,mission)
+      result = compObj.compile_user_code(submitted_code, mission)
 
       if result == true
 
-        output= PassedMission.pass_mission(current_user,mission)
+        output= PassedMission.pass_mission(current_user, mission)
         render :json => output
 
       else

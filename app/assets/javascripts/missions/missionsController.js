@@ -1,8 +1,22 @@
-angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,$mdDialog,MissionsFactory){
+angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,$mdDialog,$mdSidenav,MissionsFactory){
 
 
 
     var levelId = $routeParams.level_id;
+
+
+    $scope.isThemeSidenavOpen = false;
+    $scope.openThemeMenu = function() {
+        $mdSidenav('theme').toggle();
+
+    };
+
+    $scope.closeThemeMenu=function(){
+        $mdSidenav('theme').close();
+
+    };
+
+
 
     MissionsFactory.validateLevel(levelId).then(function (res) {
 

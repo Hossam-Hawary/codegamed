@@ -30,9 +30,9 @@ class FriendshipsController < ApplicationController
 
     def destroy
       @friendship = Friendship.find_by user_id: params[:id], friend_id: current_user.id
-	if !@friendship
-      @friendship = Friendship.find_by user_id: current_user.id, friend_id: params[:id]
-	end
+    	if !@friendship
+          @friendship = Friendship.find_by user_id: current_user.id, friend_id: params[:id]
+    	end
       @friendship.destroy
       flash[:notice] = "Removed friendship."
       redirect_to :back
