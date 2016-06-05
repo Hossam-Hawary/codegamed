@@ -15,6 +15,7 @@ class PassedMission < ActiveRecord::Base
   end
 
   def self.pass_mission(user, mission)
+    user.rais_score(mission)
     next_mission_order= mission.order+1
     level=mission.level
     last_mission=level.missions.order("missions.order").last
