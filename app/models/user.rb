@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :levels, through: :passed_levels
   has_many :passed_missions
   has_many :missions, through: :passed_missions
-  after_create :open_first_level_and_mission#, :facebook_friends_save
+  after_create :open_first_level_and_mission#,:facebook_friends_save
 
   #
   has_many :friendships
@@ -44,7 +44,6 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.total_score=0
       user.save!
-
     end
   end
   def rais_score(mission)
@@ -53,22 +52,27 @@ class User < ActiveRecord::Base
     User.update(self, "total_score" => self.total_score + mission.score)
     end
   end
-
+  def self.facebook_friends_save(user)
+      facebook = Koala::Facebook::API.new(user.oauth_token)
+      friends=facebook.get_object("/me/friends")
+      friends.each do |friend|
+      friendship=Friendship.new
+      friendship.user_id = user.id
+      friend_uid=friend["id"]
+      friend_obj=User.find_by_uid friend_uid
+      friendship.friend_id = friend_obj.id
+      friendship.accepted = "true"
+      friendship.save
+    end 
+    end
   private
   def open_first_level_and_mission
     PassedLevel.open_new_level(self.id,1)
     PassedMission.open_new_mission(self.id,1,(PassedLevel.last_level self).id)
   end
-  def facebook_friends_save
-      facebook = Koala::Facebook::API.new(self.oauth_token)
-      friends=facebook.get_object("/me/friends")
-      friends.each do |friend|
-      friendship=Friendship.new
-      friendship.user_id = self.id
-      friendship.friend_id = (User.find_by uid: friend[:id]).id
-      friendship.accepted = "true"
-      friendship.save
-    end 
-    end
+
+  # def facebook_friends_save
+  #  Friendship.facebook_friends_save(self)
+  # end
 
 end

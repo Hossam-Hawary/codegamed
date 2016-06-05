@@ -7,5 +7,10 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
-  helper_method :current_user #,:friends
+  # def friends
+  # 	@facebook = Koala::Facebook::API.new(current_user.oauth_token)
+  #   @friends = @facebook.get_object("/me/friends")
+  # end
+
+  helper_method :current_user ,:friends
 end

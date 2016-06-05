@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   def create
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
+    User.facebook_friends_save(user)
     #@facebook = Koala::Facebook::API.new(user.oauth_token)
     #@facebook.get_object("me?fields=friends,taggable_friends")
     redirect_to root_url
