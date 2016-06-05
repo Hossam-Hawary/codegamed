@@ -7,14 +7,8 @@
 
       </div>
       <span flex></span>
-     <div>
-       <md-select ng-model="current_theme" ng-change="update_theme()">
-         <md-option ng-repeat="theme in themes" value="{{theme}}">
-           {{theme}}
-         </md-option>
-       </md-select>
-     </div>
-      <img ng-src={{badge.image_url.url}} class="codeGamed-toolbar-avatar">
+      <i class="material-icons" ng-click="openThemeMenu()" style="padding-right: 3px;">settings</i>
+      <img ng-src={{badge.image_url.url}} class="codeGamed-toolbar-avatar" style="float: right;">
   </md-toolbar>
 
 <div layout="row"  >
@@ -53,8 +47,33 @@
       </div>
 
       <md-button class="md-raised md-primary" ng-click="submitAnswer()">Submit</md-button>
+
     </div>
 
   </div>
 </div>
+
+ <md-sidenav  md-component-id="theme" md-is-open="isThemeSidenavOpen" class="md-sidenav-right " style="position: fixed">
+   <ng-md-icon ng-click="closeThemeMenu()" icon="close" size="24"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></ng-md-icon>
+   <md-list layout-padding>
+     <md-list-item class="md-3-line" >
+       <div class="md-list-item-text">
+         <div>
+           <label>Theme: </label>
+           <md-select ng-model="current_theme" ng-change="update_theme()">
+
+             <md-option ng-repeat="theme in themes" value="{{theme}}">
+               {{theme}}
+             </md-option>
+           </md-select>
+         </div>
+       </div>
+     </md-list-item>
+
+   </md-list>
+
+
+ </md-sidenav>
+
+
 <script src="/codemirror.js"></script>
