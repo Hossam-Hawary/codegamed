@@ -6555,7 +6555,7 @@ function $TemplateCacheProvider() {
  * - "$node" or "$element" - jqLite-wrapped node or element
  *
  *
- * Compiler related stuff:
+ * Code related stuff:
  *
  * - "linkFn" - linking fn of a single directive
  * - "nodeLinkFn" - function that aggregates all linking fns for a particular node
