@@ -41,7 +41,8 @@ gem 'ckeditor_rails'
 gem 'jquery-ui-rails'
 gem "rails-erd"
 gem 'aescrypt'
-gem 'delayed_job_active_record'
+
+
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
