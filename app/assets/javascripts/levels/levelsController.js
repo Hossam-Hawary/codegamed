@@ -5,6 +5,8 @@
 angular.module('codeGamed').controller('levelCtrl', function ($scope, showUserLevelsFactory) {
 
 
+
+    
     showUserLevelsFactory.showLevels().then(function (res) {
 
         $scope.badges = res.badges
