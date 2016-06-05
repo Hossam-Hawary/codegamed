@@ -24,7 +24,7 @@ class User < ActiveRecord::Base
   private
   def open_first_level_and_mission
     user_id=User.maximum("id")
-    PassedLevel.set_level(user_id)
-    PassedMission.open_first_mission(user_id)
+    PassedLevel.open_new_level(user_id,1)
+    PassedMission.open_new_mission(user_id,1,(PassedLevel.last_level current_user).id)
   end
 end

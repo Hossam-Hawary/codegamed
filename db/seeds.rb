@@ -48,7 +48,7 @@ Mission.create(order:1, score:100, level_id:1, video_url: "https://player.vimeo.
 </ul>
 
 ", initial_code:"
-codeint myMin(int a, int b) {
+int myMin(int a, int b) {
   if (a > b) {
     return a;
   }

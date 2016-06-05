@@ -1,4 +1,3 @@
-
 angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,$mdDialog,MissionsFactory){
 
 
@@ -8,11 +7,13 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     MissionsFactory.validateLevel(levelId).then(function (res) {
 
         if (res.accessing_level_status == 'Success') {
+            //console.log(res.missions);
             $scope.missions = res.missions;
-            $scope.myHTML = res.missions[res.last_mission_order - 1].problem;
-            myCodeMirror.doc.setValue(res.missions[res.last_mission_order - 1].initial_code);
-            $scope.current_mission = res.missions[res.last_mission_order - 1];
-            $scope.mission_video = res.missions[res.last_mission_order - 1].video_url;
+            $scope.myHTML = res.missions[res.missions.length - 1].mission_data.problem;
+            myCodeMirror.doc.setValue(res.missions[res.missions.length - 1].mission_data.initial_code);
+            $scope.current_mission = res.missions[res.missions.length - 1].mission_data;
+            $scope.mission_video = res.missions[res.missions.length - 1].mission_data.video_url;
+            $scope.test_cases = res.missions[res.missions.length - 1].mission_test_cases;
 
         } else {
             $location.path("/");
@@ -23,11 +24,13 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
 
 
     $scope.play_mission = function (mission) {
-        $scope.myHTML = mission.problem;
-        $scope.mission_video = mission.video_url;
+        $scope.myHTML = mission.mission_data.problem;
+        $scope.mission_video = mission.mission_data.video_url;
 
-        myCodeMirror.doc.setValue(mission.initial_code);
-        $scope.current_mission = mission;
+        myCodeMirror.doc.setValue(mission.mission_data.initial_code);
+        $scope.current_mission = mission.mission_data;
+        $scope.test_cases = mission.mission_test_cases;
+
     };
 
     $scope.submitAnswer = function () {
@@ -51,10 +54,14 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
                         left: 1500
                     })
             );
+            console.log(res)
 
         });
     };
+
+
     $scope.current_theme = 'dracula';
+
     $scope.themes = [
         'dracula', '3024-day', '3024-night', 'abcdef',
         'ambiance', 'ambiance-mobile', 'base16-dark', 'base16-light',
@@ -66,11 +73,24 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         'tomorrow-night-bright', 'tomorrow-night-eighties', 'ttcn',
         'twilight', 'vibrant-ink', 'xq-dark', 'xq-light', 'yeti', 'zenburn'
     ];
-    $scope.update_theme = function () {
-        myCodeMirror.setOption("theme", $scope.current_theme)
-    }
 
-});
+    $scope.update_theme = function(){
+        myCodeMirror.setOption("theme", $scope.current_theme)
+    };
+
+}).directive("myCoolDirective", function() {
+    return {
+        restrict: "A",
+        link: function(scope, elem, attrs) {
+            $(elem).accordion({
+                collapsible: true,
+                active: false,
+            });
+        }
+    }
+});;
+
+
 angular.module('codeGamed').filter('trusted', ['$sce', function ($sce) {
     return function (url) {
         return $sce.trustAsResourceUrl(url);
