@@ -5,7 +5,7 @@ angular.module('codeGamed').factory('showUserLevelsFactory', function ($http, $q
 
         showLevels: function () {
             var def = $q.defer();
-
+            
             $http({
 
                 'url': '/levels/show_user_levels',

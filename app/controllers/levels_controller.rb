@@ -87,17 +87,9 @@ class LevelsController < ApplicationController
 
    	@locked_levels = Level.locked_badges(current_user)
 
-	 @friends=[]
-	 @friend={}
 
-	 current_user.friends.each do |friend|
-	 	@friend[:name] = friend.name
-	 	@friend[:image] = friend.image_url
-	 	@friend[:score] = friend.total_score
-	 	@friends.push(@friend)
-	 end 
 
-    render :json => {'badges': @badges, 'locked_levels': @locked_levels,'friends':@friends}
+    render :json => {'badges': @badges, 'locked_levels': @locked_levels}
 
   end
 
