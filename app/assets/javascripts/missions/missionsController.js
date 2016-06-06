@@ -75,11 +75,18 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
                     .closeTo({
                         left: 1500
                     })
-            );
-            if(res.next_level=="same") {
-                $scope.missions = res.missions
-                $scope.render_last_mission()
-            }
+            )
+            .then(function() {
+                if(res.output == "Success") {
+                    if (res.next_level == "same") {
+                        $scope.missions = res.missions
+                        $scope.render_last_mission()
+                    } else {
+                        $location.path("/");
+                    }
+                }
+            });
+
         });
     };
 

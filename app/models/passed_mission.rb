@@ -20,8 +20,6 @@ class PassedMission < ActiveRecord::Base
     next_mission_order= mission.order+1
     last_mission=level.missions.order("missions.order").last
 
-    output={output: 'Success', next_level: "same"}
-
     if last_mission.order == mission.order
       level= PassedLevel.open_new_level(user.id, mission.level.id + 1)
       next_mission_order = 1
