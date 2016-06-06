@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531130526) do
+ActiveRecord::Schema.define(version: 20160605170357) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160531130526) do
     t.integer  "mission_id", limit: 4
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.datetime "passed_at"
   end
 
   add_index "passed_missions", ["mission_id"], name: "index_passed_missions_on_mission_id", using: :btree

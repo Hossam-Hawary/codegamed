@@ -15,6 +15,17 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         $mdSidenav('theme').close();
 
     };
+    
+    $scope.render_last_mission=function () {
+        missions=$scope.missions
+        missions_index=missions.length - 1;
+        $scope.myHTML = missions[missions_index].mission_data.problem;
+        myCodeMirror.doc.setValue(missions[missions_index].mission_data.initial_code);
+        $scope.current_mission = missions[missions_index].mission_data;
+        $scope.mission_video = missions[missions_index].mission_data.video_url;
+        $scope.test_cases = missions[missions_index].mission_test_cases;
+        
+    }
 
 
 
@@ -25,12 +36,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
             $scope.missions = res.missions;
             //console.log(res.level_badge_url);
             $scope.badge = res.level_badge_url;
-            $scope.myHTML = res.missions[res.missions.length - 1].mission_data.problem;
-            myCodeMirror.doc.setValue(res.missions[res.missions.length - 1].mission_data.initial_code);
-            $scope.current_mission = res.missions[res.missions.length - 1].mission_data;
-            $scope.mission_video = res.missions[res.missions.length - 1].mission_data.video_url;
-            $scope.test_cases = res.missions[res.missions.length - 1].mission_test_cases;
-
+            $scope.render_last_mission()
         } else {
             $location.path("/");
         }
@@ -70,8 +76,10 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
                         left: 1500
                     })
             );
-            console.log(res)
-
+            if(res.next_level=="same") {
+                $scope.missions = res.missions
+                $scope.render_last_mission()
+            }
         });
     };
 

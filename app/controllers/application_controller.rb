@@ -12,5 +12,5 @@ class ApplicationController < ActionController::Base
   #   @friends = @facebook.get_object("/me/friends")
   # end
 
-  helper_method :current_user ,:friends
+  helper_method :current_user
 end
