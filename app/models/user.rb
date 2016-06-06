@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
       user.save!
     end
   end
-  def rais_score(mission)
+  def raise_score(mission)
     passed_mission=self.passed_missions.where(:mission_id => mission.id).first
     if passed_mission.passed_at.blank?
     User.update(self, "total_score" => self.total_score + mission.score)

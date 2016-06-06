@@ -20,7 +20,7 @@ class Level < ActiveRecord::Base
 
       @temp_badge[:title] = level.badge.title
       @temp_badge[:image_url] = level.badge.image_url
-
+      @temp_badge[:progress] = (PassedLevel.find_by user_id:current_user, level_id:level).progress
       @badges.push(@temp_badge)
 
       #must be emptied to store the next value don't try to remove

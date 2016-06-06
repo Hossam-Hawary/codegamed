@@ -15,7 +15,8 @@ class PassedMission < ActiveRecord::Base
     output={output: 'Success', next_level: "same"}
     passed_mission=user.passed_missions.where(:mission_id => mission.id).first
     if passed_mission.passed_at.blank?
-    user.rais_score(mission)
+    user.raise_score(mission)
+    PassedLevel.raise_progress user, mission
     next_mission_order= mission.order+1
     last_mission=level.missions.order("missions.order").last
 
