@@ -1,10 +1,13 @@
 class SessionsController < ApplicationController
   def create
-    user = User.from_omniauth(env["omniauth.auth"])
-    session[:user_id] = user.id
-    User.facebook_friends_save(user)
+  user_exist = User.find_by uid:env["omniauth.auth"].uid
+    if !user_exist
+        user_exist = User.from_omniauth(env["omniauth.auth"])
+    Friendship.facebook_friends_save user_exist
     #@facebook = Koala::Facebook::API.new(user.oauth_token)
     #@facebook.get_object("me?fields=friends,taggable_friends")
+  end
+      session[:user_id] = user_exist.id
     redirect_to root_url
   end
 
