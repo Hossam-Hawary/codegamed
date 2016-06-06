@@ -1,9 +1,10 @@
 class MainPageController < ApplicationController
 def list_user_friends
   @friends=[]
-  @friend={}
+  
 
   current_user.friends.each do |friend|
+  	@friend={}
     @friend[:name] = friend.name
     @friend[:image] = friend.image_url
     @friend[:score] = friend.total_score
