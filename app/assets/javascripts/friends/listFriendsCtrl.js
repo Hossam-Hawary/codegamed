@@ -5,11 +5,14 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
 
     listUserFriendsFactory.listFriends().then(function(res){
         $scope.friends = res.friends;
-        console.log(res.friends);
     });
     
     $scope.isSidenavOpen = false;
     $scope.openRightMenu = function() {
+
+        listUserFriendsFactory.listFriends().then(function(res){
+            $scope.friends = res.friends;
+        });
         $mdSidenav('right').toggle();
 
     };
