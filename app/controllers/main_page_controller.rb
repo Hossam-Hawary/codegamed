@@ -12,14 +12,14 @@ def list_user_friends
     @friends.push(@friend)
   end
 
-  render :json => {'friends':@friends , 'requests':current_user.requested_friendships.select("name,image_url,friend_id")}
+  render :json => {'friends':@friends , 'requests':current_user.requested_friendships.select("name,image_url,friend_id,total_score")}
 
 end
 
 def search_for_new_friends
 
   @search_word = params[:search_word]
-  @current_user_new_friends = User.where("name LIKE '%#{@search_word}%'").select("name,image_url,id") - current_user.all_friendships
+  @current_user_new_friends = User.where("name LIKE '%#{@search_word}%'").select("name,image_url,id").limit(10) - current_user.all_friendships
 
   render :json => {'new_friends':@current_user_new_friends}
 end
