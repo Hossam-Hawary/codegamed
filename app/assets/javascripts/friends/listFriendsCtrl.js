@@ -1,7 +1,7 @@
 /**
  * Created by te7a on 05/06/16.
  */
-angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSidenav,listUserFriendsFactory,$q){
+angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSidenav,listUserFriendsFactory,$q,$mdDialog){
 
     listUserFriendsFactory.listFriends().then(function(res){
         $scope.friends = res.friends;
@@ -42,22 +42,52 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
 
     }
 
-    $scope.searchTextChange=function(searchText){
 
-        if (searchText.trim() == '')
+
+    $scope.searchTextChange=function(searchText){
+        var def = $q.defer();
+        if (searchText.trim() == '' )
             return [];
 
 
-        var def = $q.defer();
+
 
         listUserFriendsFactory.searchNewFriends(searchText).then(function(res){
 
-            def.resolve(res.new_friends);
+         def.resolve(res.new_friends);
+
         });
 
-       
-     return def.promise;
 
+      return def.promise;
+    }
+
+
+
+
+    //ajax request to add friend
+
+    $scope.sendFriendRequest = function (friend){
+
+        listUserFriendsFactory.sendFriendRequest(friend).then(function(res){
+           if(res.result == 'success')
+           {
+               $scope.addFriend = false;
+               $scope.searchText= '';
+
+               $mdDialog.show(
+                   $mdDialog.alert()
+                       .parent(angular.element(document.querySelector('#popupContainer')))
+                       .clickOutsideToClose(true)
+                       .title('CodeGamed Friends Invitation')
+                       .textContent('Friend Request Was Sent Succefully')
+                       .ariaLabel('Alert Dialog Demo')
+                       .ok('Close')
+
+               );
+
+           }
+        });
     }
     
 });

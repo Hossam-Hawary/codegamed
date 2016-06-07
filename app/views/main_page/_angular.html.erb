@@ -24,6 +24,8 @@
                        md-items="item in searchTextChange(searchText)"
                        md-menu-class="autocomplete-custom-template"
                        md-item-text="item.name"
+                       md-no-cache="true"
+
                        placeholder="Search For Friends"
                       >
 
@@ -36,7 +38,7 @@
       </md-item-template>
       </md-autocomplete>
 
-      &nbsp;<a ng-if="addFriend" data-method="post" href="/friendships?friend_id={{addFriend.id}}" class="md-button md-raised md-primary">Add As A Friend</a>
+      &nbsp;<md-button ng-if="addFriend" ng-click="sendFriendRequest(addFriend)"  class="md-raised md-primary">Add As A Friend</md-button>
 
       <span flex></span>
       <md-button ng-click="openRightMenu()">
@@ -82,7 +84,7 @@
 
   </md-sidenav>
 
-
+  <div id="popupContainer"></div>
 
 
 </div>
