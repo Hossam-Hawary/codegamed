@@ -12,7 +12,7 @@ def list_user_friends
     @friends.push(@friend)
   end
 
-  render :json => {'friends':@friends , 'requests':current_user.requested_friendships.select("name,image_url,friend_id")}
+  render :json => {'friends':@friends , 'requests':current_user.requested_friendships.select("name,image_url,friend_id,total_score")}
 
 end
 
