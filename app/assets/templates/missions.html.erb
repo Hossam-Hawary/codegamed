@@ -1,12 +1,12 @@
  <md-toolbar id="level_missions_toolbar" class="md-toolbar-tools">
-      <div ng-repeat="mission in missions" ng-click="play_mission(mission)" class="box rotate">
-        <i class="material-icons">offline_pin</i>
+      <div ng-repeat="mission in missions" ng-click="play_mission(mission,$event)" class="box rotate" ng-class="{'animated infinite zoomIn':$last} ">
+        <i class="material-icons">security</i>
       </div>
-   <div ng-repeat="n in [] | range:locked_missions" >
-     <i class="material-icons">lock</i>
+   <div ng-repeat="n in [] | range:3" >
+     <i class="material-icons">security</i>
    </div>
       <span flex></span>
-      <i class="material-icons" ng-click="openThemeMenu()" style="padding-right: 3px;">settings</i>
+      <i class="material-icons" ng-click="openThemeMenu()">settings</i>
       <img ng-src={{badge.image_url.url}} class="codeGamed-toolbar-avatar" style="float: right;">
   </md-toolbar>
 

@@ -45,7 +45,11 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     });
 
 
-    $scope.play_mission = function (mission) {
+    $scope.play_mission = function (mission,event) {
+        $(".animated").removeClass('animated infinite zoomIn')
+        $(event.target).addClass('animated infinite zoomIn');
+
+
         $scope.myHTML = mission.mission_data.problem;
         $scope.mission_video = mission.mission_data.video_url;
 

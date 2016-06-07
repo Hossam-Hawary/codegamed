@@ -11,13 +11,14 @@ md-grid-tile {
     /*background: #5FCF80;*/
     width: 50px;
     height: 50px;
+    text-align: center;
 }
 .box:hover {
     transform: rotate(360deg);
     background: #142940;
     border-radius: 20%;
-    width: 60px;
-    height: 65px;
+    width: 50px;
+    height: 50px;
     padding: 3px;
 }
 .rotate {
@@ -36,4 +37,10 @@ md-content {
 .material-icons:focus {
     outline: none;
     border: 0;
+}
+.material-icons{
+    font-size:40px;
+}
+#yourElement {
+
 }
