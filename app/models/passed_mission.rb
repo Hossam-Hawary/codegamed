@@ -35,10 +35,11 @@ class PassedMission < ActiveRecord::Base
 
 
   def self.missions_with_test_cases(user, level)
-    full_missions=[]
+    full_missions = []
     user.missions.where("level_id = #{level.id}").order(:order).each do |mission|
-      mission_test_cases=TestCase.where( mission_id: mission.id)
-      full_missions<<{mission_data: mission, mission_test_cases: mission_test_cases}
+      mission_test_cases = TestCase.where( mission_id: mission.id)
+      user_shown_test_cases = mission_test_cases.limit(mission_test_cases.size/2)
+      full_missions << { mission_data: mission, mission_test_cases: user_shown_test_cases }
     end
     return full_missions
   end
