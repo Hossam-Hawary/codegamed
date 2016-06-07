@@ -137,7 +137,13 @@ md-grid-tile.ng-enter {
     opacity: 0;
     height: 0px;
 }
-
+md-sidenav{
+    position: fixed;
+}
+md-autocomplete{
+    width: 40%;
+    color: black;
+}
 .autocomplete-custom-template li {
     border-bottom: 1px solid #ccc;
     height: auto;

@@ -15,7 +15,7 @@
 
       <span flex></span>
       <i class="material-icons">person_add</i>
-      <md-autocomplete style="width: 40%;"
+      <md-autocomplete
                        md-selected-item-change="selectedItemChange(item)"
                        md-search-text="searchText"
                        md-search-text-change="searchTextChange(searchText)"
@@ -23,34 +23,27 @@
                        md-menu-class="autocomplete-custom-template"
                        md-item-text="item.name"
                        md-no-cache="true"
-
                        placeholder="Search For Friends"
                       >
-
-
-        <md-item-template>
+        <md-item-template >
           <img class="codeGamed-toolbar-avatar" src="{{item.image_url}}">
-
           <span >   {{item.name}}   </span>
-
       </md-item-template>
       </md-autocomplete>
-      &nbsp;<md-button ng-if="addFriend" ng-click="sendFriendRequest(addFriend)"  class="md-raised md-primary">Add As A Friend</md-button>
+      &nbsp;
+      <span >   <i class="material-icons" ng-click="sendFriendRequest(addFriend)" ng-if="addFriend">add_circle</i></span>
 
       <span flex></span>
-      <md-button >
-        <i class="material-icons icon_small" ng-click="openRightMenu()">people</i>
+      <md-button ng-click="openRightMenu()">
+        <i class="material-icons icon_small" >people</i>
       </md-button>
-
-
-
     </div>
   </md-toolbar>
-  <md-sidenav  md-component-id="right" md-is-open="isSidenavOpen" class="md-sidenav-right " style="position: fixed">
+  <md-sidenav  md-component-id="right" md-is-open="isSidenavOpen" class="md-sidenav-right">
     <i class="material-icons icon_small" ng-click="closeRightMenu()" >cancel</i>
     <md-list layout-padding>
       <md-list-item class="md-3-line" >
-        <%= image_tag current_user.image_url, class: 'md-avatar' ,style: ' width: 90px; height: 100px;' %>
+        <%= image_tag current_user.image_url, class: 'md-avatar' %>
         <div class="md-list-item-text">
           <h3><strong><%= current_user.name %></strong></h3>
           <h4><%= current_user.total_score %> XP</h4>
