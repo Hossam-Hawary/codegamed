@@ -1,107 +1,91 @@
 <div ng-app="codeGamed">
   <!--- header -->
-<div ng-controller="listFriendsCtrl">
-  <md-toolbar class="codeGamed-toolbar">
-    <div class="md-toolbar-tools" >
-      <md-button ng-href="/#/">
-
-        <i class="material-icons">home</i>
-
-      </md-button>
+  <div ng-controller="listFriendsCtrl">
+    <md-toolbar class="codeGamed-toolbar">
+      <div class="md-toolbar-tools">
+        <md-button ng-href="/#/">
+          <i class="material-icons">home</i>
+        </md-button>
 
 
-      <%= link_to "<md-button  class='md-raised'>Sign out</md-button>".html_safe, signout_path, id: "sign_out" %>
+        <%= link_to "<md-button  class='md-raised'>Sign out</md-button>".html_safe, signout_path, id: "sign_out" %>
 
 
-      <span flex></span>
-      <i class="material-icons">person_add</i>
-      <md-autocomplete
-                       md-selected-item-change="selectedItemChange(item)"
-                       md-search-text="searchText"
-                       md-search-text-change="searchTextChange(searchText)"
-                       md-items="item in searchTextChange(searchText)"
-                       md-menu-class="autocomplete-custom-template"
-                       md-item-text="item.name"
-                       md-no-cache="true"
-                       placeholder="Search For Friends"
-                      >
-        <md-item-template >
-          <img class="codeGamed-toolbar-avatar" src="{{item.image_url}}">
-          <span >   {{item.name}}   </span>
-      </md-item-template>
-      </md-autocomplete>
-      &nbsp;
-      <span >   <i class="material-icons" ng-click="sendFriendRequest(addFriend)" ng-if="addFriend">add_circle</i></span>
+        <span flex></span>
+        <i class="material-icons">person_add</i>
+        <md-autocomplete
+        md-selected-item-change="selectedItemChange(item)"
+        md-search-text="searchText"
+        md-search-text-change="searchTextChange(searchText)"
+        md-items="item in searchTextChange(searchText)"
+        md-menu-class="autocomplete-custom-template"
+        md-item-text="item.name"
+        md-no-cache="true"
+        placeholder="Search For Friends"
+        >
+          <md-item-template>
+            <img class="codeGamed-toolbar-avatar" src="{{item.image_url}}">
+            <span>   {{item.name}}   </span>
+          </md-item-template>
+        </md-autocomplete>
+        &nbsp;
+        <span>   <i class="material-icons" ng-click="sendFriendRequest(addFriend)" ng-if="addFriend">add_circle</i></span>
 
-      <span flex></span>
-      <md-button ng-click="openRightMenu()">
-        <i class="material-icons icon_small" >people</i>
-      </md-button>
-    </div>
-  </md-toolbar>
-  <md-sidenav  md-component-id="right" md-is-open="isSidenavOpen" class="md-sidenav-right">
-    <i class="material-icons icon_small" ng-click="closeRightMenu()" >cancel</i>
-    <md-list layout-padding>
-      <md-list-item class="md-3-line" >
-        <%= image_tag current_user.image_url, class: 'md-avatar' %>
-        <div class="md-list-item-text">
-          <h3><strong><%= current_user.name %></strong></h3>
-          <h4><%= current_user.total_score %> XP</h4>
-        </div>
-      </md-list-item>
-
-    </md-list>
-
-    <div ng-if="requests">
-      <hr>
-      <md-subheader ><h5>Pending Requests</h5></md-subheader>
-      <md-list layout="column" layout-padding>
-
-        <md-list-item  class="md-3-line" ng-repeat="friendRequest in requests" >
-
-          <img ng-src="{{friendRequest.image_url}}" class="md-avatar" >
+        <span flex></span>
+        <md-button ng-click="openRightMenu()">
+          <i class="material-icons icon_small">people</i>
+        </md-button>
+      </div>
+    </md-toolbar>
+    <md-sidenav md-component-id="right" md-is-open="isSidenavOpen" class="md-sidenav-right">
+      <i class="material-icons icon_small" ng-click="closeRightMenu()">cancel</i>
+      <md-list layout-padding>
+        <md-list-item class="md-3-line">
+          <%= image_tag current_user.image_url, class: 'md-avatar' %>
           <div class="md-list-item-text">
-
-            <h3>{{friendRequest.name}}</h3>
-            <h4>{{friendRequest.total_score}} XP</h4>
-            <!--<span style="float: right;">1</span>-->
-            <i class="material-icons" ng-click="acceptRequest(friendRequest)">add_circle</i>
-            <i class="material-icons" ng-click="declineRequest(friendRequest)">cancel</i>
+            <h3><strong><%= current_user.name %></strong></h3>
+            <h4><%= current_user.total_score %> XP</h4>
           </div>
         </md-list-item>
-
-
-
       </md-list>
 
-    </div>
+      <div ng-if="requests">
+        <hr>
+        <md-subheader><h5>Pending Requests</h5></md-subheader>
+        <md-list layout="column" layout-padding>
 
-  <hr>
-    <md-subheader ><h4>Friends</h4></md-subheader>
-    <md-list layout="column" layout-padding>
+          <md-list-item class="md-3-line" ng-repeat="friendRequest in requests">
 
-      <md-list-item  class="md-3-line" ng-repeat="friend in friends" >
+            <img ng-src="{{friendRequest.image_url}}" class="md-avatar">
+            <div class="md-list-item-text">
 
-        <img ng-src="{{friend.image}}" class="md-avatar" >
-        <div class="md-list-item-text">
+              <h3>{{friendRequest.name}}</h3>
+              <h4>{{friendRequest.total_score}} XP</h4>
+              <i class="material-icons" ng-click="acceptRequest(friendRequest)">add_circle</i>
+              <i class="material-icons" ng-click="declineRequest(friendRequest)">cancel</i>
+            </div>
+          </md-list-item>
+        </md-list>
+      </div>
+      <hr>
+      <md-subheader><h4>Friends</h4></md-subheader>
+      <md-list layout="column" layout-padding>
 
-          <h3>{{friend.name}}</h3>
-          <!--<span style="float: right;">1</span>-->
-          <h4>{{friend.score}} XP</h4>
-          <md-button ng-click="removeFriend(friend)" class="md-primary ">Remove Friend</md-button>
-        </div>
-      </md-list-item>
+        <md-list-item class="md-3-line" ng-repeat="friend in friends">
+
+          <img ng-src="{{friend.image}}" class="md-avatar">
+          <div class="md-list-item-text">
+            <h3>{{friend.name}}</h3>
+            <h4>{{friend.score}} XP</h4>
+            <md-button ng-click="removeFriend(friend)" class="md-primary ">Remove Friend</md-button>
+          </div>
+        </md-list-item>
+      </md-list>
+    </md-sidenav>
+    <div id="popupContainer"></div>
 
 
-
-    </md-list>
-
-  </md-sidenav>
-
-  <div id="popupContainer"></div>
-
-
-</div>
+  </div>
   <!--- The Body -->
   <div ng-view>
 
