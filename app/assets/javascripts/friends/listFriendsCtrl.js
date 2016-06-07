@@ -99,14 +99,14 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
     
     $scope.acceptRequest = function (friendRequest){
 
-        listUserFriendsFactory.acceptFriendRequest(friendRequest.friend_id).then(function(res){
+        listUserFriendsFactory.acceptFriendRequest(friendRequest.user_id).then(function(res){
 
             if(res.result == 'success'){
                 //remove the request from pending
                 var index= $scope.requests.indexOf(friendRequest);
                 $scope.requests.splice(index,1);
 
-                friendRequest['id'] = friendRequest.friend_id;
+                friendRequest['id'] = friendRequest.user_id;
                 friendRequest['image'] =  friendRequest.image_url;
                 friendRequest['score'] = res.friend_score;
 
@@ -126,7 +126,7 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
     
     $scope.declineRequest = function (friendRequest){
 
-        listUserFriendsFactory.declineFriendRequest(friendRequest.friend_id).then(function(res){
+        listUserFriendsFactory.declineFriendRequest(friendRequest.user_id).then(function(res){
 
             if(res.result == 'success'){
 
