@@ -109,21 +109,34 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
                 friendRequest['image'] =  friendRequest.image_url;
                 friendRequest['score'] = res.friend_score;
 
-
+                if ($scope.requests.length <= 0)
+                    $scope.requests = false;
+                
                  $scope.friends.push(friendRequest);
             }
 
 
         });
-    
+        
        
     }
     
     
     
-    $scope.declineRequest = function (friend_id){
-        
-        
+    $scope.declineRequest = function (friendRequest){
+
+        listUserFriendsFactory.declineFriendRequest(friendRequest.friend_id).then(function(res){
+
+            if(res.result == 'success'){
+
+                //remove the request from pending
+                var index= $scope.requests.indexOf(friendRequest);
+                $scope.requests.splice(index,1);
+
+                if ($scope.requests.length <= 0)
+                    $scope.requests = false;
+            }
+        });
     }
     
 });

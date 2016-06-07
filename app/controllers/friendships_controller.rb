@@ -35,6 +35,6 @@ class FriendshipsController < ApplicationController
     	end
       @friendship.destroy
       flash[:notice] = "Removed friendship."
-      redirect_to :back
+      render :json => {'result': 'success'}
     end
 end
