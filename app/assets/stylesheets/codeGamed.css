@@ -138,3 +138,12 @@ md-grid-tile.ng-enter {
     height: 0px;
 }
 
+.autocomplete-custom-template li {
+    border-bottom: 1px solid #ccc;
+    height: auto;
+    padding-top: 8px;
+
+
+    font-size:20px;
+}
+
