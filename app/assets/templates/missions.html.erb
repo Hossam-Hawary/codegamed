@@ -2,8 +2,8 @@
       <div ng-repeat="mission in missions" ng-click="play_mission(mission,$event)" class="box rotate" ng-class="{'animated infinite zoomIn':$last} ">
         <i class="material-icons">security</i>
       </div>
-   <div ng-repeat="n in [] | range:locked_missions" >
-     <i class="material-icons">security</i>
+   <div ng-repeat="n in [] | range:3" >
+     <i class="material-icons icon_small">security</i>
    </div>
       <span flex></span>
       <img ng-src={{badge.image_url.url}} class="codeGamed-toolbar-avatar" style="float: right;">
