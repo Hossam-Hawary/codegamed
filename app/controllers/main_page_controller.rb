@@ -5,6 +5,7 @@ def list_user_friends
 
   current_user.friends.each do |friend|
   	@friend={}
+    @friend[:id] = friend.id
     @friend[:name] = friend.name
     @friend[:image] = friend.image_url
     @friend[:score] = friend.total_score

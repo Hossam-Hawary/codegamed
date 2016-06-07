@@ -106,12 +106,13 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
                 var index= $scope.requests.indexOf(friendRequest);
                 $scope.requests.splice(index,1);
 
+                friendRequest['id'] = friendRequest.friend_id;
                 friendRequest['image'] =  friendRequest.image_url;
                 friendRequest['score'] = res.friend_score;
 
                 if ($scope.requests.length <= 0)
                     $scope.requests = false;
-                
+
                  $scope.friends.push(friendRequest);
             }
 
@@ -138,5 +139,24 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
             }
         });
     }
+
+    
+    //removing a friend from friends
+    $scope.removeFriend=function (friend){
+
+      listUserFriendsFactory.declineFriendRequest(friend.id).then(function(res){
+
+          if(res.result == 'success') {
+
+              //remove friend from friend list
+              var index = $scope.friends.indexOf(friend);
+              $scope.friends.splice(index, 1);
+
+          }
+
+      });
+
+    }
+
     
 });
