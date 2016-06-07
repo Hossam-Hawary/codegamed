@@ -41,6 +41,9 @@ gem 'ckeditor_rails'
 gem 'jquery-ui-rails'
 gem "rails-erd"
 gem 'aescrypt'
+
+
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

@@ -17,7 +17,7 @@ class MissionsController < ApplicationController
 
     maxorder=((Level.find_by id: @mission.level).missions.maximum("order"))
     if maxorder
-      if @mission.order.nil?||@mission.order<1||@mission.order>(maxorder+1)
+      if @mission.order.nil?||@mission.order < 1||@mission.order>(maxorder+1)
         @mission.order=maxorder+1
       end
     else
@@ -67,7 +67,7 @@ class MissionsController < ApplicationController
       (Level.find_by id: @mission.level).missions.each do |level_mission|
         if level_mission.order >= @mission_params[:order].to_i
           if level_mission.order < @mission.order
-            Mission.update(level_mission, "order" => level_mission.order+1)
+            Mission.update(level_mission, "order" => level_mission.order + 1)
           end
         end
       end

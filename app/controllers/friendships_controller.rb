@@ -1,14 +1,14 @@
 class FriendshipsController < ApplicationController
-    
+  skip_before_filter :verify_authenticity_token, :only => [:create]
     def create
       @friendship = current_user.friendships.build(friend_id: params[:friend_id])
      	@friendship.update(accepted: "false")
       if @friendship.save
         flash[:notice] = "Friend requested."
-        redirect_to :back
+        render :json => {'result':'success'}
       else
         flash[:error] = "Unable to request friendship."
-        redirect_to root_url
+        render :json => {'result':'failed'}
       end
     end
 

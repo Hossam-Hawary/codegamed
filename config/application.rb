@@ -28,5 +28,6 @@ module CodeGamed
     Koala.config.api_version = 'v2.0'
     config.active_record.raise_in_transactional_callbacks = true
     config.autoload_paths << Rails.root.join('lib')
+
   end
 end
