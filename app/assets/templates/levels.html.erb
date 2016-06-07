@@ -32,7 +32,14 @@
 
       </md-card-title>
 
-      <md-progress-linear md-mode="determinate" value="{{badge.progress}}"></md-progress-linear>
+      <div class="progress"  ng-if="badge.progress==100" >
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:100%">
+        </div>
+      </div>
+      <div class="progress" ng-if="badge.progress<100">
+        <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{badge.progress}}" aria-valuemin="0" aria-valuemax="100" style="width:{{badge.progress}}%">
+        </div>
+      </div>
 
       <md-card-content layout="row" layout-align="space-between">
         <a ng-href="/#/missions/{{badge.level_id}}"> <div class="md-media-xl card-media card-image-resize" style="background-image: url('{{badge.image_url.image_url.url}}');   ">

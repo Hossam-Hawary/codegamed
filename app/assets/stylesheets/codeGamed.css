@@ -95,6 +95,11 @@
 .reviews{
     background-color: transparent;
 }
+.reviews p{
+
+    font-size: 13px;
+
+}
 
 footer{
    background-color: #33485F;
