@@ -19,8 +19,8 @@ end
 def search_for_new_friends
 
   @search_word = params[:search_word]
-  @current_user_new_friends = User.where("name LIKE '%#{@search_word}%'").select("name,image_url,id").limit(10) - current_user.all_friendships - current_user
-
+  @current_user_new_friends = User.where("name LIKE '%#{@search_word}%'").select("name,image_url,id").limit(10) - current_user.all_friendships
+  @current_user_new_friends.delete(current_user)
   render :json => {'new_friends':@current_user_new_friends}
 end
 end
