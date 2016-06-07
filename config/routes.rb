@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :admins, path: 'admin_gamed', path_names: { sign_in: 'in', sign_out: 'logout', password: 'secret', registration: 'register', sign_up: 'let_me_be_admin' }
 
   get 'main_page/list_user_friends'
+  get 'main_page/:search_word/search_for_new_friends' => 'main_page#search_for_new_friends'
   get 'friendships/create'
 
   get 'friendships/update'

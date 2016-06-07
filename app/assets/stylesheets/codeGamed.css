@@ -95,6 +95,11 @@
 .reviews{
     background-color: transparent;
 }
+.reviews p{
+
+    font-size: 13px;
+
+}
 
 footer{
    background-color: #33485F;
@@ -132,5 +137,14 @@ md-grid-tile.ng-enter {
     transform: skewX(45deg) skewY(30deg);
     opacity: 0;
     height: 0px;
+}
+
+.autocomplete-custom-template li {
+    border-bottom: 1px solid #ccc;
+    height: auto;
+    padding-top: 8px;
+
+
+    font-size:20px;
 }
 

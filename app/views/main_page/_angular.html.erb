@@ -16,9 +16,36 @@
 
       <span flex></span>
 
+
+      <md-autocomplete style="width: 40%;"
+                       md-selected-item-change="selectedItemChange(item)"
+                       md-search-text="searchText"
+                       md-search-text-change="searchTextChange(searchText)"
+                       md-items="item in searchTextChange(searchText)"
+                       md-menu-class="autocomplete-custom-template"
+                       md-item-text="item.name"
+                       md-no-cache="true"
+
+                       placeholder="Search For Friends"
+                      >
+
+
+        <md-item-template>
+          <img style="width: 60px; height: 60px;" src="{{item.image_url}}">
+
+          <span >   {{item.name}}   </span>
+
+      </md-item-template>
+      </md-autocomplete>
+
+      &nbsp;<md-button ng-if="addFriend" ng-click="sendFriendRequest(addFriend)"  class="md-raised md-primary">Add As A Friend</md-button>
+
+      <span flex></span>
       <md-button ng-click="openRightMenu()">
         Profile
       </md-button>
+
+
 
     </div>
   </md-toolbar>
@@ -56,6 +83,10 @@
     </md-list>
 
   </md-sidenav>
+
+  <div id="popupContainer"></div>
+
+
 </div>
   <!--- The Body -->
   <div ng-view>
