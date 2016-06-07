@@ -43,6 +43,9 @@ md-content {
 .material-icons{
     font-size:40px;
 }
+ .icon_small{
+    font-size:30px;
+}
 #yourElement {
 
 }

@@ -13,10 +13,8 @@
       <%= link_to "<md-button  class='md-raised'>Sign out</md-button>".html_safe, signout_path, id: "sign_out" %>
 
 
-
       <span flex></span>
-
-
+      <i class="material-icons">person_add</i>
       <md-autocomplete style="width: 40%;"
                        md-selected-item-change="selectedItemChange(item)"
                        md-search-text="searchText"
@@ -31,18 +29,17 @@
 
 
         <md-item-template>
-          <img style="width: 60px; height: 60px;" src="{{item.image_url}}">
+          <img class="codeGamed-toolbar-avatar" src="{{item.image_url}}">
 
           <span >   {{item.name}}   </span>
 
       </md-item-template>
       </md-autocomplete>
-
       &nbsp;<md-button ng-if="addFriend" ng-click="sendFriendRequest(addFriend)"  class="md-raised md-primary">Add As A Friend</md-button>
 
       <span flex></span>
-      <md-button ng-click="openRightMenu()">
-        Profile
+      <md-button >
+        <i class="material-icons icon_small" ng-click="openRightMenu()">people</i>
       </md-button>
 
 
@@ -50,7 +47,7 @@
     </div>
   </md-toolbar>
   <md-sidenav  md-component-id="right" md-is-open="isSidenavOpen" class="md-sidenav-right " style="position: fixed">
-  <ng-md-icon ng-click="closeRightMenu()" icon="close" size="48"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" widht="48" height="48"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg></ng-md-icon>
+    <i class="material-icons icon_small" ng-click="closeRightMenu()" >cancel</i>
     <md-list layout-padding>
       <md-list-item class="md-3-line" >
         <%= image_tag current_user.image_url, class: 'md-avatar' ,style: ' width: 90px; height: 100px;' %>
@@ -74,10 +71,8 @@
 
             <h3>{{friendRequest.name}}</h3>
             <!--<span style="float: right;">1</span>-->
-
-            <md-button ng-click="acceptRequest(friendRequest)" class="md-raised md-primary" style="background-color: green;">Accept</md-button>
-            <md-button ng-click="declineRequest(friendRequest)" class="md-raised md-warn">Decline</md-button>
-
+            <i class="material-icons" ng-click="acceptRequest(friendRequest)">add_circle</i>
+            <i class="material-icons" ng-click="declineRequest(friendRequest)">cancel</i>
           </div>
         </md-list-item>
 
