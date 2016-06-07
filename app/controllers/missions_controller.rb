@@ -72,16 +72,6 @@ class MissionsController < ApplicationController
         end
       end
     end
-    # if @mission_params[:order].nil?||@mission_params[:order].to_i<1||mission_params[:order].to_i>(maxorder+1)
-    #   @mission_params[:order]=maxorder+1
-    # end
-
-    # (Level.find_by id: @mission.level).missions.each do |mission|
-    #   if mission.order>= @mission.order
-    #     Mission.update(mission,"order"=>mission.order+1)
-    #   end
-    # end
-
     respond_to do |format|
       if @mission.update(@mission_params)
         format.html { redirect_to levels_path, notice: 'Mission was successfully updated.' }
@@ -107,8 +97,10 @@ class MissionsController < ApplicationController
 
       full_missions = PassedMission.missions_with_test_cases(current_user, level)
       level_badge = Badge.find_by_id(level.badge_id).image_url
+      output = { 'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data, 'level_badge_url': level_badge  }
+      output[:locked_missions]=level.missions.size-full_missions.size
 
-      render :json => { 'accessing_level_status': 'Success', 'missions': full_missions, 'level_id': decrypt_data, 'level_badge_url': level_badge  }
+      render :json => output
 
     else
 

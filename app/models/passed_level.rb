@@ -26,11 +26,8 @@ class PassedLevel < ActiveRecord::Base
     level=Level.find_by order:user.levels.maximum("order")
   end
 
-
-  def self.next_mission(user_id)
-
-
+  def loched_missions
+    all_missions=self.level.missions
   end
-
 
 end

@@ -36,12 +36,12 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
             $scope.missions = res.missions;
             //console.log(res.level_badge_url);
             $scope.badge = res.level_badge_url;
+            $scope.locked_missions=res.locked_missions
             $scope.render_last_mission()
         } else {
             $location.path("/");
         }
 
-        $scope.missions = res.missions;
     });
 
 
@@ -80,6 +80,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
                 if(res.output == "Success") {
                     if (res.next_level == "same") {
                         $scope.missions = res.missions
+                        $scope.locked_missions=res.locked_missions
                         $scope.render_last_mission()
                     } else {
                         $location.path("/");
@@ -127,3 +128,14 @@ angular.module('codeGamed').filter('trusted', ['$sce', function ($sce) {
         return $sce.trustAsResourceUrl(url);
     };
 }]);
+angular.module('codeGamed').filter('range', function() {
+    return function(input, total) {
+        total = parseInt(total);
+
+        for (var i=0; i<total; i++) {
+            input.push(i);
+        }
+
+        return input;
+    };
+});

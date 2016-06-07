@@ -29,6 +29,7 @@ class PassedMission < ActiveRecord::Base
     self.open_new_mission(user.id, next_mission_order, level.id)
     end
     output[:missions]= self.missions_with_test_cases(user,level)
+    output[:locked_missions]=level.missions.size-next_mission_order
     output
   end
 
