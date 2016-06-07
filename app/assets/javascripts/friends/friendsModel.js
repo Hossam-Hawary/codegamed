@@ -49,6 +49,23 @@ angular.module('codeGamed').factory('listUserFriendsFactory', function ($http, $
             });
                 
             return def.promise;
+        },
+        
+        
+        acceptFriendRequest: function(friend_id){
+            var def = $q.defer();
+            
+            $http({
+                'method':'put',
+                'url': ' /friendships/'+friend_id
+            }).success(function(res){
+                
+                def.resolve(res);
+            });
+            
+            
+            return def.promise;
+            
         }
     }
 

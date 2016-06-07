@@ -62,8 +62,33 @@
 
     </md-list>
 
+    <div ng-if="requests">
+      <hr>
+      <md-subheader ><h5>Pending Requests</h5></md-subheader>
+      <md-list layout="column" layout-padding>
+
+        <md-list-item  class="md-3-line" ng-repeat="friendRequest in requests" >
+
+          <img ng-src="{{friendRequest.image_url}}" class="md-avatar" >
+          <div class="md-list-item-text">
+
+            <h3>{{friendRequest.name}}</h3>
+            <!--<span style="float: right;">1</span>-->
+
+            <md-button ng-click="acceptRequest(friendRequest)" class="md-raised md-primary" style="background-color: green;">Accept</md-button>
+            <md-button ng-click="declineRequest(friendRequest)" class="md-raised md-warn">Decline</md-button>
+
+          </div>
+        </md-list-item>
+
+
+
+      </md-list>
+
+    </div>
+
   <hr>
-    <md-subheader ><h2>Friends</h2></md-subheader>
+    <md-subheader ><h4>Friends</h4></md-subheader>
     <md-list layout="column" layout-padding>
 
       <md-list-item  class="md-3-line" ng-repeat="friend in friends" >

@@ -3,15 +3,18 @@
  */
 angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSidenav,listUserFriendsFactory,$q,$mdDialog){
 
-    listUserFriendsFactory.listFriends().then(function(res){
-        $scope.friends = res.friends;
-    });
+
     
     $scope.isSidenavOpen = false;
     $scope.openRightMenu = function() {
 
         listUserFriendsFactory.listFriends().then(function(res){
             $scope.friends = res.friends;
+
+            if(res.requests.length > 0) {
+                $scope.requests = res.requests;
+
+            }
         });
         $mdSidenav('right').toggle();
 
@@ -88,6 +91,39 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
 
            }
         });
+    }
+    
+    
+    
+    //Accepting And Declining Requests
+    
+    $scope.acceptRequest = function (friendRequest){
+
+        listUserFriendsFactory.acceptFriendRequest(friendRequest.friend_id).then(function(res){
+
+            if(res.result == 'success'){
+                //remove the request from pending
+                var index= $scope.requests.indexOf(friendRequest);
+                $scope.requests.splice(index,1);
+
+                friendRequest['image'] =  friendRequest.image_url;
+                friendRequest['score'] = res.friend_score;
+
+
+                 $scope.friends.push(friendRequest);
+            }
+
+
+        });
+    
+       
+    }
+    
+    
+    
+    $scope.declineRequest = function (friend_id){
+        
+        
     }
     
 });
