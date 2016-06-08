@@ -60,7 +60,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
     };
 
     $scope.submitAnswer = function () {
-        alert('compiling code');
+        //alert('compiling code');
         var submitted_code = myCodeMirror.doc.getValue();
 
         MissionsFactory.compileCode(submitted_code,$scope.current_mission).then(function(res){

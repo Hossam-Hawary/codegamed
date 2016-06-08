@@ -123,7 +123,7 @@ class MissionsController < ApplicationController
     if submitted_code && params
 
       compObj = CodeFactory.new.get_code_type('JAVA')
-      result = compObj.compile_user_code(submitted_code, mission)
+      result = compObj.compile_user_code(submitted_code, mission, current_user.uid)
 
       if result == true
 

@@ -2,9 +2,25 @@ require_relative 'code'
 
 class Java < Code
 
-  def compile_user_code(user_submitted_code, mission_Obj)
+  def compile_user_code(user_submitted_code, mission_Obj, user_id)
 
     test_cases = TestCase.where(mission_id: mission_Obj.id)
+
+    if Dir.exist? Rails.root.join('tmp') + user_id
+      Dir.open Rails.root.join('tmp').to_s + '/' + user_id do
+        return check_with_test_cases(test_cases, user_submitted_code)
+      end
+    else
+      Dir.mkdir Rails.root.join('tmp') + user_id do
+        return check_with_test_cases(test_cases, user_submitted_code)
+      end
+    end
+
+  end
+
+
+
+  def check_with_test_cases(test_cases,user_submitted_code)
 
     test_cases.each do |tc|
       java_code = 'public class Code{
@@ -29,6 +45,8 @@ class Java < Code
       $result = `timeout 4s java Code`
 
       if $result.chomp != tc.output
+        File.delete("Code.java")
+        File.delete("Code.class")
         return false
       end
 
