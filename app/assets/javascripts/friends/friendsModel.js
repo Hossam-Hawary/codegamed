@@ -94,7 +94,7 @@ angular.module('codeGamed').factory('listUserFriendsFactory', function ($http, $
                 'method': 'get'
 
             }).success(function (res) {
-                console.log(res);
+                //console.log(res);
                 def.resolve(res);
             });
 
