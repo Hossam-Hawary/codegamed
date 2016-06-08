@@ -25,7 +25,6 @@ md-grid-tile {
 }
 
 iframe{
-    width: 590px;
     height: 290px;
 }
 md-content {
@@ -49,4 +48,7 @@ md-content {
 }
 #test_cases-div{
     overflow: scroll; height: 190px;
+}
+nav{
+    color: white;
 }

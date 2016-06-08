@@ -1,7 +1,5 @@
  <nav class="navbar primary-color">
    <div class="container-fluid">
-
-
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
        <ul class="nav navbar-nav">
          <li ng-repeat="mission in missions" ng-click="play_mission(mission,$event)" class="box  waves-effect waves-light" ng-class="{'animated infinite zoomIn':$last} ">
@@ -19,15 +17,13 @@
    </div>
  </nav>
 
-
-
 <div class="row"  >
   <div class="col-lg-6" id="video_part">
     <md-tabs md-border-bottom style="min-height: 100%;">
       <md-tab ng-if="true" label="Video">
         <md-content class="md-padding" style="background-color: transparent">
 
-          <iframe ng-src="{{ mission_video | trusted }}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+          <iframe class="col-lg-12" ng-src="{{ mission_video | trusted }}"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
         </md-content>
       </md-tab>
@@ -58,7 +54,7 @@
 </div>
 
  <md-sidenav  md-component-id="theme" md-is-open="isThemeSidenavOpen" class="md-sidenav-right ">
-   <i class="material-icons" ng-click="closeThemeMenu()">close</i>
+   <i class="material-icons" ng-click="closeThemeMenu()">cancel</i>
    <md-list layout-padding>
      <md-list-item class="md-3-line" >
        <div class="md-list-item-text">
@@ -75,9 +71,6 @@
      </md-list-item>
 
    </md-list>
-
-
  </md-sidenav>
-
 
 <script src="/codemirror.js"></script>
