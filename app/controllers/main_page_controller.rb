@@ -24,7 +24,9 @@ class MainPageController < ApplicationController
     render :json => {'new_friends':@current_user_new_friends}
   end
 
-  def get_user_data
+  def get_user_score
+
+    render :json => {'user_score': current_user.total_score}
 
   end
 

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'main_page/list_user_friends'
   get 'main_page/:search_word/search_for_new_friends' => 'main_page#search_for_new_friends'
   get 'friendships/create'
-  post 'main_page/get_user_data' => 'main_page#get_user_data'
+  get 'main_page/get_user_score' => 'main_page#get_user_score'
 
   get 'friendships/update'
 

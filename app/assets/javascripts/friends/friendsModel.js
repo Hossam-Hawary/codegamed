@@ -84,14 +84,14 @@ angular.module('codeGamed').factory('listUserFriendsFactory', function ($http, $
 
         },
 
-        getUserData: function(){
+        getUserScore: function(){
 
             var def = $q.defer();
 
             $http({
 
-                'url': '/main_page/get_user_data',
-                'method': 'post'
+                'url': '/main_page/get_user_score',
+                'method': 'get'
 
             }).success(function (res) {
                 console.log(res);

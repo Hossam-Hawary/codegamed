@@ -16,7 +16,16 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
 
             }
         });
+
+        listUserFriendsFactory.getUserScore().then(function(res){
+
+            $scope.user_score = res.user_score;
+
+        });
+
         $mdSidenav('right').toggle();
+
+
 
     };
 
