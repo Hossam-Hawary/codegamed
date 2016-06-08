@@ -13,7 +13,7 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
 
             if(res.requests.length > 0) {
                 $scope.requests = res.requests;
-
+                $scope.requests_length=res.requests.length
             }
         });
 
@@ -121,8 +121,8 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
 
                 if ($scope.requests.length <= 0)
                     $scope.requests = false;
-
                  $scope.friends.push(friendRequest);
+                $scope.requests_length=$scope.requests.length
             }
 
 
@@ -145,6 +145,7 @@ angular.module('codeGamed').controller('listFriendsCtrl',function($scope,$mdSide
 
                 if ($scope.requests.length <= 0)
                     $scope.requests = false;
+                $scope.requests_length=$scope.requests.length
             }
         });
     }
