@@ -1,7 +1,4 @@
 /* BASICS */
-#codeEditing{
-    width:640px;
-}
 .CodeMirror {
   /* Set height, width, borders, and global font properties here */
   font-family: Monospace;
