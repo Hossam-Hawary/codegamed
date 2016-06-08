@@ -82,6 +82,24 @@ angular.module('codeGamed').factory('listUserFriendsFactory', function ($http, $
 
             return def.promise;
 
+        },
+
+        getUserData: function(){
+
+            var def = $q.defer();
+
+            $http({
+
+                'url': '/main_page/get_user_data',
+                'method': 'post'
+
+            }).success(function (res) {
+                console.log(res);
+                def.resolve(res);
+            });
+
+            return def.promise;
+
         }
     }
 
