@@ -75,7 +75,7 @@
 #levels-background-image{
 
 background-image: url("/1.jpg");
-    height: 400px;
+    height: 180px;
     background-size: cover;
 }
 
@@ -83,14 +83,15 @@ background-image: url("/1.jpg");
 .badge-card{
     height: 450px;
 }
+.badge_image{
+    margin: auto;
+}
 .locked_level{
     color: lightgray;
 }
 .locked-div{
-    background-image:url("/unnamed.png");
-    opacity: 0.8;
-    background-size: cover;
-height: 100px;
+    position: relative;
+    top: -250px;
 }
 #levels-grid-background-color{
     background-color: #e3e3e3;
@@ -132,7 +133,10 @@ footer{
 md-card-header-text {
     margin-left: 20px;
 }
-
+md-card-title{
+    background-color: #33485F;!important;
+    color: lightgray;
+}
 
 
 md-grid-tile.ng-enter,

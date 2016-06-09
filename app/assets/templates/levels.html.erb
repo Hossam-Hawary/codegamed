@@ -4,17 +4,17 @@
 <div class="container-fluid">
 <div id="levels-grid-background-color" class="row">
   <div class="row">
-<div class="col-sm-3 badge-card" ng-repeat="badge in badges">
+<div class="col-sm-6 col-md-4 col-lg-3 badge-card" ng-repeat="badge in badges">
     <md-card >
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">{{badge.title}}</span>
         </md-card-title-text>
       </md-card-title>
-      <a ng-href="/#/missions/{{badge.level_id}}">
+      <a ng-href="/#/missions/{{badge.level_id}}" class="waves-effect waves-teal">
     <md-card-content layout="row" layout-align="space-between">
-          <div class="md-media-xl">
-            <img ng-src="{{badge.image_url.image_url.url}}">
+          <div class="md-media-xl badge_image">
+            <img ng-src="{{badge.image_url.image_url.url}}" align="middle">
         </div>
       </md-card-content>
     </a>
@@ -35,7 +35,7 @@
 
 
 
-  <div class="col-sm-3 badge-card locked_level" ng-repeat="locked in locked_levels">
+  <div class="col-sm-6 col-md-4 col-lg-3 badge-card locked_level" ng-repeat="locked in locked_levels">
     <md-card>
 
       <md-card-title>
@@ -45,9 +45,9 @@
       </md-card-title>
       <a>
       <md-card-content layout="row" layout-align="space-between">
-        <div class="md-media-xl" style=" opacity: 0.4;  ">
-          <img ng-src="{{locked.image_url.url}}" >
-          <span class="locked-div"></span>
+        <div class="md-media-xl badge_image">
+          <img ng-src="{{locked.image_url.url}}" style=" opacity: 0.4;">
+          <img src="/unnamed.png" class="locked-div">
         </div>
       </md-card-content>
         </a>
