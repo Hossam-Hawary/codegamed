@@ -1,4 +1,4 @@
-angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParams,$location,$mdDialog,$mdSidenav,MissionsFactory){
+angular.module('codeGamed').controller('missionCtrl',function($scope,$timeout,$routeParams,$location,$mdDialog,$mdSidenav,MissionsFactory){
 
 
 
@@ -64,6 +64,7 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
         var submitted_code = myCodeMirror.doc.getValue();
 
         MissionsFactory.compileCode(submitted_code,$scope.current_mission).then(function(res){
+
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(true)
@@ -83,7 +84,12 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$routeParam
             .then(function() {
                 if(res.output == "Success") {
                     if (res.next_level == "same") {
-                        $scope.missions = res.missions
+                        $scope.missions = []
+                        $timeout(function(){
+                            $scope.missions = res.missions
+
+                        },400)
+
                         $scope.locked_missions=res.locked_missions
                         $scope.render_last_mission()
                     } else {

@@ -1,10 +1,10 @@
 
 <div id="levels-background-image">
 </div>
-
+<div class="container-fluid">
 <div id="levels-grid-background-color" class="row">
   <div class="row">
-<div class="col-md-3 badge-card" ng-repeat="badge in badges">
+<div class="col-sm-3 badge-card" ng-repeat="badge in badges">
     <md-card >
       <md-card-title>
         <md-card-title-text>
@@ -13,7 +13,7 @@
       </md-card-title>
       <a ng-href="/#/missions/{{badge.level_id}}">
     <md-card-content layout="row" layout-align="space-between">
-          <div class="md-media-xl  card-image-resize">
+          <div class="md-media-xl">
             <img ng-src="{{badge.image_url.image_url.url}}">
         </div>
       </md-card-content>
@@ -35,7 +35,7 @@
 
 
 
-<div class="col-md-3 badge-card locked_level" ng-repeat="locked in locked_levels">
+  <div class="col-sm-3 badge-card locked_level" ng-repeat="locked in locked_levels">
     <md-card>
 
       <md-card-title>
@@ -43,12 +43,14 @@
           <span class="md-headline" >{{locked.title}} </span>
         </md-card-title-text>
       </md-card-title>
+      <a>
       <md-card-content layout="row" layout-align="space-between">
-          <div class="md-media-xl card-media card-image-resize" style="background-image: url('{{locked.image_url.url}}'); opacity: 0.7;  ">
-            <div class="md-media-xl card-media card-image-resize" style="background-image: url('/unnamed.png'); opacity: 0.8;  ">
-            </div>
-          </div>
+        <div class="md-media-xl" style=" opacity: 0.4;  ">
+          <img ng-src="{{locked.image_url.url}}" >
+          <span class="locked-div"></span>
+        </div>
       </md-card-content>
+        </a>
       <div class="progress">
         0%
         <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
@@ -58,4 +60,5 @@
 
 </div>
   </div>
+</div>
 </div>
