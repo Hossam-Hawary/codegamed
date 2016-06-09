@@ -1,36 +1,24 @@
 
-<div class="levels-grid-background-color" style=" " >
-<md-grid-list   md-cols="1"  md-gutter="1em" md-row-height="350px" >
+<div id="levels-background-image">
+</div>
 
-  <md-grid-tile >
-
-
-      <img class="background-image" src="4.png"   />
-
-
-  </md-grid-tile>
-
-
-
-
-</md-grid-list>
-
-<br> <br>
-
-
-<md-grid-list md-cols="3"  md-row-height="350px"  >
-
-  <md-grid-tile ng-repeat="badge in badges"   >
-    <md-card>
+<div id="levels-grid-background-color" class="row">
+  <div class="row">
+<div class="col-md-3 badge-card" ng-repeat="badge in badges">
+    <md-card >
       <md-card-title>
         <md-card-title-text>
           <span class="md-headline">{{badge.title}}</span>
         </md-card-title-text>
       </md-card-title>
-      <md-card-content layout="row" layout-align="space-between">
-        <a ng-href="/#/missions/{{badge.level_id}}"> <div class="md-media-xl card-media card-image-resize" style="background-image: url('{{badge.image_url.image_url.url}}');   ">
-        </div> </a>
+      <a ng-href="/#/missions/{{badge.level_id}}">
+    <md-card-content layout="row" layout-align="space-between">
+          <div class="md-media-xl  card-image-resize">
+            <img ng-src="{{badge.image_url.image_url.url}}">
+        </div>
       </md-card-content>
+    </a>
+
       <div class="progress pro"  ng-if="badge.progress==100" >
         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
         </div>
@@ -41,20 +29,18 @@
         </div>
       </div>
     </md-card>
-  </md-grid-tile>
+
+</div>
 
 
 
 
-
-
-  <md-grid-tile  ng-repeat="locked in locked_levels" >
-
+<div class="col-md-3 badge-card locked_level" ng-repeat="locked in locked_levels">
     <md-card>
 
       <md-card-title>
         <md-card-title-text>
-          <span class="md-headline" style="color: #3E7087">{{locked.title}} </span>
+          <span class="md-headline" >{{locked.title}} </span>
         </md-card-title-text>
       </md-card-title>
       <md-card-content layout="row" layout-align="space-between">
@@ -63,9 +49,13 @@
             </div>
           </div>
       </md-card-content>
+      <div class="progress">
+        0%
+        <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width:100%;">
+        </div>
+      </div>
     </md-card>
-  </md-grid-tile>
-</md-grid-list>
+
 </div>
-
-
+  </div>
+</div>
