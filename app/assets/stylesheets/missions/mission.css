@@ -1,7 +1,9 @@
 .card-media {
     background-color: #999999;
 }
-
+li{
+line-height: 13px;
+}
 md-grid-tile {
     transition: all 400ms ease-out 50ms;
 }
@@ -38,7 +40,7 @@ md-content {
     border: 0;
 }
 .material-icons{
-    font-size:40px;
+    font-size:35px;
 }
  .icon_small{
     font-size:30px;
