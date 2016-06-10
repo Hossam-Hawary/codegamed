@@ -1,8 +1,12 @@
-angular.module('codeGamed').controller('missionCtrl',function($scope,$timeout,$routeParams,$location,$mdDialog,$mdSidenav,MissionsFactory){
+angular.module('codeGamed').controller('missionCtrl',function($scope,$timeout,$routeParams,$location,$mdDialog,
+                                                              $mdSidenav,MissionsFactory,$interval){
 
 
 
     var levelId = $routeParams.level_id;
+
+    $scope.loading=false;
+
 
 
     $scope.isThemeSidenavOpen = false;
@@ -61,10 +65,12 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$timeout,$r
 
     $scope.submitAnswer = function () {
         //alert('compiling code');
+        $scope.loading = true;
         var submitted_code = myCodeMirror.doc.getValue();
 
         MissionsFactory.compileCode(submitted_code,$scope.current_mission).then(function(res){
 
+            $scope.loading=false;
             $mdDialog.show(
                 $mdDialog.alert()
                     .clickOutsideToClose(true)
