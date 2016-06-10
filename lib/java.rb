@@ -60,7 +60,7 @@ class Java < Code
       end
 
       File.delete("Code.java") if File.exist?("Code.java")
-      File.delete("Code.class") if File.exist?("Code.java")
+      File.delete("Code.class") if File.exist?("Code.class")
 
     end
 

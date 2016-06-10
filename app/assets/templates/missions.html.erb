@@ -36,8 +36,9 @@
 </div>
   <div class="col-lg-6">
     <div class="row">
-    <md-button class="md-raised primary-color"id="submit" ng-click="submitAnswer()">Submit</md-button>
-      </div>
+      <md-progress-circular md-mode="indeterminate" ng-show="loading"></md-progress-circular>
+      <md-button class="md-raised primary-color"id="submit" ng-click="submitAnswer()">Submit</md-button>
+    </div>
     <div  style=";position:relative;z-index: 0">
         <div id="codeEditing"></div>
       </div>
@@ -51,11 +52,6 @@
         </div>
       </div>
   </div>
-
-  <div layout="row" layout-sm="column" layout-align="space-around">
-    <md-progress-circular md-mode="indeterminate" ng-show="isLoading"></md-progress-circular>
-  </div>
-
 
 </div>
   </div>
