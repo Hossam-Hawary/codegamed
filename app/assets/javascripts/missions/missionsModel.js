@@ -27,6 +27,7 @@ angular.module('codeGamed').factory('MissionsFactory', function ($http, $q) {
 
             var def = $q.defer();
 
+
             $http({
 
                 'url': '/missions/compile_user_code',

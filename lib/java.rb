@@ -42,16 +42,20 @@ class Java < Code
       stdin, stdout, stderr = Open3.popen3('javac Code.java')
 
       puts stderr.gets
-      $result = `timeout 4s java Code` if File.exist?("Code.class")
 
-      if $result.chomp != tc.output
+      if File.exist?("Code.class")
+
+        $result = `timeout 4s java Code`
         File.delete("Code.java") if File.exist?("Code.java")
         File.delete("Code.class") if File.exist?("Code.class")
-        return false
-      end
 
-      File.delete("Code.java")
-      File.delete("Code.class")
+        return false  if $result.chomp != tc.output
+
+      else
+
+        return false
+
+      end
 
     end
 
