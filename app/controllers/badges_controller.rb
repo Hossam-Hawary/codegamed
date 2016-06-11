@@ -15,10 +15,8 @@ class BadgesController < ApplicationController
     respond_to do |format|
       if @badge.save
         format.html { redirect_to badges_path, notice: 'Badge was successfully created.' }
-        format.json { render :index, status: :created, location: Badge }
       else
         format.html { render :new }
-        format.json { render json: Badge.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -36,10 +34,8 @@ class BadgesController < ApplicationController
     respond_to do |format|
       if @badge.update(badge_params)
         format.html { redirect_to badges_path, notice: 'Badge was successfully updated.' }
-        format.json { render :index, status: :ok, location: Badge }
       else
         format.html { render :edit }
-        format.json { render json: Badge.errors, status: :unprocessable_entity }
       end
     end
   end
