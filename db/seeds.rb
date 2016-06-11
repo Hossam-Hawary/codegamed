@@ -10,13 +10,13 @@ Admin.create!(email: 'admin@example.com', password: 'password', password_confirm
 #Badge.create!(title: 'ElPoP',image_url: 'uploads/codefighter.png')
 
 Level.create!(badge_id:1, order:1)
-Level.create!(badge_id:1, order:2)
-# Level.create!(badge_id:1, order:3)
-# Level.create!(badge_id:1, order:4)
-# Level.create!(badge_id:1, order:5)
-# Level.create!(badge_id:1, order:6)
+Level.create!(badge_id:2, order:2)
+# Level.create!(badge_id:3, order:3)
+# Level.create!(badge_id:4, order:4)
+# Level.create!(badge_id:5, order:5)
+# Level.create!(badge_id:6, order:6)
 
-Mission.create(order:1, score:100, level_id:1, video_url: "https://player.vimeo.com/video/162638502", problem: "
+Mission.create(order:1, score:100, level_id:1, video_url: "https://player.vimeo.com/video/161243155", problem: "
 
 <p>Find the smallest number from the given two integers.</p>
 
@@ -110,7 +110,7 @@ TestCase.create!(mission_id:2, input:"factorial(0)", output:"1")
 
 
 
-Mission.create(order:1, score:100, level_id:2, video_url: "https://player.vimeo.com/video/162638502", problem: "
+Mission.create(order:1, score:100, level_id:2, video_url: "https://player.vimeo.com/video/161243155", problem: "
 
 <p>Find the smallest number from the given two integers.</p>
 
