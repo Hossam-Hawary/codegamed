@@ -87,11 +87,10 @@ angular.module('codeGamed').controller('missionCtrl',function($scope,$timeout,$r
                         $scope.missions = []
                         $timeout(function(){
                             $scope.missions = res.missions
+                            $scope.locked_missions=res.locked_missions
+                            $scope.render_last_mission()
+                        },1800)
 
-                        },400)
-
-                        $scope.locked_missions=res.locked_missions
-                        $scope.render_last_mission()
                     } else {
                         $location.path("/");
                     }

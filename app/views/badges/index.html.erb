@@ -14,31 +14,34 @@
       <%= link_to '<md-button class="md-raised md-warn">Edit Admin</md-button>'.html_safe, edit_admin_registration_path %>
     </div>
     <h1>Listing Badges </h1>
-    <md-grid-list md-cols="3" md-row-height="350px">
+    <div class="row">
 
 
       <% @badges.each do |badge| %>
-          <md-grid-tile>
-            <md-card>
-
+          <div class="col-sm-6 col-md-4 col-lg-3 badge-card">
+            <md-card >
               <md-card-title>
                 <md-card-title-text>
                   <span class="md-headline"><%= badge.title %></span>
                 </md-card-title-text>
               </md-card-title>
+              <a ng-href="/#/missions/{{badge.level_id}}" class="waves-effect waves-teal">
+                <md-card-content layout="row" layout-align="space-between">
+                  <div class="md-media-xl badge_image">
+                    <img ng-src="{{badge.image_url.image_url.url}}" align="middle">
+                    <%= image_tag badge.image_url.url,{align:"middle" } if badge.image_url? %>
+                  </div>
+                </md-card-content>
+              </a>
 
-
-              <md-card-content layout="row" layout-align="space-between">
-                <div class="md-media-xl card-media card-image-resize">
-                  <%= image_tag badge.image_url.url if badge.image_url? %>
-                </div>
-              </md-card-content>
               <td> <%= link_to '<md-button class="md-raised md-warn">Edit</md-button>'.html_safe, edit_badge_path(badge) %> </td>
-            </md-card>
-          </md-grid-tile>
-      <% end %>
 
-    </md-grid-list>
+            </md-card>
+
+          </div>
+      <% end %>
+    </div>
   </md-content>
 </div>
 <script src="/form_theme.js"></script>
+
