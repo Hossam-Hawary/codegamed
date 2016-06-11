@@ -22,6 +22,8 @@
         <th>Mission</th>
         <th>Input</th>
         <th>Output</th>
+        <th>Return Type</th>
+
         <th colspan="2">Actions</th>
       </tr>
       </thead>
@@ -33,6 +35,7 @@
             <td><%= test_case.mission.order %></td>
             <td><%= test_case.input %></td>
             <td><%= test_case.output %></td>
+            <td><%= test_case.return_type %></td>
             <td> <%= link_to '<md-button class="md-raised md-warn">Edit</md-button>'.html_safe, edit_test_case_path(test_case) %> </td>
             <td><%= link_to '<md-button class="md-raised md-warn">Destroy</md-button>'.html_safe, test_case, method: :delete, data: {confirm: 'Are you sure?'} %></td>
           </tr>
