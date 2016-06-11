@@ -33,10 +33,8 @@ class TestCasesController < ApplicationController
     respond_to do |format|
       if @test_case.update(test_cases_params)
         format.html { redirect_to test_cases_path, notice: 'test case was successfully updated.' }
-        format.json { render :index, status: :ok, location: TestCase }
       else
         format.html { render :edit }
-        format.json { render json: TestCase.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -52,6 +50,6 @@ class TestCasesController < ApplicationController
 
   private
   def test_cases_params
-    params.require(:test_case).permit(:input, :output, :mission_id)
+    params.require(:test_case).permit(:input, :output, :mission_id, :return_type)
   end
 end

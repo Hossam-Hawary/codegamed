@@ -3,7 +3,7 @@
      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
        <ul class="nav navbar-nav">
          <li ng-repeat="mission in missions" ng-click="play_mission(mission,$event)" class="box  waves-effect waves-light"  ng-class="{'animated infinite zoomIn':$last} ">
-           <span class=" social-counter">{{mission.mission_data.score}}</span> <i class="material-icons">security</i>
+           <span class=" social-counter">{{mission.mission_data.score}}XP</span> <i class="material-icons">security</i>
          </li>
          <li ng-repeat="n in [] | range:locked_missions" >
            <i class="material-icons icon_small">security</i>
@@ -36,8 +36,12 @@
 </div>
   <div class="col-lg-6">
     <div class="row">
-      <md-progress-circular md-mode="indeterminate" ng-show="loading"></md-progress-circular>
+      <div class="col-lg-6">
+      <md-progress-circular md-mode="indeterminate"  ng-show="loading"></md-progress-circular>
+        </div>
+      <div class="col-lg-6">
       <md-button class="md-raised primary-color"id="submit" ng-click="submitAnswer()">Submit</md-button>
+        </div>
     </div>
     <div  style=";position:relative;z-index: 0">
         <div id="codeEditing"></div>

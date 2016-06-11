@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160605170357) do
+ActiveRecord::Schema.define(version: 20160611101843) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20160605170357) do
     t.text     "problem",      limit: 65535
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.string   "initial_code", limit: 255
+    t.text     "initial_code", limit: 65535
   end
 
   add_index "missions", ["level_id"], name: "index_missions_on_level_id", using: :btree
@@ -92,11 +92,12 @@ ActiveRecord::Schema.define(version: 20160605170357) do
   add_index "passed_missions", ["user_id"], name: "index_passed_missions_on_user_id", using: :btree
 
   create_table "test_cases", force: :cascade do |t|
-    t.integer  "mission_id", limit: 4
-    t.string   "input",      limit: 255
-    t.string   "output",     limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "mission_id",  limit: 4
+    t.string   "input",       limit: 255
+    t.string   "output",      limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "return_type", limit: 255
   end
 
   add_index "test_cases", ["mission_id"], name: "index_test_cases_on_mission_id", using: :btree
