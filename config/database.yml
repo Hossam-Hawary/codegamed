@@ -6,6 +6,7 @@
 #
 default: &default
   adapter: mysql2
+  #hostname: 172.16.0.240
   pool: 5
   timeout: 5000
 
