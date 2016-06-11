@@ -1,5 +1,5 @@
 angular.module('codeGamed').controller('missionCtrl',function($scope,$timeout,$routeParams,$location,$mdDialog,
-                                                              $mdSidenav,MissionsFactory,$interval){
+                                                              $mdSidenav,MissionsFactory){
 
 
 
