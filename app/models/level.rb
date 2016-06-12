@@ -33,7 +33,7 @@ class Level < ActiveRecord::Base
 
 
   def self.locked_badges(current_user)
-  @locked_levels = Level.all() - current_user.levels.order(order: :asc)
+  @locked_levels = Level.all().order(order: :asc) - current_user.levels.order(order: :asc)
 
   @locked_badges = []
 
