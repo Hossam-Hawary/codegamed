@@ -5,6 +5,7 @@ class PassedLevel < ActiveRecord::Base
   def self.open_new_level(user_id, level_order)
     level=Level.find_by order: level_order
     if level
+      level=Level.find_by order: level_order
         passed_level=self.new
         passed_level.user_id = user_id
         passed_level.level_id=level.id
