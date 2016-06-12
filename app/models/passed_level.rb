@@ -12,6 +12,8 @@ class PassedLevel < ActiveRecord::Base
         passed_level.progress=0
         passed_level.save!
         level=passed_level.level
+    else
+      level=Level.find_by order: level_order-1
     end
     level
   end

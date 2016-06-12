@@ -20,7 +20,7 @@ class PassedMission < ActiveRecord::Base
     PassedLevel.raise_progress user, mission
     last_mission=level.missions.order("missions.order").last
     if last_mission.order == mission.order
-      level= PassedLevel.open_new_level(user.id, mission.level.id + 1)
+      level= PassedLevel.open_new_level(user.id, mission.level.order + 1)
       next_mission_order = 1
       output[:next_level] = mission.level.order+1
     end
