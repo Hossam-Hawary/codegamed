@@ -12,11 +12,7 @@ class Friendship < ActiveRecord::Base
 		    friend_obj=User.find_by_uid friend_uid
 		    friendship.friend_id = friend_obj.id
 		    friendship.accepted = "true"
-
-		     friend_exist=Friendship.find_by user_id:friend_obj.id, friend_id:user.id
-		    if !friend_exist
 		        friendship.save
-		    end
 		end
 	end
 end
